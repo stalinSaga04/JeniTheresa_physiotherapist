@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import TriageBooking from './components/TriageBooking';
 import ClinicalTransparency from './components/ClinicalTransparency';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
+import Specialties from './components/Specialties';
 
 function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
@@ -31,6 +32,9 @@ function App() {
       {/* Hero Showcase & Credential Highlights */}
       <main className="flex-1">
         <Hero onOpenTriage={() => setIsTriageOpen(true)} />
+        
+        {/* Dr. Jeni Theresa's 4 Core Clinical Specialty Pillars */}
+        <Specialties onOpenTriage={() => setIsTriageOpen(true)} />
         
         {/* New Idea: Clinical Transparency & What To Expect Roadmap */}
         <ClinicalTransparency onOpenTriage={() => setIsTriageOpen(true)} />
