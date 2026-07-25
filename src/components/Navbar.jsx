@@ -79,25 +79,25 @@ const Navbar = ({ onOpenTriage }) => {
             ))}
           </nav>
 
-          {/* Sleek Primary Appointment Action (No Header WhatsApp as requested) */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* ONLY Book Button in header as requested — visible on all devices, no WhatsApp/call link */}
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <button
               onClick={onOpenTriage}
-              className="px-6 py-3 rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs tracking-wider uppercase shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2.5 group"
+              className="px-4.5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs tracking-wider uppercase shadow-md sm:shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
             >
-              <Calendar className="w-4 h-4 text-[#D2A13E] group-hover:scale-110 transition-transform" />
-              <span>Book Appointment</span>
+              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D2A13E] group-hover:scale-110 transition-transform shrink-0" />
+              <span>Book<span className="hidden sm:inline"> Appointment</span></span>
+            </button>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle Navigation Menu"
+              className="xl:hidden p-2 sm:p-2.5 rounded-xl bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white transition-all focus:outline-none cursor-pointer shrink-0"
+            >
+              {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
           </div>
-
-          {/* Mobile Menu Trigger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle Navigation Menu"
-            className="xl:hidden p-2.5 rounded-xl bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white transition-all focus:outline-none cursor-pointer"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
       </header>
 
