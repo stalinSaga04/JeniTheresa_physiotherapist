@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-pine: #0A1C17;
+    --color-pine-light: #163029;
+    --color-sage: #EEF5E9;
+    --color-terracotta: #C2593B;
+    --color-cream: #FAF8F5;
+    --color-sand: #D2A13E;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--color-pine);
+    background-color: var(--color-cream);
+  }
+
+  h1, h2, h3, .font-serif-clinical {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-editorial {
+    font-family: 'Newsreader', serif;
+  }
+  
+  .font-mono-tech {
+    font-family: 'Space Grotesk', monospace, sans-serif;
+  }
+}
+
+/* Custom editorial scrollbars & micro-details */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #163029;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C2593B;
+}
+
+/* Biomechanical grid background overlay */
+.bg-clinical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(10, 28, 23, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 28, 23, 0.04) 1px, transparent 1px);
+}
+
+.bg-clinical-dots {
+  background-image: radial-gradient(rgba(10, 28, 23, 0.12) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Smooth clinical animations */
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 4s ease-in-out infinite;
+}
