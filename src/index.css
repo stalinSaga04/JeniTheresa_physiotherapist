@@ -29,25 +29,13 @@
   }
 }
 
-/* Custom editorial scrollbars & micro-details */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* === CUSTOM EDITORIAL SCROLLBAR === */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FAF8F5; }
+::-webkit-scrollbar-thumb { background: #163029; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C2593B; }
 
-::-webkit-scrollbar-track {
-  background: #FAF8F5;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #163029;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #C2593B;
-}
-
-/* Biomechanical grid background overlay */
+/* === BIOMECHANICAL GRID PATTERNS === */
 .bg-clinical-grid {
   background-size: 40px 40px;
   background-image: 
@@ -60,12 +48,205 @@
   background-size: 24px 24px;
 }
 
-/* Smooth clinical animations */
+/* === ADVANCED SCROLL-TRIGGERED & 3D ANIMATIONS === */
+
+/* Smooth spine pulse for Hero organ illustration */
 @keyframes pulse-subtle {
   0%, 100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.05); opacity: 1; }
 }
-
 .animate-pulse-subtle {
   animation: pulse-subtle 4s ease-in-out infinite;
+}
+
+/* Organic floating movement for background blobs */
+@keyframes float-organic {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(15px, -25px) rotate(3deg) scale(1.04); }
+  50% { transform: translate(-10px, 15px) rotate(-2deg) scale(0.97); }
+  75% { transform: translate(20px, 10px) rotate(4deg) scale(1.02); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+.animate-float-organic {
+  animation: float-organic 18s ease-in-out infinite;
+}
+.animate-float-organic-delayed {
+  animation: float-organic 22s ease-in-out 3s infinite;
+}
+.animate-float-organic-slow {
+  animation: float-organic 30s ease-in-out 6s infinite;
+}
+
+/* Parallax-responsive depth layers */
+@keyframes drift-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+}
+.animate-drift-x {
+  animation: drift-x 25s ease-in-out infinite;
+}
+
+/* Spine / Skeleton bone pulse nodes */
+@keyframes bone-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(194, 89, 59, 0.5); }
+  50% { box-shadow: 0 0 18px 8px rgba(194, 89, 59, 0.15); }
+}
+.animate-bone-pulse {
+  animation: bone-pulse 3s ease-in-out infinite;
+}
+
+/* Text character stagger reveal */
+@keyframes char-reveal {
+  from { opacity: 0; transform: translateY(25px) rotateX(40deg); filter: blur(4px); }
+  to { opacity: 1; transform: translateY(0) rotateX(0deg); filter: blur(0); }
+}
+.animate-char-reveal {
+  animation: char-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+/* 3D card tilt on hover (perspective parent required) */
+.perspective-container {
+  perspective: 1200px;
+}
+.card-3d-tilt {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.card-3d-tilt:hover {
+  transform: rotateY(-4deg) rotateX(3deg) translateZ(12px) scale(1.02);
+  box-shadow: 20px 20px 60px -12px rgba(10, 28, 23, 0.25);
+}
+
+/* Scroll-triggered entrance classes (JS adds .in-view) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.88);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), 
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-reveal-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Staggered children reveal (add delay via style) */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.stagger-child.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === INTERACTIVE MAGNETIC CURSOR EFFECT FOR BUTTONS === */
+.magnetic-btn {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* === GLASSMORPHISM UTILITY === */
+.glass-panel {
+  background: rgba(250, 248, 245, 0.45);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(10, 28, 23, 0.1);
+}
+
+.glass-dark {
+  background: rgba(10, 28, 23, 0.65);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* === ANIMATED SVG SPINE ILLUSTRATION PULSE === */
+@keyframes spine-glow {
+  0%, 100% { stroke-dashoffset: 0; opacity: 0.7; }
+  50% { stroke-dashoffset: 60; opacity: 1; }
+}
+.animate-spine-glow {
+  stroke-dasharray: 120;
+  animation: spine-glow 6s linear infinite;
+}
+
+/* === MOVING GRADIENT BACKGROUND === */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* === COUNTER SCROLL-UP ANIMATION === */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-count-up {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* === ORGANIC WAVE DIVIDER === */
+.wave-divider {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* === NOISE TEXTURE OVERLAY === */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
 }

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SYMPTOM_AREAS } from '../data/clinicalData';
 import { AlertTriangle, CheckCircle2, XCircle, Activity, ChevronRight, HelpCircle, Sparkles, ArrowUpRight } from 'lucide-react';
+import SpineIllustration from './SpineIllustration';
+import { useScrollReveal } from '../hooks/useScrollAnimations';
 
 const SymptomMap = ({ onSelectSymptomForTriage }) => {
   const [selectedArea, setSelectedArea] = useState(SYMPTOM_AREAS[0]);
+  const scrollRef = useScrollReveal();
 
   // Anatomical hotspots mapping for interactive schematic illustration
   const hotspots = [
@@ -16,7 +19,7 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
   ];
 
   return (
-    <section id="symptom-map" className="py-24 md:py-32 bg-[#163029] text-[#FAF8F5] relative overflow-hidden">
+    <section ref={scrollRef} id="symptom-map" className="py-24 md:py-32 bg-[#163029] text-[#FAF8F5] relative overflow-hidden">
       {/* Background radial atmosphere */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#0A1C17] blur-[140px] opacity-70 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[#C2593B]/10 blur-[120px] pointer-events-none" />
@@ -48,44 +51,34 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
             <div className="relative bg-[#0A1C17] border border-white/15 rounded-3xl p-6 h-[480px] flex items-center justify-center overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-clinical-grid opacity-20 pointer-events-none" />
               
-              {/* Abstract Human Kinetic Figure Silhouette */}
-              <div className="relative w-48 h-full flex flex-col items-center justify-between py-6">
-                
-                {/* Visual abstract spine and core lines */}
-                <div className="absolute w-[2px] h-[84%] bg-gradient-to-b from-emerald-500 via-[#C2593B] to-transparent top-6 left-1/2 -translate-x-1/2 opacity-40" />
-                <div className="absolute w-24 h-[1px] bg-white/20 top-[28%] left-1/2 -translate-x-1/2" />
-                <div className="absolute w-20 h-[1px] bg-white/20 top-[46%] left-1/2 -translate-x-1/2" />
-                <div className="absolute w-16 h-[1px] bg-white/20 top-[71%] left-1/2 -translate-x-1/2" />
-                
-                {/* Hotspot Markers */}
-                {hotspots.map((spot) => {
-                  const isSelected = selectedArea.id === spot.id;
-                  return (
-                    <button
-                      key={spot.id}
-                      onClick={() => {
-                        const target = SYMPTOM_AREAS.find(s => s.id === spot.id);
-                        if (target) setSelectedArea(target);
-                      }}
-                      style={{ top: spot.y, left: spot.x }}
-                      className={`absolute -translate-x-1/2 -translate-y-1/2 group flex items-center gap-2 transition-all cursor-pointer z-20 ${
-                        isSelected ? 'scale-110 z-30' : 'hover:scale-105 opacity-85 hover:opacity-100'
-                      }`}
-                    >
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300 ${
-                        isSelected ? 'bg-[#C2593B] text-white ring-4 ring-[#C2593B]/40 animate-bounce' : 'bg-[#FAF8F5] text-[#0A1C17] hover:bg-emerald-400'
-                      }`}>
-                        <div className={`w-2.5 h-2.5 rounded-full ${isSelected ? 'bg-white' : 'bg-[#0A1C17]'}`} />
-                      </div>
-                      <span className={`px-3 py-1.5 rounded-xl font-mono-tech text-xs font-bold whitespace-nowrap shadow-md border ${
-                        isSelected ? 'bg-[#C2593B] text-white border-white/30' : 'bg-[#0A1C17]/90 text-[#FAF8F5] border-white/20 group-hover:border-white/50'
-                      }`}>
-                        {spot.label}
-                      </span>
-                    </button>
-                  );
-                })}
+              {/* ANIMATED SVG SKELETON — Reacts to selected zone */}
+              <div className="relative w-full h-full p-4 z-10">
+                <SpineIllustration activeZone={selectedArea.id} className="drop-shadow-lg" />
               </div>
+
+              {/* Hotspot overlay buttons on top of spine */}
+              {hotspots.map((spot) => {
+                const isSelected = selectedArea.id === spot.id;
+                return (
+                  <button
+                    key={spot.id}
+                    onClick={() => {
+                      const target = SYMPTOM_AREAS.find(s => s.id === spot.id);
+                      if (target) setSelectedArea(target);
+                    }}
+                    style={{ top: spot.y, left: spot.x }}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 group flex items-center gap-2 transition-all cursor-pointer z-20 ${
+                      isSelected ? 'scale-110 z-30' : 'hover:scale-105 opacity-85 hover:opacity-100'
+                    }`}
+                  >
+                    <span className={`px-3 py-1.5 rounded-xl font-mono-tech text-xs font-bold whitespace-nowrap shadow-md border transition-all ${
+                      isSelected ? 'bg-[#C2593B] text-white border-white/30 shadow-[0_0_20px_rgba(194,89,59,0.4)]' : 'bg-[#0A1C17]/90 text-[#FAF8F5] border-white/20 group-hover:border-white/50'
+                    }`}>
+                      {spot.label}
+                    </span>
+                  </button>
+                );
+              })}
 
               <div className="absolute bottom-4 left-4 text-[11px] font-mono-tech text-white/50 bg-black/40 px-3 py-1 rounded-full backdrop-blur-xs">
                 👆 TAP HOTSPOTS TO EXAMINE

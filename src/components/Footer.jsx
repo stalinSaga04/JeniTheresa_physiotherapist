@@ -1,6 +1,6 @@
 import React from 'react';
 import { Activity, MapPin, Phone, Mail, ShieldAlert, ArrowUp } from 'lucide-react';
-import { CREDENTIALS } from '../data/clinicalData';
+import { CREDENTIALS, CLINIC_INFO } from '../data/clinicalData';
 
 const Footer = ({ onOpenTriage }) => {
   const scrollToTop = () => {
@@ -88,21 +88,21 @@ const Footer = ({ onOpenTriage }) => {
             <div className="space-y-2.5 text-xs text-[#FAF8F5]/85">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C2593B] shrink-0 mt-0.5" />
-                <span>Specialty Sports Kinetic & Spine Studio, Central Medical Plaza, Suite 402</span>
+                <span>{CLINIC_INFO.address}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C2593B] shrink-0" />
-                <span className="font-mono-tech font-bold">+91 98765 43210 (Direct WhatsApp Triage)</span>
+                <span className="font-mono-tech font-bold">{CLINIC_INFO.phone} (Direct WhatsApp Triage)</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C2593B] shrink-0" />
-                <span>clinic@jenitheresa-pt.com</span>
+                <span>{CLINIC_INFO.email}</span>
               </div>
             </div>
 
             <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-[11px] font-mono-tech text-white/90">
-              <strong>HOURS:</strong> Mon–Sat 8:00 AM – 7:30 PM <br />
-              <span className="text-emerald-300 font-bold">● Tele-Rehab Triage Open Daily</span>
+              <strong>HOURS:</strong> {CLINIC_INFO.hours} <br />
+              <span className="text-emerald-300 font-bold">● {CLINIC_INFO.teleRehabHours}</span>
             </div>
           </div>
 
