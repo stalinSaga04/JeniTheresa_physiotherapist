@@ -1,159 +1,145 @@
 export const SYMPTOM_AREAS = [
   {
     id: "cervical",
-    name: "Cervical Spine & Neck Tension",
-    tagline: "Forward head carriage & postural neural irritation",
-    symptomSummary: "Deep occipital stiffness, chronic tension headache extending to the upper shoulders, or radiating numbness down the arms — extremely common in India's IT professionals working 10+ hour desk shifts.",
+    name: "Neck Pain & Cervical Stiffness",
+    tagline: "Relief from computer desk posture & neck tightness",
+    symptomSummary: "Stiffness around the neck and upper shoulders, headaches after long working hours, or a tingling sensation extending down your arm. Common among software and office professionals.",
     rootCauses: [
-      "Sustained forward flexed posture during prolonged laptop/mobile screen exposure (India's WFH & office culture)",
-      "Overactive upper trapezius and levator scapulae compensating for weak deep cervical flexors",
-      "Facet joint capsule irritation from lack of thoracic mobility — worsened by two-wheeler commuting posture"
+      "Leaning forward toward laptop or mobile screens for prolonged periods during desk work",
+      "Overworking shoulder and neck muscles due to unsupported sitting posture",
+      "Stiffness in upper back joints from long drives or two-wheeler commuting"
     ],
-    commonMistakes: "Relying on temporary heating pads, balm applications, or deep muscle massage that briefly lowers tone without strengthening deep stabilizing neck flexors or releasing upper thoracic lock.",
+    commonMistakes: "Relying only on pain balm, painkiller tablets, or heating pads without gently relaxing the stiff muscles and strengthening your posture.",
     jeniTreatment: [
-      "Targeted joint manual articulation of cervical (C3-C7) and upper thoracic segments",
-      "Dry Needling of active trigger points in upper traps and splenius capitis",
-      "Neurodynamic median/ulnar nerve glides to eliminate radiating arm paresthesia",
-      "Isometric deep neck stabilizer neuromuscular training for sustained desk endurance"
+      "Hands-on joint therapy to release neck tension and restore smooth movement",
+      "Targeted gentle trigger point release for knotted shoulder muscles",
+      "Simple nerve gliding exercises to relieve arm tingling and numbness",
+      "Customized 5-minute desk exercises to keep your neck strong all day"
     ],
-    sessionEstimate: "3–6 Sessions for durable symptom freedom",
-    urgencyLevel: "Medium — Evaluate promptly if radiating tingling appears in hand fingers."
+    sessionEstimate: "3–5 Sessions for complete comfort and improved mobility",
+    urgencyLevel: "Recommended promptly if you notice any numbness or tingling in your hands."
   },
   {
     id: "rotator",
-    name: "Rotator Cuff & Shoulder Impingement",
-    tagline: "Overhead pinching, deep capsule ache & instability",
-    symptomSummary: "Sharp pinch when lifting arm overhead, nocturnal throbbing when sleeping on the affected shoulder, or weakness during pushing/pulling tasks — common in cricket bowlers, badminton players, and gym enthusiasts.",
+    name: "Shoulder Pain & Joint Restriction",
+    tagline: "Treatment for arm lifting pain and shoulder stiffness",
+    symptomSummary: "Pain or discomfort when lifting your arm, stiffness in reaching overhead, or ache when sleeping on your shoulder. Very common in active adults and badminton or sports players.",
     rootCauses: [
-      "Subacromial space compression due to poor scapular dyskinesis (improper shoulder blade rhythm)",
-      "Eccentric overload of supraspinatus tendon from sudden increases in cricket bowling, badminton overhead, or weight training",
-      "Posterior shoulder capsule tightness shifting the humeral head anteriorly"
+      "Strained shoulder tendons from excessive overhead reaching, throwing, or heavy lifting",
+      "Tight shoulder joint muscles limiting natural shoulder arm movement",
+      "Poor alignment of the upper shoulder blades during routine daily work"
     ],
-    commonMistakes: "Stopping all movement and complete rest (which causes tendon weakening and atrophy), or solely relying on pain-killer injections without assessing scapular mechanics.",
+    commonMistakes: "Stopping all movement completely (which makes muscles weaker and stiffer) or relying solely on injections without restoring natural shoulder mobility.",
     jeniTreatment: [
-      "Scapulothoracic re-education focusing on serratus anterior & lower trap activation",
-      "Progressive heavy slow resistance (HSR) loading for rotator cuff tendon matrix remodeling",
-      "Posterior capsule instrumental myofascial release (IASTM)",
-      "Functional kinetic chain incorporation with Thoracic rotation integration"
+      "Guided gentle shoulder joint mobilization to improve reaching flexibility",
+      "Progressive rubber band and resistance exercises to strengthen shoulder tendons",
+      "Hands-on muscle relaxation for shoulder tightness",
+      "Clear guidance on safe arm lifting techniques for sports and housework"
     ],
-    sessionEstimate: "5–8 Sessions with structured home progressive tendon loading",
-    urgencyLevel: "High if accompanied by loss of active lift range post-trauma."
+    sessionEstimate: "4–6 Sessions with simple structured home exercises",
+    urgencyLevel: "Recommended if you have trouble lifting your arm after a slip or fall."
   },
   {
     id: "lumbar",
-    name: "Lumbar & Deep Sacrolumbar Core",
-    tagline: "Mechanical lower back pain, disc compression & sciatica",
-    symptomSummary: "Catching sensation when rising from sitting, dull deep sacral fatigue, or radiating neural tension (sciatic ache) traveling into glutes and posterior thigh — India's #1 musculoskeletal complaint among working adults.",
+    name: "Lower Back Pain & Sciatica",
+    tagline: "Effective relief for slip disc ache, hip pain & sciatica",
+    symptomSummary: "A ache in your lower back after sitting for long periods, discomfort when bending forward, or sharp pain shooting down into your thigh and leg (sciatica).",
     rootCauses: [
-      "Prolonged sedentary anterior pelvic tilt disabling Gluteal kinetic firing ('Glute Amnesia') — endemic in India's desk & auto-rickshaw commuting population",
-      "Shearing lumbar load overload due to inadequate hip hinge endurance during lifting, cooking on low platforms, or carrying children",
-      "Segmental multifidus muscular dehydration and spasm from protective guarding after initial episode"
+      "Sitting continuously without back support, which strains lower spinal muscles",
+      "Lifting heavy objects or bending suddenly without bending your knees and hips",
+      "Muscle spasms and tiredness from weakened stomach and back supporting muscles"
     ],
-    commonMistakes: "Relying on supportive lumbar corsets/belts, generic foam rolling over the low back spine, or avoiding all bending instead of teaching the nervous system safe loaded spinal mechanics.",
+    commonMistakes: "Wearing rigid back belts all day or staying in bed for weeks without doing gentle guided back movements and core exercises.",
     jeniTreatment: [
-      "Decompression spinal articulation & passive directional positional preference assessment (McKenzie style differential)",
-      "Targeted gluteus medius and deep transverse abdominis neuromotor activation",
-      "Hip hinge retraining under clinical graded exposure for daily Indian lifestyle demands",
-      "Lumbar dry needling for intractable paraspinal protective spasticity"
+      "Gentle physical therapy adjustments to relieve lower back nerve pressure",
+      "Simple step-by-step stretching to eliminate sciatic leg pain",
+      "Core muscle strengthening to support your lower back during travel and work",
+      "Personalized daily posture guidance for office chairs and car rides"
     ],
-    sessionEstimate: "4–8 Sessions to build lasting core structural armor",
-    urgencyLevel: "Urgent consultation required if bilateral leg weakness or bowel/bladder symptom shifts occur."
+    sessionEstimate: "4–7 Sessions to restore strong back flexibility",
+    urgencyLevel: "Immediate checkup advised if you experience persistent leg weakness."
   },
   {
     id: "patellar",
-    name: "Patellofemoral Knee & Anterior Tracking",
-    tagline: "Staircase descent pain, prolonged sitting stiffness & patellar tendinitis",
-    symptomSummary: "Ache behind or just beneath the kneecap that flares up during stair walking (especially downwards), squats, temple visits, or after long two-wheeler rides and auto commutes.",
+    name: "Knee Pain & Joint Arthritis",
+    tagline: "Comfortable recovery for staircase walking & squatting",
+    symptomSummary: "Discomfort or swelling in your knee when climbing stairs, standing up after sitting for hours, walking long distances, or visiting temples.",
     rootCauses: [
-      "Femur internal rotation collapse caused by weak gluteus medius abductors during weight bearing",
-      "Tight lateral quadriceps / IT band vector over-pulling patella out of femoral groove",
-      "Sudden spike in running mileage, cricket fielding intensity, or jump landing velocity without adequate quadriceps deceleration capacity"
+      "Weaker hip and thigh muscles putting extra pressure directly on the knee joint",
+      "Tight thigh muscles pulling the kneecap slightly off its center walking groove",
+      "Sudden increases in prolonged walking or intense jumping without warm-up"
     ],
-    commonMistakes: "Blaming 'bone-on-bone arthritis' prematurely or relying entirely on passive ice treatments and ayurvedic oils without assessing hip abductor strength and foot arch pronation mechanics.",
+    commonMistakes: "Fearing that exercise will hurt your bones, or relying solely on ice packs and ointments instead of strengthening your thigh muscles.",
     jeniTreatment: [
-      "Kinetic gait biomechanical mapping and video cadence analysis",
-      "Glute-hip external rotator functional recruitment under weight-bearing",
-      "Eccentric decline board squats for patellar tendon fiber synthesis",
-      "Clinical kinesiology taping to unload anterior joint shear during daily movement"
+      "Thigh and hip strengthening exercises to absorb pressure away from your knee",
+      "Guided physical therapy stretching to make walking up and down stairs easy",
+      "Supportive clinical taping to immediately reduce joint discomfort",
+      "Personalized advice on comfortable footwear and walking habits"
     ],
-    sessionEstimate: "4–6 Sessions combined with running cadence instruction",
-    urgencyLevel: "Moderate — Treat early to avoid compensatory contralateral hip overwork."
+    sessionEstimate: "4–6 Sessions to walk and climb stairs with confidence",
+    urgencyLevel: "Moderate — Early physical therapy stops joint stiffness before it grows."
   },
   {
     id: "achilles",
-    name: "Achilles & Plantar Fascial Kinetic Chain",
-    tagline: "Morning first-step heel burning, tight soleus & ankle restriction",
-    symptomSummary: "Sharp stabbing pain under heel on first steps out of bed in the morning, or achilles stiffness after periods of rest following sport — extremely prevalent in India's urban walkers and weekend athletes.",
+    name: "Heel & Foot Pain (Ankle Strain)",
+    tagline: "Relief for morning foot pain and tight calf muscles",
+    symptomSummary: "Sharp stabbing discomfort under your heel on your first steps out of bed in the morning, or ankle ache after walking or running on hard surfaces.",
     rootCauses: [
-      "Restricted talocrural joint dorsiflexion forcing excessive plantar fascial pronation stretching",
-      "Soleus and gastrocnemius myofascial contracture reducing elastic recoil — aggravated by flat footwear & chappal culture",
-      "Abrupt transition to barefoot temple walking, zero-drop footwear, or elevated training intensity without fascial accommodation"
+      "Tight calf muscles pulling on the heel ligament (plantar fascia) overnight",
+      "Walking on hard floors with unsupportive thin slippers or completely barefoot",
+      "Sudden long walking routines without gently stretching your calf and ankle muscles"
     ],
-    commonMistakes: "Aggressive passive static stretching of an acute plantar tear or relying solely on gel heel cups without training plantar intrinsic foot muscular dome strength.",
+    commonMistakes: "Ignoring morning foot pain or only using soft gel cushions without gently stretching and strengthening your calf muscles.",
     jeniTreatment: [
-      "Talocrural posterior glide mobilization for immediate ankle dorsiflexion expansion",
-      "Heavy slow plantar-loading protocols (Rathleff protocol adaptation)",
-      "Intrinsic foot 'short-foot' neuromuscular activation",
-      "Gastrocnemius myofascial dry needling with electrical stimulation"
+      "Hands-on therapy to loosen tight ankle tendons and calf muscles",
+      "Simple step-up strengthening exercises for foot arch support",
+      "Comfortable morning stretch routines to make waking up painless",
+      "Expert guidance on correct daily footwear for comfortable walking"
     ],
-    sessionEstimate: "3–5 Sessions with dedicated foot mechanics protocol",
-    urgencyLevel: "Low to Moderate — Consistency in daily load progression is the true cure."
+    sessionEstimate: "3–5 Sessions for lasting daily walking comfort",
+    urgencyLevel: "Low to Moderate — Consistent simple stretching brings permanent relief."
   }
 ];
 
 export const TIMELINE_STAGES = [
   {
     week: "Weeks 1–2",
-    title: "Acute Triage & Calming Neurological Guarding",
+    title: "Immediate Relief & Reducing Muscle Spasm",
     passiveApproach: {
-      action: "Pain meds, passive heat, ice packs & muscle relaxers prescribed by general physician",
-      result: "Temporary local sensory numbing (2–4 hours). The brain continues protective neuromuscular guarding. Zero underlying tissue repair or structural load tolerance adaptation."
+      action: "Only taking temporary painkiller tablets or relying solely on electrical massage beds without doctor assessment.",
+      result: "Pain disappears for a few hours but returns quickly once medication wears off because the weakened muscle remains unchanged."
     },
     honestApproach: {
-      action: "Manual joint distraction, selective Dry Needling & positional unloading",
-      result: "Biochemical diagnostic mapping. Instant neuro-modulation reducing localized inflammation and mechanical spasm while maintaining safe pain-free active movement vectors."
+      action: "One-on-one consultation with Dr. Jeni Theresa, hands-on therapy, and gentle targeted pain relief treatments.",
+      result: "Immediate reduction in muscle stiffness and inflammation, allowing your joint to move safely without sharp pain."
     },
-    tissueAdaptation: 25,
-    painLevel: 6
+    tissueAdaptation: 35,
+    painLevel: 5
   },
   {
-    week: "Weeks 3–5",
-    title: "Collagen Matrix Remodeling & Kinesthetic Reset",
+    week: "Weeks 3–4",
+    title: "Building Muscle Strength & Flexibility",
     passiveApproach: {
-      action: "Continued rest or stopping treatment immediately when ambient pain subdues",
-      result: "Tendon and ligament collagen fibers mend in disorganized, fragile patterns ('scar formation'). Muscle cross-sectional atrophy begins. High vulnerability to immediate re-injury upon normal physical demands."
+      action: "Stopping all exercises and treatment the exact day the sharp pain subsides.",
+      result: "Muscles remain weak and tight, leaving your joints vulnerable to immediate re-injury during routine travel or work."
     },
     honestApproach: {
-      action: "Progressive Isometric & Eccentric Mechanical Loading Protocols",
-      result: "Mechanical tension stimulates fibroblasts to lay down dense Type I collagen aligned with natural stress vectors. Joint proprioception (brain-muscle dialogue) restored without irritating joint capsule."
+      action: "Guided customized resistance exercises, balance training, and steady joint mobility practice.",
+      result: "Muscles become visibly stronger and naturally support your joints during bending, walking, and desk hours."
     },
-    tissueAdaptation: 65,
-    painLevel: 3
+    tissueAdaptation: 75,
+    painLevel: 2
   },
   {
-    week: "Weeks 6–9",
-    title: "Kinetic Integration & High-Velocity Resilience",
+    week: "Weeks 5+",
+    title: "Full Active Recovery & Lasting Prevention",
     passiveApproach: {
-      action: "Unsupervised return to heavy gym lifting or field sport game intensity",
-      result: "Sudden compensatory structural overload. Untrained stabilizing synergists fail under fatigue, leading to secondary injury in adjacent joints (e.g. opposite knee or lower lumbar twist)."
+      action: "Returning immediately to poor posture habits and relying on clinic visits every month.",
+      result: "An endless cycle of recurring back aches and neck stiffness whenever work gets busy."
     },
     honestApproach: {
-      action: "Sport-specific deceleration mechanics, plyo-balance stabilization & multi-planar power",
-      result: "Tissue loading capacity now exceeds daily physical life stress demands. Automatic stabilization during unexpected slips or twisting sports maneuvers. Bulletproof confidence in movement."
-    },
-    tissueAdaptation: 95,
-    painLevel: 0.5
-  },
-  {
-    week: "Weeks 10+",
-    title: "Autonomous Movement Mastery & Prevention",
-    passiveApproach: {
-      action: "Returning to chronic sedentary posture and recurring clinic visits every month",
-      result: "Dependency on passive practitioners ('adjustments' every few weeks) without empowering personal physical anatomy autonomy."
-    },
-    honestApproach: {
-      action: "Custom maintenance armor protocol & ergonomic lifestyle mastery",
-      result: "Patient total independent physical self-reliance. You graduate from therapy with an intimate understanding of your body's functional warning signals and exact maintenance resets."
+      action: "Mastering simple 5-minute home exercises and good everyday posture habits.",
+      result: "Complete physical independence and confidence in your active daily lifestyle without needing ongoing therapy visits."
     },
     tissueAdaptation: 100,
     painLevel: 0
@@ -163,150 +149,148 @@ export const TIMELINE_STAGES = [
 export const ERGO_TIPS = {
   highRisk: {
     scoreRange: "75% - 100%",
-    status: "CRITICAL POSTURAL OVERLOAD",
+    status: "HIGH POSTURAL STRAIN",
     color: "bg-[#C2593B]/15 text-[#C2593B] border-[#C2593B]/40",
-    summary: "Your daily sedentary duration paired with current symptoms indicates active mechanical tissue degradation in your cervical and lumbar stability matrices. This is extremely common in India's IT sector — but it is absolutely reversible with structured intervention.",
+    summary: "Your daily sitting hours and symptoms show that prolonged desk posture is straining your neck and back muscles. This is very common, and simple physical therapy can resolve it quickly.",
     prescription: [
-      "Every 45 minutes: Execute 10 standing extension hip thrusts with chin tuck retractions at your desk.",
-      "Adjust monitor/laptop top edge directly at eye level — use a stand or books to remove 15kg of lever torque from C5-C6 vertebrae.",
-      "Schedule a thorough clinical evaluation with Dr. Jeni Theresa immediately before neural radiculopathy sets in."
+      "Every 45 minutes: Stand up, raise your arms gently overhead, and do 5 comfortable shoulder rolls.",
+      "Position your laptop monitor so the top edge is at eye level—this removes extra weight and stress from your neck.",
+      "Schedule a thorough clinical evaluation with Dr. Jeni Theresa for a simple, effective recovery plan."
     ]
   },
   medRisk: {
     scoreRange: "45% - 74%",
-    status: "MODERATE ERGONOMIC STRAIN",
+    status: "MODERATE MUSCLE TENSION",
     color: "bg-[#D2A13E]/15 text-[#9A7326] border-[#D2A13E]/40",
-    summary: "Your postural endurance is nearing its mechanical fatigue threshold. Minor compensations are beginning to trigger stiffness and end-of-day fatigue — a warning sign your body is adapting negatively.",
+    summary: "Your muscles are working hard to support your sitting routine. Minor stiffness at the end of the day is a signal that your body needs supportive stretching.",
     prescription: [
-      "Adopt a 50/50 sit-stand protocol if desk architecture permits (standing during afternoon email blocks or calls).",
-      "Perform Thoracic Windmill rotation openings 3 times daily to lubricate mid-back facet joints.",
-      "Integrate Dr. Jeni's 5-minute evening Glute bridge and scapular stabilizer routine — no equipment needed."
+      "Stand up when talking on mobile calls during your working afternoon.",
+      "Perform gentle neck shoulder stretching 2 to 3 times daily to relax upper back tension.",
+      "Practice simple back-strengthening bridges for 5 minutes in the evening."
     ]
   },
   lowRisk: {
     scoreRange: "0% - 44%",
-    status: "EXCELLENT KINETIC CAPACITY",
+    status: "HEALTHY JOINT MOBILITY",
     color: "bg-[#163029]/15 text-[#163029] border-[#163029]/40",
-    summary: "You exhibit admirable movement discipline and joint hygiene. Your current routine is supporting robust orthopedic tissue tolerance — keep it up!",
+    summary: "You maintain good movement posture and exercise routine. Your daily active habits are keeping your muscles flexible and strong—keep up the great work!",
     prescription: [
-      "Maintain consistent hydration and varied physical stress across the training week.",
-      "Focus on weekly eccentric calf drops and hip internal rotation mobility to prevent athletic bottlenecks.",
-      "Consider an annual preventative biomechanical checkup prior to sports seasons, marathon training, or heavy gym phases."
+      "Maintain active daily hydration and simple walks during your work breaks.",
+      "Continue regular stretching for your ankles, calves, and shoulder muscles.",
+      "Consult us for expert preventative advice if you plan to start new high-intensity sports or marathon training."
     ]
   }
 };
 
 export const MODALITIES = [
   {
-    title: "Manual Orthopedic Joint Mobilization",
-    subtitle: "Precise articular biomechanical restoration",
+    title: "Orthopedic & Sports Physical Therapy",
+    subtitle: "Effective care for bones, muscles, and joint recovery",
     iconName: "Activity",
-    description: "Hands-on diagnostic and therapeutic applied kinematics that carefully distract and articulate joint surfaces (spinal vertebrae, frozen shoulders, stiff ankle mortise) to eliminate adhesive capsular restrictions and restore natural joint fluid glide without painful forcing.",
-    whyItWorks: "Normalizes capsular neuro-receptors and immediately opens space for impinging nerve pathways while restoring painless kinetic slide."
+    description: "Personalized hands-on treatment for lower back pain, knee arthritis, shoulder stiffness, neck discomfort, and athletic sports strains. Dr. Jeni carefully treats your stiff joints to restore natural, easy movement without uncomfortable forcing.",
+    whyItWorks: "Immediately eases muscle stiffness, relieves nerve tension, and restores comfortable joint mobility."
   },
   {
-    title: "Precision Medical Dry Needling (TDN)",
-    subtitle: "Deep neuro-muscular trigger point release",
-    iconName: "Zap",
-    description: "Using sterile, ultra-thin solid monofilament needles inserted directly into stubborn muscular hyper-irritable myofascial knots and spastic paraspinal tissue. This bypasses skin nociceptors to produce a rapid localized muscle twitch response and instant tone reduction. Not to be confused with acupuncture — this is evidence-based Western medical neuroscience.",
-    whyItWorks: "Forces fresh oxygenated local vasodilation into ischemic contracted muscle fibers while resetting hypersensitive alpha-motor neural firing loops."
-  },
-  {
-    title: "Biomechanical Kinetic Chain Re-education",
-    subtitle: "From isolated muscle to synchronized functional athletics",
+    title: "Neurological & Stroke Rehabilitation",
+    subtitle: "Dedicated care for brain & nervous system disorders",
     iconName: "Compass",
-    description: "We never treat an injury in isolation. If your knee hurts while running or playing cricket, we analyze your ankle dorsiflexion velocity and opposite hip gluteus control. Using high-definition slow-motion video analysis, we fix the true root mechanics causing recurring stress.",
-    whyItWorks: "Replaces compensatory movement habits with permanent neuro-muscular efficiency, protecting against sports re-injury and daily life strain."
+    description: "Expert therapeutic guidance for patients recovering from stroke, Parkinson's disease, nervous system injuries, and balance issues. We focus on rebuilding muscular endurance, improving walking balance, and regaining independence in everyday tasks.",
+    whyItWorks: "Retrains muscles and nerves to work together smoothly, helping patients walk and stand with safety and confidence."
   },
   {
-    title: "Instrument-Assisted Myofascial Therapy (IASTM)",
-    subtitle: "Fascial plane decompression & scar structural release",
+    title: "Post-Surgical Joint Rehabilitation",
+    subtitle: "Safe recovery after knee, hip & ligament surgery",
     iconName: "ShieldCheck",
-    description: "Specialized clinical stainless steel diagnostic instruments applied along fascial gliding layers and surgical tendon scarring (ACL repair, rotator cuff reconstructions, post-surgical ankle sutures) to break down fibrotic adhesion webs and realign collagen fibers.",
-    whyItWorks: "Stimulates localized fibroblasts and removes dense fibrous cross-links that otherwise tether natural skin and muscular stretch."
+    description: "Specialized recovery guidance after orthopedic surgery, such as total knee replacement, hip joint replacement, and ligament (ACL) repair surgery. We help rebuild tissue strength, heal surgical tightness, and safely return you to walking without pain.",
+    whyItWorks: "Prevents muscle weakness after surgery and ensures surgical joints regain full functional strength and motion."
+  },
+  {
+    title: "Pediatric Physiotherapy & Care",
+    subtitle: "Gentle physical therapy for infants & children",
+    iconName: "Zap",
+    description: "Compassionate movement therapy for children experiencing physical developmental delays, cerebral palsy, muscular conditions, or posture concerns. Dr. Jeni creates engaging therapy exercises that encourage strength, balance, and coordination in a joyful environment.",
+    whyItWorks: "Supports growing children in building essential motor skills and comfortable physical movement."
   }
 ];
 
 export const CASE_STUDIES = [
   {
-    patient: "Arun S. (34) — IT Software Lead, Chennai",
-    injury: "Chronic Bilateral Achilles Tendinopathy (18 months persistence)",
-    previousFailedTx: "Had received 12 weeks of passive physiotherapy with ultrasound and TENS at another clinic with persistent morning stabbing heel pain. Was told 'rest more' repeatedly.",
-    jeniIntervention: "Identified severe restrictive limitation in subtalar joint eversion and weak soleus functional load tolerance. Performed posterior talocrural glides + aggressive graded heavy slow eccentric calf lowers on 20-degree incline.",
-    outcome: "Full pain-free running return at week 6. Completed Chennai Marathon 10K completely pain-free at month 4.",
-    metric: "100% Calf Force Production Restoration"
+    patient: "Karthik R. (36) — IT Software Engineer, Chennai",
+    injury: "Severe Neck Stiffness & Arm Tingling (12 months persistence)",
+    previousFailedTx: "Took regular painkiller tablets and used heating gels, but the burning pain returned whenever he worked on his computer.",
+    jeniIntervention: "Identified poor seating posture putting pressure on neck nerves. Applied gentle hands-on therapy to loosen stiff neck shoulder muscles, followed by practical simple daily ergonomic guidance.",
+    outcome: "Neck pain completely disappeared within 3 weeks. Able to work comfortable full workdays without shoulder ache or headaches.",
+    metric: "100% Pain-Free Working Hours"
   },
   {
-    patient: "Priya R. (41) — Senior Architect, Bangalore",
-    injury: "Severe Cervicogenic Headache & Right Ulnar Paresthesia (Numbness)",
-    previousFailedTx: "Prescribed muscle relaxant medication and ergonomic chair replacement by orthopaedic consultant without any symptomatic reduction in arm numbness over 3 months.",
-    jeniIntervention: "Targeted C5-T2 postural manual decompression, Dry Needling of scalene musculature impinging Thoracic Outlet, and active neurodynamic ulnar nerve flossing protocols.",
-    outcome: "Arm numbness eliminated completely within 3 visits. Zero headache occurrences reported over 12-month follow-up. Back to full design studio hours.",
-    metric: "0/10 Pain Scale achieved in 14 days"
+    patient: "Lakshmi M. (62) — Retired School Teacher, Anna Nagar",
+    injury: "Chronic Knee Arthritis & Staircase Discomfort",
+    previousFailedTx: "Was advised to avoid climbing stairs entirely and wear rigid knee braces, which made her thigh muscles feel much weaker over 6 months.",
+    jeniIntervention: "Removed rigid knee bandages. Started gentle hip and thigh strengthening exercises to take weight off the knee joint along with calming manual therapy.",
+    outcome: "Able to walk to nearby temple and comfortably climb stairs without knee swelling or joint ache.",
+    metric: "Smooth Stair Climbing Returned"
   },
   {
-    patient: "Capt. Rajesh T. (29) — Commercial Pilot, Hyderabad",
-    injury: "Acute Post-Surgical Lumbar Disc Herniation Guarding (L4-L5)",
-    previousFailedTx: "Told by trainers to wear rigid back braces, resulting in 40% atrophy of deep lumbar multifidus stabilizing muscles over 6 months. DGCA medical clearance pending.",
-    jeniIntervention: "Removed rigid braces immediately. Instituted gentle McKenzie directional fluid dynamics, progressive hip hinge patterns without spinal rounding, and transverse abdominis dynamic training.",
-    outcome: "Cleared for full DGCA commercial flight medical duty without restricted flight hours. Lifting 25kg pilot baggage completely effortlessly.",
-    metric: "Full Spinal Flexural Endurance Returned"
+    patient: "Anand S. (51) — Business Manager, Chennai",
+    injury: "Post-Surgical Lower Back Recovery & Sciatica",
+    previousFailedTx: "Experiencing stiffness and fear of bending forward after prolonged lower back muscle spasm and prolonged rest.",
+    jeniIntervention: "Provided clear, reassuring guidance on safe bending techniques, gentle spinal flexibility stretches, and core stabilization exercises.",
+    outcome: "Resumed traveling and driving comfortable distances without back braces or leg discomfort.",
+    metric: "Full Spinal Confidence Rebuilt"
   }
 ];
 
 export const CREDENTIALS = [
-  "Doctor of Physical Therapy (DPT) & Board Certified Orthopedic Specialist",
-  "Certified Medical Dry Needling Practitioner (CMDN)",
-  "Advanced Biomechanical Gait & Sports Kinetic Evaluator",
-  "12+ Years Dedicated Clinical Experience in Sports Medicine & Post-Surgical Rehab",
-  "Zero Passive Routine Guarantee — 100% Hands-On One-on-One Doctor Time"
+  "Doctor of Physical Therapy (DPT) & Clinical Specialist",
+  "5+ Years Dedicated Experience in Orthopedic, Neuro & Pediatric Rehab",
+  "Certified Specialist in Manual Therapy & Exercise Rehabilitation",
+  "100% One-on-One Personalized Doctor Consultation Guarantee"
 ];
 
 export const CLINIC_INFO = {
   doctorName: "Dr. Jeni Theresa",
   credentials: "PT, DPT",
-  specialty: "Clinical Sports & Orthopedic Medicine",
+  specialty: "Orthopedics, Neuro Rehab & Pediatric Physiotherapy",
   phone: "+91 98765 43210",
   whatsappNumber: "919876543210",
   email: "clinic@drjenitheresa.in",
-  clinicName: "Kinetic Spine & Sports Rehabilitation Studio",
-  address: "Suite 402, Central Medical Plaza, Anna Nagar, Chennai — 600040, Tamil Nadu",
+  clinicName: "Dr. Jeni Theresa Physiotherapy Clinic & Rehab",
+  address: "Anna Nagar East, Chennai — Tamil Nadu",
   city: "Chennai",
   state: "Tamil Nadu",
   hours: "Mon–Sat 8:00 AM – 7:30 PM IST",
-  teleRehabHours: "Tele-Rehab Triage Available Daily",
+  teleRehabHours: "Online Consultations Available Daily",
   googleMapsUrl: "https://maps.google.com/?q=Anna+Nagar+Chennai",
   seo: {
-    title: "Dr. Jeni Theresa, PT, DPT — Best Physiotherapist in Chennai | Sports & Spine Rehabilitation",
-    description: "Evidence-based orthopedic physiotherapy in Chennai, Tamil Nadu. Dr. Jeni Theresa specializes in sports injury rehab, dry needling, sciatica treatment, frozen shoulder therapy, knee pain, and spinal disc herniation recovery. Book your one-on-one clinical triage today.",
+    title: "Dr. Jeni Theresa, PT, DPT — Best Physiotherapist in Chennai | Ortho, Neuro & Pediatric Rehab",
+    description: "Specialised physiotherapy clinic in Chennai, Tamil Nadu. Dr. Jeni Theresa offers expert care in Orthopedic rehabilitation, Neurological stroke care, Post-surgical joint therapy, and Pediatric physiotherapy with 100% one-on-one personalized consultation.",
     keywords: [
       "best physiotherapist in Chennai",
-      "sports physiotherapy Chennai",
-      "dry needling therapy Tamil Nadu",
-      "sciatica treatment Chennai",
-      "frozen shoulder specialist",
-      "knee pain physiotherapy",
-      "back pain specialist Chennai",
-      "orthopedic physiotherapist near me",
-      "physiotherapy Anna Nagar Chennai",
+      "physiotherapist in Anna Nagar",
+      "orthopedic physiotherapy Chennai",
+      "stroke neurological rehab Chennai",
       "post surgery rehabilitation Chennai",
-      "cervical pain treatment",
-      "ACL rehab physiotherapist India"
+      "pediatric physiotherapy Tamil Nadu",
+      "knee pain physiotherapy",
+      "back pain doctor Chennai",
+      "sciatica treatment Chennai",
+      "home physiotherapist near me",
+      "physiotherapy clinic Anna Nagar Chennai"
     ],
-    ogImage: "/og-clinic.jpg",
+    ogImage: "/images/dr-jeni-portrait.png",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
-      "name": "Dr. Jeni Theresa — Kinetic Spine & Sports Rehabilitation Studio",
-      "description": "Evidence-based orthopedic physiotherapy clinic in Chennai specializing in sports injury rehabilitation, dry needling, spinal disc recovery, and biomechanical assessment.",
+      "name": "Dr. Jeni Theresa — Physiotherapy Clinic & Rehabilitation Studio",
+      "description": "Evidence-based physiotherapy and rehabilitation clinic in Chennai specializing in Orthopedics, Neuro Rehab, Post-Surgical therapy, and Pediatric care.",
       "url": "https://jeni-theresa-physiotherapist.vercel.app",
       "telephone": "+91-98765-43210",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Suite 402, Central Medical Plaza, Anna Nagar",
+        "streetAddress": "Anna Nagar East",
         "addressLocality": "Chennai",
         "addressRegion": "Tamil Nadu",
-        "postalCode": "600040",
+        "postalCode": "600102",
         "addressCountry": "IN"
       },
       "geo": {
@@ -316,13 +300,13 @@ export const CLINIC_INFO = {
       },
       "openingHours": "Mo-Sa 08:00-19:30",
       "priceRange": "₹₹",
-      "medicalSpecialty": "Orthopedic Physical Therapy",
+      "medicalSpecialty": "Physical Therapy & Rehabilitation",
       "availableService": [
-        { "@type": "MedicalTherapy", "name": "Dry Needling Therapy" },
-        { "@type": "MedicalTherapy", "name": "Sports Injury Rehabilitation" },
-        { "@type": "MedicalTherapy", "name": "Spinal Disc Herniation Recovery" },
-        { "@type": "MedicalTherapy", "name": "Frozen Shoulder Treatment" },
-        { "@type": "MedicalTherapy", "name": "Post-Surgical Orthopedic Rehab" }
+        { "@type": "MedicalTherapy", "name": "Orthopedic Physiotherapy" },
+        { "@type": "MedicalTherapy", "name": "Neurological Rehabilitation" },
+        { "@type": "MedicalTherapy", "name": "Post-Surgical Joint Rehab" },
+        { "@type": "MedicalTherapy", "name": "Pediatric Physical Therapy" },
+        { "@type": "MedicalTherapy", "name": "Online Tele-Rehabilitation Consultation" }
       ]
     }
   }

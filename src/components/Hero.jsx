@@ -28,7 +28,7 @@ const Hero = ({ onOpenTriage }) => {
   // Counter refs
   const counterRef1 = useCountUp(99, 2200);
   const counterRef2 = useCountUp(0, 800);
-  const counterRef3 = useCountUp(12, 1800);
+  const counterRef3 = useCountUp(5, 1200);
 
   return (
     <section ref={scrollRef} className="relative pt-28 pb-16 md:pt-36 md:pb-28 overflow-hidden noise-overlay">
@@ -105,9 +105,9 @@ const Hero = ({ onOpenTriage }) => {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.7 }}
-              className="text-base sm:text-lg md:text-xl text-[#0A1C17]/80 font-normal leading-relaxed max-w-2xl mb-10 font-['Plus_Jakarta_Sans']"
+              className="text-base sm:text-lg md:text-xl text-[#0A1C17]/85 font-normal leading-relaxed max-w-2xl mb-10 font-sans"
             >
-              Led by <strong className="text-[#0A1C17] font-bold">Dr. Jeni Theresa, PT, DPT</strong> in <strong>{CLINIC_INFO.city}</strong>, our practice systematically dismantles chronic structural orthopedic pain. We reject standard passive routine heat-packs in favor of precise <span className="underline decoration-[#C2593B] decoration-2 underline-offset-4">manual biomechanical joint mechanics</span> and progressive clinical load tolerance.
+              Led by <strong className="text-[#0A1C17] font-bold">Dr. Jeni Theresa, PT, DPT</strong> in <strong>Anna Nagar, {CLINIC_INFO.city}</strong>, our practice provides advanced personalized physiotherapy. Whether treating joint pain, neurological conditions, or post-surgical recovery, we focus on 100% one-on-one doctor care without reliance on temporary painkillers or passive machines.
             </motion.p>
 
             {/* Call To Actions with magnetic hover */}
@@ -122,15 +122,15 @@ const Hero = ({ onOpenTriage }) => {
                 className="magnetic-btn h-14 px-7 rounded-2xl bg-[#C2593B] text-white font-bold text-sm tracking-wide shadow-lg hover:bg-[#A84528] hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-2.5 group"
               >
                 <HeartPulse className="w-5 h-5 group-hover:scale-125 transition-transform duration-300 shrink-0" />
-                <span>Launch Interactive Pain Mapper</span>
+                <span>Explore Interactive Body Map</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform shrink-0" />
               </button>
 
               <button
                 onClick={onOpenTriage}
-                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#0A1C17]/5 border-2 border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#0A1C17]/5 border border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Book Clinical Triage & Evaluation</span>
+                <span>Book Doctor Consultation</span>
               </button>
             </motion.div>
 
@@ -188,9 +188,9 @@ const Hero = ({ onOpenTriage }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17]/80 via-transparent to-black/20 pointer-events-none" />
 
                 {/* Floating Top-Right Experience Badge */}
-                <div className="absolute top-3 right-3 px-3 py-1.5 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-[#0A1C17] font-mono-tech text-xs font-bold shadow-lg border border-[#0A1C17]/10 flex items-center gap-1.5">
+                <div className="absolute top-3 right-3 px-3.5 py-1.5 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-[#0A1C17] font-mono-tech text-xs font-bold shadow-lg border border-[#0A1C17]/10 flex items-center gap-1.5">
                   <Award className="w-3.5 h-3.5 text-[#C2593B]" />
-                  <span>12+ Years Clinical Exp.</span>
+                  <span>5+ Years Clinical Exp.</span>
                 </div>
 
                 {/* Floating Bottom Live Indicator */}
@@ -200,7 +200,7 @@ const Hero = ({ onOpenTriage }) => {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
                     </span>
-                    <span className="text-emerald-300 font-bold truncate">Live Tele-Rehab & Clinic Open</span>
+                    <span className="text-emerald-300 font-bold truncate">Live Clinic & Online Tele-Rehab Open</span>
                   </div>
                   <span className="text-[11px] text-white/80 font-semibold shrink-0">Anna Nagar, Chennai</span>
                 </div>
@@ -223,13 +223,13 @@ const Hero = ({ onOpenTriage }) => {
               </div>
 
               {/* Core Diagnostic Philosophy Quote */}
-              <div className="bg-[#163029] text-[#FAF8F5] p-4 sm:p-5 rounded-2xl mb-5 shadow-md relative overflow-hidden">
+              <div className="bg-[#163029] text-[#FAF8F5] p-5 rounded-2xl mb-5 shadow-md relative overflow-hidden">
                 <div className="absolute -right-3 -bottom-3 text-[#C2593B]/15 select-none pointer-events-none font-serif text-6xl leading-none">"</div>
                 <p className="font-serif italic text-xs md:text-sm leading-relaxed text-[#FAF8F5]/95 relative z-10 font-normal">
-                  "Pain is rarely an isolated defect; it is your skeletal nervous system shouting that your kinetic chain is compensating. Our objective is to repair the structural loading pattern that caused it."
+                  "Our goal is never simply to silence your pain temporarily with pills or generic exercises. We carefully diagnose the underlying physical movement fault and work with you one-on-one to restore complete functional freedom and lasting strength."
                 </p>
-                <p className="text-[10px] font-mono-tech text-[#C2593B] mt-2 uppercase tracking-widest font-bold">
-                  — Dr. Jeni Theresa's Clinical Standard
+                <p className="text-[10px] font-mono-tech text-[#D2A13E] mt-3 uppercase tracking-widest font-bold">
+                  — Dr. Jeni Theresa's Care Philosophy
                 </p>
               </div>
 

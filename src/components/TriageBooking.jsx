@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { X, Calendar, MessageCircle, ShieldCheck, CheckCircle2, AlertTriangle, ArrowRight, ArrowLeft, Download, Sparkles, FileText } from 'lucide-react';
+import { X, Calendar, MessageCircle, ShieldCheck, CheckCircle2, AlertTriangle, ArrowRight, ArrowLeft, Sparkles, PhoneCall } from 'lucide-react';
+import { CLINIC_INFO } from '../data/clinicalData';
 
-const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
+const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
   const [step, setStep] = useState(1);
-  const [symptomArea, setSymptomArea] = useState(initialSymptom || "Cervical Spine & Neck Tension");
+  const [symptomArea, setSymptomArea] = useState(initialSymptom || "Lower Back Pain & Sciatica (Lumbar Strain)");
   const [duration, setDuration] = useState("Chronic (Over 3 months)");
   const [painLevel, setPainLevel] = useState(6);
   const [imagingStatus, setImagingStatus] = useState("No MRI or X-Ray taken yet");
@@ -34,54 +35,37 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
       origin: { y: 0.6 },
       colors: ['#0A1C17', '#C2593B', '#10B981', '#D2A13E']
     });
+    // Immediately open WhatsApp to connect patient without any confusing downloads or delays
+    openWhatsApp();
   };
 
   const generateWhatsAppMessage = () => {
-    const msg = `🏥 *New Clinical Triage Request — Dr. Jeni Theresa, PT, DPT*\n\n` +
+    const msg = `🏥 *New Consultation Request — Dr. Jeni Theresa, PT, DPT*\n\n` +
       `👤 *Patient:* ${patientName || 'Not specified'}\n` +
       `📞 *Phone/Contact:* ${patientPhone || 'Direct via WhatsApp'}\n` +
-      `📍 *Target Symptom Area:* ${symptomArea}\n` +
+      `📍 *Condition Focus:* ${symptomArea}\n` +
       `⏱️ *Symptom Duration:* ${duration}\n` +
       `🔥 *Pain & Limitation Scale:* ${painLevel} / 10\n` +
       `🩺 *Imaging Status:* ${imagingStatus}\n` +
-      `📅 *Preferred Consultation:* ${preferredModality}\n\n` +
-      `📝 *Clinical Notes:* ${notes || 'None provided in wizard'}\n\n` +
-      `_Requested via interactive digital diagnostic clinic._`;
+      `📅 *Preferred Appointment:* ${preferredModality}\n\n` +
+      `📝 *Additional Notes:* ${notes || 'None provided'}\n\n` +
+      `_Submitted via interactive clinic assessment._`;
     
     return encodeURIComponent(msg);
   };
 
   const openWhatsApp = () => {
-    const url = `https://wa.me/919876543210?text=${generateWhatsAppMessage()}`;
+    const url = `https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${generateWhatsAppMessage()}`;
     window.open(url, "_blank");
   };
 
-  const downloadBrief = () => {
-    const txt = `DR. JENI THERESA, PT, DPT — PATIENT TRIAGE & CLINICAL SUMMARY\n=======================================================\n\n` +
-      `Patient Name: ${patientName || 'Not specified'}\n` +
-      `Phone/Contact: ${patientPhone || 'Not specified'}\n` +
-      `Target Symptom Area: ${symptomArea}\n` +
-      `Symptom Duration: ${duration}\n` +
-      `Reported Pain Scale: ${painLevel} / 10\n` +
-      `Prior Diagnostic Imaging: ${imagingStatus}\n` +
-      `Preferred Appointment Format: ${preferredModality}\n` +
-      `Additional Clinical Notes: ${notes || 'None provided'}\n\n` +
-      `Please present this brief during your one-on-one evaluation with Dr. Jeni Theresa.`;
-    
-    const blob = new Blob([txt], { type: 'text/plain' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `Dr_Jeni_Theresa_Triage_Brief_${Date.now()}.txt`;
-    link.click();
-  };
-
   const symptomOptions = [
-    "Cervical Spine & Neck Tension",
-    "Rotator Cuff & Shoulder Impingement",
-    "Lumbar Spine & Deep Sacral Core",
-    "Patellofemoral Knee & Anterior Tracking",
-    "Achilles & Plantar Fascial Chain",
-    "Post-Surgical / Other Athletic Rehabilitation"
+    "Lower Back Pain & Sciatica (Lumbar Strain)",
+    "Neck & Shoulder Pain (Cervical Tension / Impingement)",
+    "Knee Pain & Joint Arthritis (Patellar Tracking / Osteopathy)",
+    "Stroke / Neurological & Balance Rehabilitation",
+    "Post-Surgical Rehab (Knee / Hip Replacement & Ligament)",
+    "Pediatric Physiotherapy (Developmental Delay / CP)"
   ];
 
   return (
@@ -140,47 +124,48 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
           {/* SUCCESS VIEW AFTER COMPLETION */}
           {isSubmitted ? (
             <div className="text-center py-6 space-y-6">
-              <div className="w-16 h-16 bg-emerald-700 text-white rounded-full flex items-center justify-center mx-auto shadow-lg animate-bounce">
-                <CheckCircle2 className="w-9 h-9" />
+              <div className="w-16 h-16 bg-[#25D366] text-[#0A1C17] rounded-full flex items-center justify-center mx-auto shadow-xl animate-bounce">
+                <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
               </div>
 
               <div>
                 <h4 className="text-2xl sm:text-3xl font-serif-clinical font-black text-[#0A1C17]">
-                  Triage Brief Generated!
+                  Consultation Details Ready!
                 </h4>
                 <p className="text-sm text-[#0A1C17]/80 font-normal mt-2 max-w-md mx-auto">
-                  Your structural assessment parameters have been compiled. Connect instantly with Dr. Jeni Theresa via WhatsApp or download your printed brief below.
+                  We have launched WhatsApp with your personalized recovery profile to connect directly with Dr. Jeni Theresa.
                 </p>
               </div>
 
               {/* Formatted preview box */}
-              <div className="bg-white border-2 border-[#0A1C17]/15 rounded-2xl p-5 text-left font-mono-tech text-xs space-y-2 shadow-inner">
-                <div className="text-[#C2593B] font-bold uppercase pb-2 border-b border-[#0A1C17]/10">
-                  ⚡ CLINICAL TRIAGE SUMMARY
+              <div className="bg-white border border-[#0A1C17]/15 rounded-2xl p-5 text-left font-sans text-xs sm:text-sm space-y-2 shadow-inner text-[#0A1C17]">
+                <div className="text-[#C2593B] font-bold uppercase pb-2 border-b border-[#0A1C17]/10 flex items-center gap-1.5 font-mono-tech">
+                  <Sparkles className="w-4 h-4 text-[#D2A13E]" />
+                  <span>Your Booking Summary</span>
                 </div>
-                <div><strong>Patient:</strong> {patientName || 'Confidential Patient'} ({patientPhone || 'No phone entered'})</div>
-                <div><strong>Symptom Focus:</strong> {symptomArea}</div>
+                <div><strong>Patient Name:</strong> {patientName || 'Confidential Patient'}</div>
+                <div><strong>Phone/WhatsApp:</strong> {patientPhone || 'Connected via WhatsApp'}</div>
+                <div><strong>Condition Focus:</strong> {symptomArea}</div>
                 <div><strong>Duration & Severity:</strong> {duration} • Pain {painLevel}/10</div>
-                <div><strong>Prior Imaging:</strong> {imagingStatus}</div>
-                <div><strong>Format Requested:</strong> {preferredModality}</div>
+                <div><strong>Appointment Mode:</strong> {preferredModality}</div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 pt-4">
+              <div className="flex flex-col gap-3 pt-3">
                 <button
                   onClick={openWhatsApp}
-                  className="w-full py-4 rounded-2xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm tracking-wide shadow-xl flex items-center justify-center gap-2.5 transition-all cursor-pointer"
+                  className="w-full py-4 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-sm tracking-wide shadow-xl hover:shadow-2xl flex items-center justify-center gap-2.5 transition-all cursor-pointer"
                 >
                   <MessageCircle className="w-5 h-5 fill-current" />
-                  <span>Send Direct To Dr. Jeni (WhatsApp)</span>
+                  <span>📲 Reopen WhatsApp Chat with Dr. Jeni</span>
                 </button>
-
-                <button
-                  onClick={downloadBrief}
-                  className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-[#0A1C17]/10 hover:bg-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                
+                <a
+                  href={`tel:${CLINIC_INFO.phone}`}
+                  className="w-full py-3.5 rounded-xl bg-white border border-[#0A1C17]/20 hover:bg-[#0A1C17]/5 text-[#0A1C17] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
                 >
-                  <Download className="w-4 h-4" />
-                  <span>Download TXT Brief</span>
-                </button>
+                  <PhoneCall className="w-4 h-4 text-[#C2593B]" />
+                  <span>Or Call Clinic Direct: {CLINIC_INFO.phone}</span>
+                </a>
               </div>
 
               <button
@@ -415,10 +400,10 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
                 ) : (
                   <button
                     type="submit"
-                    className="px-9 py-4 rounded-2xl bg-[#C2593B] hover:bg-[#A84528] text-white font-black text-xs uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center gap-2.5"
+                    className="px-9 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center gap-2.5"
                   >
-                    <ShieldCheck className="w-4 h-4" />
-                    <span>Generate Clinical Triage Brief</span>
+                    <MessageCircle className="w-5 h-5 fill-current" />
+                    <span>📲 Confirm & Book on WhatsApp</span>
                   </button>
                 )}
               </div>
