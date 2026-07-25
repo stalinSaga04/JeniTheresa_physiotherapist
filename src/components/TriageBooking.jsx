@@ -342,7 +342,7 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
                       4. Patient Details & Additional Clinical Notes
                     </label>
                     <p className="text-xs font-mono-tech text-[#0A1C17]/70 font-semibold">
-                      Your details remain strictly confidential under HIPAA / clinical privacy standards.
+                      Your details remain strictly confidential under Indian Medical Ethics & Doctor-Patient clinical privacy standards.
                     </p>
                   </div>
 
@@ -353,7 +353,7 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g., Sarah Jenkins"
+                        placeholder="e.g., Karthik Narayanan"
                         value={patientName}
                         onChange={(e) => setPatientName(e.target.value)}
                         className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
@@ -365,7 +365,7 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
                       </label>
                       <input
                         type="tel"
-                        placeholder="e.g., +91 98765 43210"
+                        placeholder="e.g., +91 98840 12345 (WhatsApp preferred)"
                         value={patientPhone}
                         onChange={(e) => setPatientPhone(e.target.value)}
                         className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
@@ -379,7 +379,7 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom }) => {
                     </label>
                     <textarea
                       rows="3"
-                      placeholder="e.g., Pain intensifies during mile 3 of running, or sitting during Zoom calls..."
+                      placeholder="e.g., Severe lower back ache during 2-wheeler auto commute, or neck stiffness after long IT desk shifts..."
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors resize-none font-medium"

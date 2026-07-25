@@ -119,16 +119,16 @@ const Hero = ({ onOpenTriage }) => {
             >
               <button
                 onClick={() => scrollToSection('#symptom-map')}
-                className="magnetic-btn px-8 py-4 rounded-2xl bg-[#C2593B] text-white font-bold text-sm tracking-wide shadow-lg hover:bg-[#A84528] hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-3 group"
+                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#C2593B] text-white font-bold text-sm tracking-wide shadow-lg hover:bg-[#A84528] hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-2.5 group"
               >
-                <HeartPulse className="w-5 h-5 group-hover:scale-125 transition-transform duration-300" />
+                <HeartPulse className="w-5 h-5 group-hover:scale-125 transition-transform duration-300 shrink-0" />
                 <span>Launch Interactive Pain Mapper</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform shrink-0" />
               </button>
 
               <button
                 onClick={onOpenTriage}
-                className="magnetic-btn px-8 py-4 rounded-2xl bg-[#0A1C17]/5 border-2 border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#0A1C17]/5 border-2 border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Book Clinical Triage & Evaluation</span>
               </button>
@@ -224,12 +224,12 @@ const Hero = ({ onOpenTriage }) => {
                 ))}
               </div>
 
-              {/* Live Triage Trigger */}
+              {/* Action Trigger to Clinical Roadmap */}
               <button
-                onClick={onOpenTriage}
+                onClick={() => scrollToSection('#clinical-transparency')}
                 className="mt-6 w-full py-3.5 bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2 group"
               >
-                <span>Request Comprehensive Evaluation</span>
+                <span>Check Clinic Schedule & What To Expect</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 

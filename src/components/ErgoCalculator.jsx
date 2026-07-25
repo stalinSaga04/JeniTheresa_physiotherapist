@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ERGO_TIPS } from '../data/clinicalData';
-import { Cpu, CheckSquare, Sparkles, AlertCircle, ArrowRight, Activity, RotateCcw } from 'lucide-react';
+import { ERGO_TIPS, CLINIC_INFO } from '../data/clinicalData';
+import { Cpu, CheckSquare, Sparkles, AlertCircle, ArrowRight, Activity, RotateCcw, MessageCircle } from 'lucide-react';
 
 const ErgoCalculator = ({ onOpenTriage }) => {
   const [deskHours, setDeskHours] = useState(8);
@@ -20,13 +20,20 @@ const ErgoCalculator = ({ onOpenTriage }) => {
   const score = calculateScore();
 
   // Determine risk category from clinicalData presets
-  const getTipGroup = () => {
-    if (score >= 65) return ERGO_TIPS.highRisk;
-    if (score >= 40) return ERGO_TIPS.medRisk;
+  const getRiskLevel = () => {
+    if (score >= 75) return ERGO_TIPS.highRisk;
+    if (score >= 45) return ERGO_TIPS.medRisk;
     return ERGO_TIPS.lowRisk;
   };
 
-  const tip = getTipGroup();
+  const tip = getRiskLevel();
+  const riskData = tip;
+
+  const handleShareScore = () => {
+    const text = `📊 *My Ergonomic Risk Index:* ${score}% (${riskData.status})\n\nHi Dr. Jeni Theresa, I tested my postural index on your clinical engine (${deskHours} hrs daily desk sitting, pain level ${painLevel}/10). I would love to check consultation times in ${CLINIC_INFO.city} to discuss structural correction.`;
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
+  };
 
   const resetDefaults = () => {
     setDeskHours(6);
@@ -231,15 +238,24 @@ const ErgoCalculator = ({ onOpenTriage }) => {
             {/* Direct consultation callout */}
             <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="text-xs font-mono-tech text-[#FAF8F5]/80 font-semibold">
-                Want a personalized full biomechanical workup?
+                Want a clinical eye on this risk index?
               </div>
-              <button
-                onClick={onOpenTriage}
-                className="px-6 py-3 rounded-xl bg-[#C2593B] hover:bg-[#A84528] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-colors cursor-pointer flex items-center justify-center gap-2 group shrink-0"
-              >
-                <span>Book Orthopedic Consultation</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={handleShareScore}
+                  className="px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-bold text-xs uppercase tracking-wider shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2 group shrink-0"
+                >
+                  <MessageCircle className="w-4 h-4 fill-[#0A1C17] text-[#FAF8F5]" />
+                  <span>Send Score on WhatsApp</span>
+                </button>
+                <button
+                  onClick={onOpenTriage}
+                  className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider border border-white/15 transition-all cursor-pointer flex items-center justify-center gap-2 group shrink-0"
+                >
+                  <span>Book Workup</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
           </div>

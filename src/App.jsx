@@ -8,6 +8,8 @@ import Modalities from './components/Modalities';
 import CaseVault from './components/CaseVault';
 import Footer from './components/Footer';
 import TriageBooking from './components/TriageBooking';
+import ClinicalTransparency from './components/ClinicalTransparency';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
@@ -29,6 +31,9 @@ function App() {
       {/* Hero Showcase & Credential Highlights */}
       <main className="flex-1">
         <Hero onOpenTriage={() => setIsTriageOpen(true)} />
+        
+        {/* New Idea: Clinical Transparency & What To Expect Roadmap */}
+        <ClinicalTransparency onOpenTriage={() => setIsTriageOpen(true)} />
         
         {/* New Idea 1: Interactive Biomechanical Diagnostic Mapper */}
         <SymptomMap onSelectSymptomForTriage={handleOpenTriageWithSymptom} />
@@ -55,6 +60,9 @@ function App() {
         onClose={() => setIsTriageOpen(false)}
         initialSymptom={triageInitialSymptom}
       />
+      
+      {/* New Idea 5: Persistent Floating WhatsApp Triage Widget */}
+      <FloatingWhatsApp onOpenTriage={() => setIsTriageOpen(true)} />
       
     </div>
   );
