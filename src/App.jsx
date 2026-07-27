@@ -12,6 +12,7 @@ import ClinicalTransparency from './components/ClinicalTransparency';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Specialties from './components/Specialties';
 import AdminDashboard from './components/AdminDashboard';
+import VideoShowcase from './components/VideoShowcase';
 
 function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
@@ -37,6 +38,9 @@ function App() {
       {/* Hero Showcase & Credential Highlights */}
       <main className="flex-1">
         <Hero onOpenTriage={() => setIsTriageOpen(true)} />
+        
+        {/* Clinical Video Showcase (Auto-replay every 5s) */}
+        <VideoShowcase />
         
         {/* Dr. Jeni Theresa's 4 Core Clinical Specialty Pillars */}
         <Specialties onOpenTriage={() => setIsTriageOpen(true)} />

@@ -157,7 +157,41 @@
     </script>
   </head>
   <body class="bg-[#FAF8F5] text-[#0A1C17] antialiased selection:bg-[#C2593B] selection:text-white overflow-x-hidden font-['Plus_Jakarta_Sans',sans-serif]">
+    
+    <!-- Google Translate Widget (auto-loads on page open) -->
+    <div id="google_translate_element" style="position:fixed;top:auto;bottom:80px;right:12px;z-index:9999;background:#0A1C17;border-radius:12px;padding:6px 10px;box-shadow:0 4px 20px rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);"></div>
+    <style>
+      /* Style the Google Translate dropdown to match site theme */
+      .goog-te-gadget { font-family: 'Plus Jakarta Sans', sans-serif !important; color: #FAF8F5 !important; font-size: 11px !important; }
+      .goog-te-gadget-simple { background: transparent !important; border: none !important; padding: 0 !important; }
+      .goog-te-gadget-simple span { color: #FAF8F5 !important; }
+      .goog-te-gadget-simple .goog-te-menu-value span { color: #D2A13E !important; font-weight: 700 !important; }
+      .goog-te-banner-frame { display: none !important; }
+      body { top: 0 !important; }
+      .goog-te-gadget img { display: none !important; }
+      /* Hide on larger screens — move to top right */
+      @media (min-width: 768px) {
+        #google_translate_element {
+          bottom: auto !important;
+          top: 72px !important;
+          right: 16px !important;
+        }
+      }
+    </style>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'ta,hi,kn,te,ml,bn,mr,gu,pa,ur,en',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: true
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Calendar, Activity, ChevronRight, Sparkles } from 'lucide-react';
+import { Menu, X, Calendar, Activity, ChevronRight, Home, Stethoscope, MapPin, Settings, Sparkles } from 'lucide-react';
 
 const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,13 +25,21 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
     };
   }, [isOpen]);
 
-  // Clean, patient-friendly navigation items that translate easily without jargon
   const navItems = [
     { label: 'Clinical Specialties', href: '#specialties' },
     { label: 'What To Expect', href: '#clinical-transparency' },
     { label: 'Interactive Pain Map', href: '#symptom-map' },
     { label: 'Treatment Science', href: '#modalities' },
     { label: 'Patient Outcomes', href: '#case-vault' },
+  ];
+
+  // Mobile bottom tab items (compact, icon-driven)
+  const bottomTabs = [
+    { label: 'Home', icon: Home, href: '#top', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
+    { label: 'Specialties', icon: Stethoscope, href: '#specialties' },
+    { label: 'Pain Map', icon: MapPin, href: '#symptom-map' },
+    { label: 'Book', icon: Calendar, href: null, action: () => onOpenTriage() },
+    { label: 'Admin', icon: Settings, href: null, action: () => onOpenAdmin() },
   ];
 
   const handleNavClick = (href) => {
@@ -42,66 +50,109 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
     }
   };
 
+  const handleBottomTabClick = (tab) => {
+    if (tab.action) {
+      tab.action();
+    } else if (tab.href) {
+      const el = document.querySelector(tab.href);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <>
+      {/* ── Top Header Bar ── */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'py-3 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#0A1C17]/10 shadow-sm' 
-          : 'py-5 bg-transparent'
+          ? 'py-2.5 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#0A1C17]/10 shadow-sm' 
+          : 'py-3 md:py-5 bg-transparent'
       }`}>
-        <div className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-10 flex items-center justify-between">
           
-          {/* Brand Wordmark & Editorial Logo */}
-          <a href="#" className="flex items-center gap-3.5 group cursor-pointer text-[#0A1C17]">
-            <div className="w-11 h-11 rounded-2xl bg-[#0A1C17] text-[#FAF8F5] flex items-center justify-center shadow-md group-hover:bg-[#C2593B] group-hover:scale-105 transition-all duration-300">
-              <Activity className="w-5 h-5 text-[#D2A13E]" />
+          {/* Brand */}
+          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer text-[#0A1C17]">
+            <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 ${
+              scrolled ? 'bg-[#0A1C17] text-[#FAF8F5]' : 'bg-white/20 backdrop-blur-md text-white border border-white/20'
+            }`}>
+              <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-[#D2A13E]" />
             </div>
             <div className="flex flex-col">
-              <span className="font-serif-clinical font-black text-xl md:text-2xl tracking-tight leading-none text-[#0A1C17] group-hover:text-[#C2593B] transition-colors">
+              <span className={`font-extrabold text-base sm:text-xl md:text-2xl tracking-tight leading-none transition-colors font-sans ${
+                scrolled ? 'text-[#0A1C17]' : 'text-white'
+              }`}>
                 Dr. Jeni Theresa
               </span>
-              <span className="text-[11px] font-mono-tech tracking-wider text-[#0A1C17]/75 uppercase mt-1 font-bold flex items-center gap-1">
-                <span>Doctor of Physical Therapy, DPT</span>
+              <span className={`text-[9px] sm:text-[11px] font-mono-tech tracking-wider uppercase mt-0.5 font-bold ${
+                scrolled ? 'text-[#0A1C17]/70' : 'text-white/70'
+              }`}>
+                Doctor of Physical Therapy, DPT
               </span>
             </div>
           </a>
 
           {/* Desktop Navigation Pills */}
-          <nav className="hidden xl:flex items-center gap-1.5 bg-[#0A1C17]/5 border border-[#0A1C17]/10 p-1.5 rounded-2xl backdrop-blur-sm">
+          <nav className={`hidden xl:flex items-center gap-1.5 p-1.5 rounded-2xl backdrop-blur-sm border ${
+            scrolled 
+              ? 'bg-[#0A1C17]/5 border-[#0A1C17]/10' 
+              : 'bg-white/10 border-white/15'
+          }`}>
             {navItems.map((item) => (
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className="px-4 py-2 rounded-xl text-xs font-bold tracking-wide text-[#0A1C17]/80 hover:text-[#0A1C17] hover:bg-white hover:shadow-sm transition-all duration-200 cursor-pointer font-sans"
+                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer font-sans ${
+                  scrolled 
+                    ? 'text-[#0A1C17]/80 hover:text-[#0A1C17] hover:bg-white hover:shadow-sm' 
+                    : 'text-white/80 hover:text-white hover:bg-white/15'
+                }`}
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Action Desk: Keep ONLY Book Appointment in header to prevent crowding and touching on tablets/laptops */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          {/* Action Buttons */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* PMS Admin (Desktop - always visible) */}
             <button
-              onClick={onOpenTriage}
-              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs md:text-sm tracking-wider uppercase shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
+              onClick={onOpenAdmin}
+              className={`hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                scrolled 
+                  ? 'bg-white border-[#0A1C17]/10 text-[#0A1C17]/70 hover:text-[#0A1C17] hover:border-[#0A1C17]/30' 
+                  : 'bg-white/10 border-white/15 text-white/80 hover:bg-white/20 hover:text-white backdrop-blur-md'
+              }`}
             >
-              <Calendar className="w-4 h-4 text-[#D2A13E] group-hover:scale-110 transition-transform shrink-0" />
-              <span>Book Appointment</span>
+              <Settings className="w-3.5 h-3.5" />
+              <span className="font-mono-tech uppercase tracking-wider">PMS</span>
             </button>
 
-            {/* Mobile & Tablet Menu Trigger */}
+            {/* Book Appointment */}
+            <button
+              onClick={onOpenTriage}
+              className="px-4 sm:px-6 py-2.5 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
+            >
+              <Calendar className="w-4 h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
+              <span className="hidden sm:inline">Book Appointment</span>
+              <span className="sm:hidden">Book</span>
+            </button>
+
+            {/* Tablet Menu Trigger (hidden on mobile — we use bottom bar) */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Navigation Menu"
-              className="xl:hidden p-2.5 rounded-xl bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white transition-all focus:outline-none cursor-pointer shrink-0"
+              className={`hidden md:flex xl:hidden p-2.5 rounded-xl transition-all focus:outline-none cursor-pointer shrink-0 ${
+                scrolled 
+                  ? 'bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white' 
+                  : 'bg-white/10 text-white hover:bg-white/20'
+              }`}
             >
-              {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* ── Tablet Drawer (768px–1280px) ── */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -110,7 +161,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 top-[72px] z-40 bg-black/60 backdrop-blur-xs xl:hidden"
+              className="fixed inset-0 top-[60px] z-40 bg-black/60 backdrop-blur-xs hidden md:block xl:hidden"
             />
 
             <motion.div
@@ -118,7 +169,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="fixed top-[72px] left-0 right-0 z-50 bg-[#0A1C17] text-[#FAF8F5] p-6 shadow-2xl rounded-b-3xl border-t border-white/10 xl:hidden"
+              className="fixed top-[60px] left-0 right-0 z-50 bg-[#0A1C17] text-[#FAF8F5] p-6 shadow-2xl rounded-b-3xl border-t border-white/10 hidden md:block xl:hidden"
             >
               <div className="flex flex-col gap-2.5">
                 <div className="px-3.5 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20 mb-2">
@@ -132,7 +183,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
                   <button
                     key={item.label}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-left py-3 px-4 rounded-xl text-base font-serif-clinical font-bold tracking-wide text-white hover:bg-white/10 flex items-center justify-between transition-colors border border-transparent hover:border-white/20"
+                    className="text-left py-3 px-4 rounded-xl text-base font-bold tracking-wide text-white hover:bg-white/10 flex items-center justify-between transition-colors border border-transparent hover:border-white/20 font-sans"
                   >
                     <span>{item.label}</span>
                     <ChevronRight className="w-4 h-4 text-[#D2A13E]" />
@@ -143,7 +194,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
                   onClick={() => { setIsOpen(false); onOpenAdmin(); }}
                   className="w-full py-3 px-4 rounded-xl bg-[#163029] text-emerald-300 border border-emerald-500/30 font-mono-tech text-xs font-bold flex items-center justify-between transition-colors cursor-pointer"
                 >
-                  <span>⚙️ Launch Practice Admin Console (PMS)</span>
+                  <span>⚙️ Practice Admin Console (PMS)</span>
                   <span className="bg-[#D2A13E] text-[#0A1C17] px-2 py-0.5 rounded text-[10px] uppercase font-black">Admin</span>
                 </button>
 
@@ -161,6 +212,34 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
           </>
         )}
       </AnimatePresence>
+
+      {/* ── Mobile Bottom Tab Bar (< 768px) — App Feel ── */}
+      <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-[#0A1C17] border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.3)] safe-area-bottom">
+        <div className="flex items-center justify-around py-2 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+          {bottomTabs.map((tab) => {
+            const Icon = tab.icon;
+            const isBook = tab.label === 'Book';
+            return (
+              <button
+                key={tab.label}
+                onClick={() => handleBottomTabClick(tab)}
+                className={`flex flex-col items-center gap-0.5 py-1 px-3 rounded-xl transition-all cursor-pointer active:scale-95 ${
+                  isBook 
+                    ? 'text-[#D2A13E]' 
+                    : 'text-white/60 hover:text-white active:text-white'
+                }`}
+              >
+                <div className={`p-1.5 rounded-xl ${isBook ? 'bg-[#C2593B] text-white shadow-lg' : ''}`}>
+                  <Icon className={`${isBook ? 'w-5 h-5' : 'w-5 h-5'}`} />
+                </div>
+                <span className={`text-[10px] font-bold font-mono-tech uppercase tracking-wider ${isBook ? 'text-[#D2A13E]' : ''}`}>
+                  {tab.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
     </>
   );
 };
