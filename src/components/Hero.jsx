@@ -43,14 +43,15 @@ const Hero = ({ onOpenTriage }) => {
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-gradient-to-r from-[#07130F] via-[#0E201B] via-[52%] via-[#434A44] via-[70%] to-[#F1EADF] overflow-hidden flex flex-col justify-center">
+    /* Strict display window sizing on desktop (md:h-[92vh] max-[880px]) so it never expands over size! */
+    <section ref={scrollRef} className="relative min-h-[100svh] md:h-[92vh] md:max-h-[880px] lg:max-h-[920px] bg-gradient-to-r from-[#07130F] via-[#0D1F1A] via-[52%] via-[#3E4641] via-[72%] to-[#F3ECE0] overflow-hidden flex flex-col justify-center">
       
       {/* Subtle ambient studio lighting on left side */}
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none z-10" />
 
-      {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP (Exact Editorial Charcoal-to-Champagne Studio Lighting!) ── */}
-      <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-gradient-to-r from-[#0E201B] via-[#3E4A44] to-[#F7F1E6]">
+      {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP ── */}
+      <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-gradient-to-r from-[#0D1F1A] via-[#3B443F] to-[#F7F1E6]">
         
         {/* Radiant champagne studio backdrop light illuminating behind Dr. Jeni Theresa's silhouette */}
         <div className="absolute top-[10%] right-[5%] w-[650px] h-[750px] rounded-full bg-gradient-to-tr from-[#E6DECF]/30 via-[#F9F5EB]/65 to-white/75 blur-[130px] opacity-95 pointer-events-none" />
@@ -62,25 +63,26 @@ const Hero = ({ onOpenTriage }) => {
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
         
-        {/* ── EXACT EDITORIAL STUDIO TRANSITION MASK ("Background for hero section exact ah indha mari apply pannu") ── */}
-        {/* 1. Smooth smoky charcoal-taupe diffusion spreading across the left 38% boundary to reproduce the reference image gradient without sharp lines! */}
-        <div className="absolute z-20 inset-y-0 left-0 w-[38%] bg-gradient-to-r from-[#07130F] from-[5%] via-[#162923]/90 via-[30%] via-[#3E4A44]/75 via-[60%] via-[#8D887C]/35 via-[85%] to-transparent pointer-events-none" />
+        {/* ── ORGANIC WINDING CURVY SEPARATION ("Valaindhu nelindha mari" - Zero straight vertical lines!) ── */}
+        {/* 1. Wavy upper elliptical curve sweeping smoothly inward */}
+        <div className="absolute z-20 -top-[8%] -left-[290px] w-[640px] h-[480px] rounded-[55%_45%_70%_30%/60%_50%_50%_40%] bg-[#07130F] rotate-[-22deg] blur-[90px] opacity-95 pointer-events-none" />
         
-        {/* 2. Soft contoured dark emerald atmosphere curves along the far left seam to cushion typography cards naturally */}
-        <div className="absolute z-20 top-[5%] -left-[350px] w-[640px] h-[450px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[105px] opacity-95 pointer-events-none" />
-        <div className="absolute z-20 top-[38%] -left-[300px] w-[580px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[115px] opacity-95 pointer-events-none" />
-        <div className="absolute z-20 bottom-[4%] -left-[320px] w-[600px] h-[400px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[105px] opacity-90 pointer-events-none" />
+        {/* 2. Middle winding contour bending outward around the center typography */}
+        <div className="absolute z-20 top-[30%] -left-[240px] w-[560px] h-[440px] rounded-[42%_58%_38%_62%/55%_35%_65%_45%] bg-[#0B1E19] rotate-[26deg] blur-[100px] opacity-95 pointer-events-none" />
+        
+        {/* 3. Lower swelling wave returning down toward the base credentials */}
+        <div className="absolute z-20 bottom-[-5%] -left-[270px] w-[600px] h-[460px] rounded-[65%_35%_55%_45%/40%_70%_30%_60%] bg-[#07130F] rotate-[-18deg] blur-[95px] opacity-90 pointer-events-none" />
 
-        {/* 3. Delicate warm ambient light drift uniting mid-screen taupe tones with the bright studio background wall */}
-        <div className="absolute z-20 top-[25%] left-[10%] w-[420px] h-[500px] rounded-full bg-gradient-to-r from-transparent via-[#EDE5D8]/20 to-[#F9F5EE]/35 blur-[125px] opacity-85 pointer-events-none" />
+        {/* 4. Soft warm taupe atmosphere winding along the curve without darkening her face */}
+        <div className="absolute z-20 top-[22%] left-[10%] w-[380px] h-[520px] rounded-full bg-gradient-to-tr from-[#0B1E19]/85 via-[#454D47]/45 to-transparent rotate-[15deg] blur-[115px] pointer-events-none" />
         
         {/* Seamless top and bottom viewport transitions */}
         <div className="absolute z-30 top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
         <div className="absolute z-30 bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
       </div>
 
-      {/* ── Main Content Container (Left 50% Typography + Mobile Top Portrait) ── */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10 pt-28 pb-16 md:pt-36 md:pb-24 my-auto">
+      {/* ── Main Content Container (Compact internal padding for precise display screen fitting!) ── */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10 pt-24 pb-12 md:pt-28 md:pb-14 my-auto">
         
         {/* ── MOBILE VIEW ONLY (Hidden on Desktop & Laptop screens): Edge-to-Edge Top Organic Showcase ── */}
         <motion.div
@@ -131,16 +133,16 @@ const Hero = ({ onOpenTriage }) => {
             </span>
           </motion.div>
 
-          {/* ── Headline ── */}
+          {/* ── New Slogan Headline: "Bend, Don't Break." ── */}
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-black tracking-tight text-white leading-[1.08] mb-5 font-sans"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-black tracking-tight text-white leading-[1.06] mb-4 font-sans"
           >
-            Clinical Physical Therapy.{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-[#D2A13E] to-[#C2593B]">
-              Delivered to Your Bedside.
+            Bend,{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-[#E8CAA4] to-[#D2A13E] font-editorial italic font-normal">
+              Don't Break.
             </span>
           </motion.h1>
 
@@ -148,9 +150,9 @@ const Hero = ({ onOpenTriage }) => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-sm md:text-base text-white/85 font-medium mb-8 leading-relaxed font-sans"
+            className="text-sm sm:text-base md:text-[18px] text-white/90 font-normal mb-7 leading-relaxed font-sans max-w-xl"
           >
-            Private, one-on-one recovery without leaving your home. Eliminate joint pain, nerve compression & post-surgery stiffness with real biomechanical science.
+            Strength isn't measured by how hard you stand—it's revealed by how gracefully you bend, heal, and rise again. Private, one-on-one recovery without leaving your home.
           </motion.p>
 
           {/* ── Interactive Tab Briefing (Glassmorphism) ── */}
