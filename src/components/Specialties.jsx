@@ -65,7 +65,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Pediatric Physiotherapy",
       subtitle: "Gentle Developmental & Nurturing Therapies",
       icon: Baby,
-      image: "/images/pediatric_rehab.png",
+      video: "/videos/pediatric_rehab.mp4",
       description: "Compassionate, play-based physical therapy tailored for infants and children to overcome motor milestone delays, build muscle coordination, and nurture independence.",
       conditions: [
         { name: "Developmental Delay", note: "Rolling, sitting, crawling & walking support" },
@@ -149,16 +149,27 @@ const Specialties = ({ onOpenTriage }) => {
                     </div>
                   </div>
 
-                  {/* ── Clinical Diagnostic Visual ── */}
+                  {/* ── Clinical Diagnostic Visual or Looping Video ── */}
                   <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden mb-5 border border-[#0A1C17]/10 bg-[#0A1C17] shadow-sm">
-                    <img
-                      src={spec.image}
-                      alt={spec.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                    <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg text-white font-mono-tech text-[10px] font-bold uppercase tracking-wider backdrop-blur-md bg-black/40 border border-white/20 flex items-center gap-1.5 shadow-sm">
-                      <span>🔬 Clinical Science</span>
+                    {spec.video ? (
+                      <video
+                        src={spec.video}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transform scale-[1.14] -translate-y-[2%] pointer-events-none"
+                      />
+                    ) : (
+                      <img
+                        src={spec.image}
+                        alt={spec.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-90 pointer-events-none" />
+                    <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg text-white font-mono-tech text-[10px] font-bold uppercase tracking-wider backdrop-blur-md bg-black/50 border border-white/20 flex items-center gap-1.5 shadow-sm z-10">
+                      <span>{spec.video ? '🎥 Looping Biomechanics' : '🔬 Clinical Science'}</span>
                     </span>
                   </div>
 

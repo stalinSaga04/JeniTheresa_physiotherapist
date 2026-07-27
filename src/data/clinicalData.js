@@ -1,10 +1,11 @@
 export const SYMPTOM_AREAS = [
   {
     id: "lumbar",
-    name: "L4/L5 Sciatica & Lower Back Pain",
-    tagline: "Instant relief for slip disc ache, hip strain & sciatica shooting pain",
-    image: "/images/biomech_spine.png",
-    symptomSummary: "A dull, nagging ache in your lower back after sitting for IT work hours, stiffness when bending forward, or sharp pain shooting down into your thigh and foot (sciatica).",
+    name: "Sciatica & Lower Back Stiffness",
+    tagline: "Relief for prolonged office sitting, herniated discs & hip immobility",
+    video: "/videos/posture_treatment.mp4",
+    image: "/images/human_brain_spinal.jpeg",
+    symptomSummary: "Deep ache across the lower spine that sharpens when standing up after long desk hours, or radiant pins-and-needles traveling down one thigh.",
     rootCauses: [
       "Continuous slouched posture in office chairs without proper lumbar lumbar curve support",
       "Lifting heavy grocery loads or bending suddenly without bending knees and hips",
@@ -65,9 +66,10 @@ export const SYMPTOM_AREAS = [
   {
     id: "rotator",
     name: "Shoulder Rotator Cuff & Arm Strain",
-    tagline: "Treatment for overhead arm lifting pain & frozen shoulder stiffness",
-    image: "/images/post_surgical.png",
-    symptomSummary: "Sharp pinch when reaching overhead, stiffness in lifting your arm to comb hair or reach shelves, or pain when sleeping on your side.",
+    tagline: "Freedom to reach overhead, lift groceries & sleep without shoulder aching",
+    video: "/videos/problems_solutions.mp4",
+    image: "/images/knee_after_surgery.jpeg",
+    symptomSummary: "Sharp catching pain when raising your arm above horizontal shoulder height, reaching behind your back, or lying directly on your shoulder at night.",
     rootCauses: [
       "Strained shoulder tendons from repetitive overhead arm reaching or sports activities",
       "Adhesive capsulitis (frozen shoulder) limiting natural fluid rotational movement",

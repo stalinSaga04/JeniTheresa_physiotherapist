@@ -11,6 +11,22 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
+    
+    // Initialize translation widget inside Navbar once mounted
+    if (window.google && window.google.translate && window.google.translate.TranslateElement) {
+      const el = document.getElementById('google_translate_element');
+      if (el && !el.hasChildNodes()) {
+        try {
+          new window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'ta,hi,kn,te,ml,bn,mr,gu,pa,ur,en',
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+        } catch (err) { /* ignore duplicate init */ }
+      }
+    }
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -70,19 +86,19 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
         <div className="max-w-7xl mx-auto px-4 md:px-10 flex items-center justify-between">
           
           {/* Brand */}
-          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2.5 sm:gap-3.5 group cursor-pointer text-[#0A1C17]">
-            <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 ${
+          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 sm:gap-3.5 group cursor-pointer text-[#0A1C17]">
+            <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 ${
               scrolled ? 'bg-[#0A1C17] text-[#FAF8F5]' : 'bg-white/20 backdrop-blur-md text-white border border-white/20'
             }`}>
               <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-[#D2A13E]" />
             </div>
             <div className="flex flex-col">
-              <span className={`font-extrabold text-base sm:text-xl md:text-2xl tracking-tight leading-none transition-colors font-sans ${
+              <span className={`font-extrabold text-sm sm:text-xl md:text-2xl tracking-tight leading-none transition-colors font-sans ${
                 scrolled ? 'text-[#0A1C17]' : 'text-white'
               }`}>
                 Dr. Jeni Theresa
               </span>
-              <span className={`text-[9px] sm:text-[11px] font-mono-tech tracking-wider uppercase mt-0.5 font-bold ${
+              <span className={`text-[8px] sm:text-[11px] font-mono-tech tracking-wider uppercase mt-0.5 font-bold ${
                 scrolled ? 'text-[#0A1C17]/70' : 'text-white/70'
               }`}>
                 Doctor of Physical Therapy, DPT
@@ -112,7 +128,13 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            {/* Native Top Bar Language Translator (Clean, zero mobile disturbances!) */}
+            <div 
+              id="google_translate_element" 
+              className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#0A1C17] border border-white/20 shadow-sm text-xs flex items-center shrink-0 min-h-[32px]"
+            />
+
             {/* PMS Admin (Desktop - always visible) */}
             <button
               onClick={onOpenAdmin}
@@ -129,11 +151,11 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
             {/* Book Appointment */}
             <button
               onClick={onOpenTriage}
-              className="px-4 sm:px-6 py-2.5 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
+              className="px-3 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 group shrink-0"
             >
-              <Calendar className="w-4 h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
+              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
               <span className="hidden sm:inline">Book Appointment</span>
-              <span className="sm:hidden">Book</span>
+              <span className="sm:hidden text-[11px]">Book</span>
             </button>
 
             {/* Tablet Menu Trigger (hidden on mobile — we use bottom bar) */}
