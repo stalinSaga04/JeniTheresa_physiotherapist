@@ -79,29 +79,21 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
             ))}
           </nav>
 
-          {/* Action Desk: Book Button & Discreet Admin Suite Trigger */}
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <button
-              onClick={onOpenAdmin}
-              className="px-3.5 py-2 rounded-xl bg-emerald-950 text-emerald-300 hover:bg-emerald-900 font-mono-tech font-bold text-[11px] tracking-wider uppercase border border-emerald-500/30 transition-all cursor-pointer hidden md:flex items-center gap-1.5 shadow-xs"
-              title="Open Dr. Jeni Theresa's Clinical CRM & Practice Management System"
-            >
-              <span>⚙️ Practice Console (PMS)</span>
-            </button>
-
+          {/* Action Desk: Keep ONLY Book Appointment in header to prevent crowding and touching on tablets/laptops */}
+          <div className="flex items-center gap-3 sm:gap-4">
             <button
               onClick={onOpenTriage}
-              className="px-4.5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs tracking-wider uppercase shadow-md sm:shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs md:text-sm tracking-wider uppercase shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
             >
-              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D2A13E] group-hover:scale-110 transition-transform shrink-0" />
-              <span>Book<span className="hidden sm:inline"> Appointment</span></span>
+              <Calendar className="w-4 h-4 text-[#D2A13E] group-hover:scale-110 transition-transform shrink-0" />
+              <span>Book Appointment</span>
             </button>
 
-            {/* Mobile Menu Trigger */}
+            {/* Mobile & Tablet Menu Trigger */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle Navigation Menu"
-              className="xl:hidden p-2 sm:p-2.5 rounded-xl bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white transition-all focus:outline-none cursor-pointer shrink-0"
+              className="xl:hidden p-2.5 rounded-xl bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white transition-all focus:outline-none cursor-pointer shrink-0"
             >
               {isOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>

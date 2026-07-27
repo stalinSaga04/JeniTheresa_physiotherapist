@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Award, HeartPulse, MapPin, Star } from 'lucide-react';
-import { CREDENTIALS, CLINIC_INFO } from '../data/clinicalData';
-import SpineIllustration from './SpineIllustration';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, CheckCircle2, Award, HeartPulse, MapPin, Star, Sparkles, Navigation, Activity, Layers } from 'lucide-react';
 import { useScrollReveal, useCountUp } from '../hooks/useScrollAnimations';
 
 const Hero = ({ onOpenTriage }) => {
   const scrollRef = useScrollReveal();
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, scale: 1 });
+  const [activeTab, setActiveTab] = useState('homeVisit');
+  const [activeHotspot, setActiveHotspot] = useState('assessment');
 
   const handleMouseMove = (e) => {
     const box = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - box.left - box.width / 2;
     const y = e.clientY - box.top - box.height / 2;
-    setTilt({ rotateX: -y / 16, rotateY: x / 16, scale: 1.02 });
+    setTilt({ rotateX: -y / 20, rotateY: x / 20, scale: 1.02 });
   };
 
   const handleMouseLeave = () => {
@@ -25,165 +25,145 @@ const Hero = ({ onOpenTriage }) => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Staggered text reveal 
-  const wordVariants = {
-    hidden: { opacity: 0, y: 30, rotateX: 40, filter: 'blur(6px)' },
-    visible: (i) => ({
-      opacity: 1, y: 0, rotateX: 0, filter: 'blur(0px)',
-      transition: { duration: 0.6, delay: 0.08 * i, ease: [0.22, 1, 0.36, 1] }
-    })
-  };
-
-  const headlineWords = ["Physical", "Therapy", "Without", "Band-Aids."];
-  const sublineWords = ["Just", "True", "Movement", "Science."];
-
   // Counter refs
   const counterRef1 = useCountUp(99, 2200);
   const counterRef2 = useCountUp(0, 800);
   const counterRef3 = useCountUp(5, 1200);
 
+  const tabs = [
+    {
+      id: 'homeVisit',
+      label: '🏡 100% Home & Bedside Care',
+      title: 'Zero Bangalore Traffic Exhaustion.',
+      description: 'When you are suffering from acute spinal or joint pain, driving through heavy Bengaluru traffic causes further inflammation. Dr. Jeni Theresa brings specialized diagnostic evaluations directly to your bedside across Bommasandra, Electronic City, and South Bengaluru.',
+      badge: 'Location: Bommasandra & Bengaluru'
+    },
+    {
+      id: 'science',
+      label: '🔬 True Movement Science',
+      title: 'No Temporary Pain Pills or Mills.',
+      description: 'We reject generic boilerplate machine routines. Every session focuses on precise biomechanical realignment, nerve gliding, posture correction, and kinetic core strengthening tailored specifically to your body anatomy.',
+      badge: 'Evidence-Based Orthopedic Care'
+    },
+    {
+      id: 'expertise',
+      label: '👩‍⚕️ DPT Clinical Excellence',
+      title: '5+ Years of Dedicated Patient Mastery.',
+      description: 'Architected by Dr. Jeni Theresa, Doctor of Physical Therapy (DPT). Experiencing consistent 4.9/5 star functional outcomes in post-surgical knee rehab, neurological stroke recovery, and severe occupational ergonomics.',
+      badge: 'Verified DPT Accreditation'
+    }
+  ];
+
   return (
-    <section ref={scrollRef} className="relative pt-28 pb-16 md:pt-36 md:pb-28 overflow-hidden noise-overlay">
+    <section ref={scrollRef} className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden bg-[#FAF8F5]">
       
-      {/* === ORGANIC LIVING BACKGROUND BLOBS === */}
-      <div className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-gradient-to-br from-[#0A1C17]/8 to-[#163029]/5 blur-[100px] animate-float-organic pointer-events-none" />
-      <div className="absolute bottom-20 -left-24 w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#C2593B]/10 to-[#D2A13E]/5 blur-[90px] animate-float-organic-delayed pointer-events-none" />
-      <div className="absolute top-1/2 left-1/3 w-[300px] h-[300px] rounded-full bg-[#163029]/3 blur-[120px] animate-float-organic-slow pointer-events-none" />
-      
-      {/* Subtle clinical grid underlay */}
-      <div className="absolute inset-0 bg-clinical-grid opacity-60 pointer-events-none z-0" />
+      {/* Subtle modern ambient background gradient */}
+      <div className="absolute -top-40 right-0 w-[550px] h-[550px] rounded-full bg-gradient-to-br from-emerald-900/10 via-[#C2593B]/10 to-transparent blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 -left-20 w-[400px] h-[400px] rounded-full bg-[#D2A13E]/10 blur-[100px] pointer-events-none" />
+      <div className="absolute inset-0 bg-clinical-grid opacity-50 pointer-events-none z-0" />
 
       <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
         
-        {/* Editorial Status Tag with location */}
+        {/* Modern Live Status Pill */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel mb-8"
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0A1C17] text-[#FAF8F5] mb-8 shadow-sm border border-emerald-500/30"
         >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
-          </span>
-          <span className="text-xs md:text-sm font-semibold tracking-wider uppercase text-[#0A1C17] flex items-center gap-2">
-            <MapPin className="w-3.5 h-3.5 text-[#C2593B]" />
-            Home Visits & Tele-Rehab • Bommasandra, Bengaluru
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5 font-mono-tech">
+            <MapPin className="w-3.5 h-3.5 text-[#D2A13E]" />
+            <span>Home Visits & Tele-Rehab • Bommasandra, Bengaluru</span>
           </span>
         </motion.div>
 
-        {/* Master Editorial Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        {/* Master Interactive Two-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
           
-          {/* Left Column: Bold Clinical Copy with staggered text reveal */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left" style={{ perspective: '1200px' }}>
+          {/* Left Column: Clean SaaS/Biotech Typography + Interactive Tab Deck */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left">
             
-            {/* Headline with per-word 3D reveal */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif-clinical font-black tracking-tight text-[#0A1C17] leading-[1.08] mb-2">
-              <span className="flex flex-wrap gap-x-3">
-                {headlineWords.map((word, i) => (
-                  <motion.span
-                    key={word}
-                    custom={i}
-                    initial="hidden"
-                    animate="visible"
-                    variants={wordVariants}
-                    className={i === 3 ? "italic font-editorial font-normal text-[#C2593B]" : ""}
-                    style={{ display: 'inline-block' }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
-              </span>
-            </h1>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif-clinical font-black tracking-tight text-[#0A1C17] leading-[1.08] mb-6">
-              <span className="flex flex-wrap gap-x-3">
-                {sublineWords.map((word, i) => (
-                  <motion.span
-                    key={word}
-                    custom={i + headlineWords.length}
-                    initial="hidden"
-                    animate="visible"
-                    variants={wordVariants}
-                    style={{ display: 'inline-block' }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+            <h1 className="text-4xl sm:text-5xl lg:text-[62px] font-black tracking-tight text-[#0A1C17] leading-[1.05] mb-5 font-sans">
+              Clinical Physical Therapy. <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C2593B] via-[#0A1C17] to-emerald-800 font-extrabold">
+                Delivered to Your Bedside.
               </span>
             </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-              className="text-base sm:text-lg md:text-xl text-[#0A1C17]/85 font-normal leading-relaxed max-w-2xl mb-10 font-sans"
-            >
-              Led by <strong className="text-[#0A1C17] font-bold">Dr. Jeni Theresa, PT, DPT</strong> across <strong>Bommasandra, Electronic City & Bengaluru</strong>, our specialized practice brings clinical-grade physical therapy directly to the comfort and privacy of your home or bedside, alongside high-definition video tele-rehab across India. Why suffer through exhausting Bangalore traffic when in acute pain? We deliver 100% one-on-one doctor care in your living room without temporary pain pills or crowded machine mills.
-            </motion.p>
+            <p className="text-base md:text-lg text-[#0A1C17]/80 font-medium mb-8 max-w-2xl leading-relaxed font-sans">
+              Experience private, 100% one-on-one personalized recovery without leaving your living room. Eliminate orthopedic pain, nerve compression, and post-surgery stiffness with real biomechanical science.
+            </p>
 
-            {/* Call To Actions with magnetic hover */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.85 }}
-              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-12"
-            >
-              <button
-                onClick={() => scrollToSection('#symptom-map')}
-                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#C2593B] text-white font-bold text-sm tracking-wide shadow-lg hover:bg-[#A84528] hover:shadow-2xl hover:-translate-y-1 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-2.5 group"
-              >
-                <HeartPulse className="w-5 h-5 group-hover:scale-125 transition-transform duration-300 shrink-0" />
-                <span>Explore Interactive Body Map</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform shrink-0" />
-              </button>
+            {/* Interactive Clinical Briefing Deck (Replaces traditional boring newspaper text!) */}
+            <div className="w-full bg-white rounded-3xl p-5 sm:p-6 border border-[#0A1C17]/10 shadow-xl mb-10 transition-all">
+              <div className="flex flex-wrap items-center gap-2 pb-4 border-b border-[#0A1C17]/10">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                      activeTab === tab.id
+                        ? 'bg-[#0A1C17] text-white shadow-md scale-[1.02]'
+                        : 'bg-[#0A1C17]/5 text-[#0A1C17]/70 hover:bg-[#0A1C17]/10 hover:text-[#0A1C17]'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                  </button>
+                ))}
+              </div>
 
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="pt-4"
+                >
+                  <div className="inline-block px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-800 font-mono-tech text-[11px] font-bold uppercase mb-2">
+                    {tabs.find(t => t.id === activeTab)?.badge}
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-[#0A1C17] mb-2 font-sans">
+                    {tabs.find(t => t.id === activeTab)?.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#0A1C17]/80 leading-relaxed font-normal">
+                    {tabs.find(t => t.id === activeTab)?.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* High-Impact Call To Action Row */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
               <button
                 onClick={onOpenTriage}
-                className="magnetic-btn h-14 px-7 rounded-2xl bg-[#0A1C17]/5 border border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
+                className="h-14 px-8 rounded-2xl bg-[#0A1C17] text-white font-black text-sm uppercase tracking-wider shadow-lg hover:bg-[#C2593B] hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-3 group"
               >
-                <span>Book Home Visit or Tele-Rehab</span>
+                <HeartPulse className="w-5 h-5 text-[#D2A13E] group-hover:scale-125 transition-transform shrink-0" />
+                <span>Book Home Assessment</span>
+                <ArrowRight className="w-4 h-4 text-[#D2A13E] group-hover:translate-x-1.5 transition-transform shrink-0" />
               </button>
-            </motion.div>
 
-            {/* Quick Validation Checklist */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.9, delay: 1 }}
-              className="flex flex-wrap gap-x-6 gap-y-3 pt-4 border-t border-[#0A1C17]/15 text-xs md:text-sm text-[#0A1C17]/80 font-semibold"
-            >
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>100% Dedicated Home Visit Doctor Time</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Zero Bangalore Traffic Stress</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Encrypted & Private Triage Desk</span>
-              </div>
-            </motion.div>
+              <button
+                onClick={() => scrollToSection('#symptom-map')}
+                className="h-14 px-7 rounded-2xl bg-white border-2 border-[#0A1C17]/15 text-[#0A1C17] font-bold text-sm hover:border-[#0A1C17] hover:bg-[#0A1C17]/5 transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
+              >
+                <Activity className="w-4 h-4 text-[#C2593B]" />
+                <span>Explore Interactive Body Map</span>
+              </button>
+            </div>
 
           </div>
 
-          {/* Right Column: 360° 3D Interactive Bio-Kinetic Holo-Sphere (No conventional square frame!) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, rotateY: -12 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 relative perspective-1000 my-auto"
-          >
-            {/* 360° Ethereal Kinetic Glowing Atmosphere & Rotating Orbital Rings */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] bg-gradient-to-tr from-[#0A1C17]/40 via-[#C2593B]/25 to-[#D2A13E]/30 rounded-full blur-[80px] -z-10 animate-pulse" />
+          {/* Right Column: 3D Interactive Biomechanical Showcase (Interactive Hotspots!) */}
+          <div className="lg:col-span-5 relative perspective-1000 my-auto">
             
-            {/* Outer Animated 360 Kinetic Orbital Ring */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] rounded-full border-2 border-dashed border-[#C2593B]/30 animate-[spin_25s_linear_infinite] pointer-events-none -z-10" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-dotted border-[#D2A13E]/40 animate-[spin_35s_linear_infinite_reverse] pointer-events-none -z-10" />
+            {/* Ambient glowing atmosphere */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] bg-gradient-to-tr from-emerald-600/30 via-[#C2593B]/20 to-[#D2A13E]/30 rounded-full blur-[70px] -z-10 animate-pulse" />
 
-            {/* Interactive 3D Kinetic Tilt Container */}
+            {/* Interactive Tilt Capsule */}
             <motion.div
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -192,99 +172,125 @@ const Hero = ({ onOpenTriage }) => {
                 rotateY: tilt.rotateY,
                 scale: tilt.scale
               }}
-              transition={{ type: "spring", damping: 20, stiffness: 250 }}
+              transition={{ type: "spring", damping: 22, stiffness: 260 }}
               className="relative cursor-pointer z-20 mx-auto max-w-[420px]"
             >
-              {/* Frameless Floating Portrait Capsule (Futuristic Curved Silhouette) */}
-              <div className="relative rounded-[48px] overflow-hidden p-1.5 bg-gradient-to-b from-[#FAF8F5] via-[#D2A13E]/40 to-[#0A1C17] shadow-[0_25px_70px_rgba(10,28,23,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_90px_rgba(194,89,59,0.35)]">
+              <div className="relative rounded-[40px] overflow-hidden p-2 bg-gradient-to-b from-white via-emerald-500/20 to-[#0A1C17] shadow-[0_20px_60px_rgba(10,28,23,0.3)] hover:shadow-[0_25px_80px_rgba(194,89,59,0.35)] transition-all">
                 
-                <div className="relative rounded-[42px] overflow-hidden bg-[#163029]">
-                  {/* Doctor Portrait Image with glowing ambient lighting */}
+                <div className="relative rounded-[32px] overflow-hidden bg-[#0A1C17]">
+                  {/* Doctor Portrait Image */}
                   <img
                     src="/images/dr-jeni-portrait.png"
-                    alt="Dr. Jeni Theresa, DPT — 360 3D Clinical Showcase"
-                    className="w-full h-[350px] sm:h-[410px] object-cover object-top transition-transform duration-700 hover:scale-105"
+                    alt="Dr. Jeni Theresa, DPT — 3D Clinical Showcase"
+                    className="w-full h-[400px] sm:h-[460px] object-cover object-top transition-transform duration-700 hover:scale-105"
                     onError={(e) => {
                       e.target.src = '/images/dr-jeni-clinical.jpg';
                     }}
                   />
                   
-                  {/* Holo-gradient overlay & energetic lighting */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/20 to-transparent opacity-90 pointer-events-none" />
+                  {/* Dark gradient overlay for typography clarity */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/30 to-transparent opacity-95 pointer-events-none" />
 
-                  {/* Top Floating Telemetry Badges (In 3D depth) */}
-                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                    <span className="px-3.5 py-1.5 rounded-full bg-[#0A1C17]/90 text-white border border-white/20 text-[11px] font-mono-tech uppercase font-bold tracking-wider backdrop-blur-md flex items-center gap-1.5 shadow-lg">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>360° Clinical Profile</span>
-                    </span>
-
-                    <span className="px-3.5 py-1.5 rounded-full bg-[#FAF8F5]/95 text-[#0A1C17] font-mono-tech text-[11px] font-bold shadow-lg border border-[#0A1C17]/10 flex items-center gap-1.5 backdrop-blur-md">
-                      <Award className="w-3.5 h-3.5 text-[#C2593B]" />
-                      <span>5+ Years Exp.</span>
-                    </span>
-                  </div>
-
-                  {/* Doctor Profile Dock Inside the Capsule Bottom */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/95 to-transparent text-white">
-                    <div className="flex items-center justify-between gap-3 mb-2">
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-serif-clinical font-black tracking-tight text-white flex items-center gap-2">
-                          <span>Dr. Jeni Theresa</span>
-                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
-                        </h3>
-                        <p className="text-xs font-mono-tech text-[#D2A13E] font-bold">Doctor of Physical Therapy (DPT) • Founder</p>
-                      </div>
-
-                      {/* Review Badge */}
-                      <div className="flex flex-col items-end shrink-0 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/15 text-xs font-mono-tech font-bold">
-                        <div className="flex gap-0.5 mb-0.5">
-                          {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
-                        </div>
-                        <span className="text-[#FAF8F5]/90 text-[11px]">4.9 / 5.0 Star Rating</span>
-                      </div>
-                    </div>
-
-                    <p className="text-xs text-white/85 line-clamp-2 italic mb-4 font-serif leading-relaxed">
-                      "Dedicated in-home orthopedic and stroke bedside recovery across Bengaluru without relying on pain pills or general machine mills."
-                    </p>
-
-                    {/* Action trigger button */}
-                    <button
-                      onClick={() => scrollToSection('#specialties')}
-                      className="w-full py-3 bg-[#C2593B] hover:bg-[#D2A13E] hover:text-[#0A1C17] text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 group"
+                  {/* Top Interactive Hotspot Buttons (User can click to inspect!) */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-30">
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setActiveHotspot('assessment'); }}
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-mono-tech font-bold uppercase tracking-wider backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-md ${
+                        activeHotspot === 'assessment' ? 'bg-emerald-400 text-[#0A1C17] ring-2 ring-white' : 'bg-black/70 text-white hover:bg-black'
+                      }`}
                     >
-                      <span>Explore Our 4 Rehab Divisions</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-900 animate-ping" />
+                      <span>Bedside Triage</span>
+                    </button>
+
+                    <button 
+                      onClick={(e) => { e.stopPropagation(); setActiveHotspot('credentials'); }}
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-mono-tech font-bold uppercase tracking-wider backdrop-blur-md transition-all cursor-pointer flex items-center gap-1.5 shadow-md ${
+                        activeHotspot === 'credentials' ? 'bg-[#D2A13E] text-[#0A1C17] ring-2 ring-white' : 'bg-black/70 text-white hover:bg-black'
+                      }`}
+                    >
+                      <Award className="w-3 h-3 text-emerald-900" />
+                      <span>5+ Yrs Exp.</span>
                     </button>
                   </div>
+
+                  {/* Interactive Hotspot Display Card Inside Picture */}
+                  <div className="absolute bottom-4 left-4 right-4 p-5 rounded-2xl bg-[#0A1C17]/90 backdrop-blur-md border border-white/15 text-white shadow-2xl z-30">
+                    <AnimatePresence mode="wait">
+                      {activeHotspot === 'assessment' ? (
+                        <motion.div
+                          key="assessment"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-bold text-emerald-400 font-mono-tech uppercase flex items-center gap-1">
+                              <Navigation className="w-3.5 h-3.5" /> Direct Home Visits
+                            </span>
+                            <span className="text-[11px] px-2 py-0.5 rounded bg-white/10 text-white/90 font-mono">Bommasandra Area</span>
+                          </div>
+                          <h4 className="text-base font-black text-white mb-1">One-on-One Bedside Care</h4>
+                          <p className="text-xs text-white/80 leading-relaxed font-normal mb-3">
+                            No crowded waiting rooms or automated heat machines. Personalized physical therapy focused entirely on your functional range.
+                          </p>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="credentials"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        >
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-xs font-bold text-[#D2A13E] font-mono-tech uppercase flex items-center gap-1">
+                              <Award className="w-3.5 h-3.5" /> DPT Accredited
+                            </span>
+                            <div className="flex gap-0.5">
+                              {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
+                            </div>
+                          </div>
+                          <h4 className="text-base font-black text-white mb-1">Dr. Jeni Theresa, PT, DPT</h4>
+                          <p className="text-xs text-white/80 leading-relaxed font-normal mb-3">
+                            Specializing in Orthopedics, Neurological Rehabilitation, Sports Medicine, and Pediatric Ergonomics with verified 4.9/5 star feedback.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex items-center justify-between pt-3 border-t border-white/10 text-[11px] font-mono-tech text-white/70">
+                      <span>💡 Click top badges to switch view</span>
+                      <button onClick={onOpenTriage} className="text-[#D2A13E] font-bold hover:underline">Connect via WhatsApp →</button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </motion.div>
-          </motion.div>
+          </div>
 
         </div>
 
-        {/* Editorial Metrics Banner with animated counters */}
-        <div className="scroll-reveal mt-20 pt-10 border-t border-[#0A1C17]/15 grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left">
-          <div className="p-5 rounded-2xl glass-panel shadow-md hover:-translate-y-1 transition-transform">
-            <p className="text-3xl md:text-4xl font-serif-clinical font-bold text-[#0A1C17] mb-1">
+        {/* Clean Modern Metrics Strip */}
+        <div className="mt-16 pt-8 border-t border-[#0A1C17]/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center md:text-left">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#0A1C17]/10 shadow-sm hover:border-emerald-600/30 transition-all">
+            <p className="text-3xl font-black text-[#0A1C17] mb-1 font-sans">
               <span ref={counterRef1}>0</span>%
             </p>
             <p className="text-xs font-mono-tech text-[#0A1C17]/75 font-semibold uppercase tracking-wider">Functional Range Returned</p>
           </div>
-          <div className="p-5 rounded-2xl glass-panel shadow-md hover:-translate-y-1 transition-transform">
-            <p className="text-3xl md:text-4xl font-serif-clinical font-bold text-[#C2593B] mb-1">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#0A1C17]/10 shadow-sm hover:border-emerald-600/30 transition-all">
+            <p className="text-3xl font-black text-[#C2593B] mb-1 font-sans">
               <span ref={counterRef2}>0</span>%
             </p>
             <p className="text-xs font-mono-tech text-[#0A1C17]/75 font-semibold uppercase tracking-wider">Passive Boilerplate Care</p>
           </div>
-          <div className="p-5 rounded-2xl glass-panel shadow-md hover:-translate-y-1 transition-transform">
-            <p className="text-3xl md:text-4xl font-serif-clinical font-bold text-[#0A1C17] mb-1">4–6 Wks</p>
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#0A1C17]/10 shadow-sm hover:border-emerald-600/30 transition-all">
+            <p className="text-3xl font-black text-[#0A1C17] mb-1 font-sans">4–6 Wks</p>
             <p className="text-xs font-mono-tech text-[#0A1C17]/75 font-semibold uppercase tracking-wider">Average Discharge Target</p>
           </div>
-          <div className="p-5 rounded-2xl glass-panel shadow-md hover:-translate-y-1 transition-transform">
-            <p className="text-3xl md:text-4xl font-serif-clinical font-bold text-emerald-800 mb-1">
+          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#0A1C17]/10 shadow-sm hover:border-emerald-600/30 transition-all">
+            <p className="text-3xl font-black text-emerald-800 mb-1 font-sans">
               <span ref={counterRef3}>0</span>+ Yrs
             </p>
             <p className="text-xs font-mono-tech text-[#0A1C17]/75 font-semibold uppercase tracking-wider">Clinical Experience</p>
@@ -292,14 +298,6 @@ const Hero = ({ onOpenTriage }) => {
         </div>
 
       </div>
-
-      {/* Organic wave divider at bottom */}
-      <div className="wave-divider z-20">
-        <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
-          <path d="M0,20 C300,60 900,0 1200,25 L1200,60 L0,60 Z" fill="#163029" />
-        </svg>
-      </div>
-
     </section>
   );
 };
