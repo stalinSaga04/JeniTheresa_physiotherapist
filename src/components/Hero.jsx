@@ -45,151 +45,153 @@ const Hero = ({ onOpenTriage }) => {
   return (
     <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] overflow-hidden">
       
-      {/* ── Full-Bleed Background Doctor Portrait ── */}
-      <div className="absolute inset-0 z-0">
+      {/* ── Full-Bleed Background Doctor Portrait (Right-Aligned & Crystal Clear on Right) ── */}
+      <div className="absolute inset-0 z-0 bg-[#0A1C17]">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-[80%_top] md:object-[85%_top] lg:object-[right_top]"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Multi-layered gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1C17]/95 via-[#0A1C17]/80 to-[#0A1C17]/40 md:to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/50 to-transparent" />
-        <div className="absolute inset-0 bg-[#0A1C17]/20" />
+        {/* Clean gradient overlay: Dark ONLY behind text on the left, leaving Dr. Jeni's photo completely clear and bright on the right! */}
+        <div className="absolute inset-y-0 left-0 w-full md:w-[78%] lg:w-[60%] bg-gradient-to-r from-[#0A1C17]/95 via-[#0A1C17]/85 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent lg:hidden pointer-events-none" />
       </div>
 
-      {/* ── Main Content Overlay ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-28 pb-24 md:pt-36 md:pb-20 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
+      {/* ── Main Content Overlay (Strictly Left-Aligned so photo on right is unobscured) ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-32 pb-24 md:pt-40 md:pb-20 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
         
-        {/* Live Status Pill */}
-        <motion.div 
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white mb-6 border border-white/20 w-fit"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5 font-mono-tech">
-            <MapPin className="w-3.5 h-3.5 text-[#D2A13E]" />
-            <span>Home Visits • Bommasandra, Bengaluru</span>
-          </span>
-        </motion.div>
+        {/* Left Content Wrapper */}
+        <div className="w-full max-w-2xl lg:max-w-2xl">
+          {/* Live Status Pill */}
+          <motion.div 
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white mb-6 border border-white/20 w-fit"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-wider text-emerald-300 flex items-center gap-1.5 font-mono-tech">
+              <MapPin className="w-3.5 h-3.5 text-[#D2A13E]" />
+              <span>Home Visits • Bommasandra, Bengaluru</span>
+            </span>
+          </motion.div>
 
-        {/* ── Headline ── */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-black tracking-tight text-white leading-[1.08] mb-5 font-sans max-w-3xl"
-        >
-          Clinical Physical Therapy.{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-[#D2A13E] to-[#C2593B]">
-            Delivered to Your Bedside.
-          </span>
-        </motion.h1>
+          {/* ── Headline ── */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-[58px] font-black tracking-tight text-white leading-[1.08] mb-5 font-sans"
+          >
+            Clinical Physical Therapy.{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-[#D2A13E] to-[#C2593B]">
+              Delivered to Your Bedside.
+            </span>
+          </motion.h1>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-sm md:text-base text-white/80 font-medium mb-8 max-w-xl leading-relaxed font-sans"
-        >
-          Private, one-on-one recovery without leaving your home. Eliminate joint pain, nerve compression & post-surgery stiffness with real biomechanical science.
-        </motion.p>
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-sm md:text-base text-white/85 font-medium mb-8 leading-relaxed font-sans"
+          >
+            Private, one-on-one recovery without leaving your home. Eliminate joint pain, nerve compression & post-surgery stiffness with real biomechanical science.
+          </motion.p>
 
-        {/* ── Interactive Tab Briefing (Glassmorphism) ── */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="w-full max-w-2xl bg-white/10 backdrop-blur-xl rounded-2xl p-4 sm:p-5 border border-white/15 shadow-2xl mb-8"
-        >
-          <div className="flex items-center gap-2 pb-3 border-b border-white/10 overflow-x-auto scrollbar-hide">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  activeTab === tab.id
-                    ? 'bg-white text-[#0A1C17] shadow-md'
-                    : 'text-white/70 hover:text-white hover:bg-white/10'
-                }`}
+          {/* ── Interactive Tab Briefing (Glassmorphism) ── */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="w-full bg-white/10 backdrop-blur-xl rounded-2xl p-4 sm:p-5 border border-white/15 shadow-2xl mb-8"
+          >
+            <div className="flex items-center gap-2 pb-3 border-b border-white/10 overflow-x-auto scrollbar-hide">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer whitespace-nowrap ${
+                    activeTab === tab.id
+                      ? 'bg-white text-[#0A1C17] shadow-md'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+                className="pt-3.5"
               >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+                <span className="inline-block px-2.5 py-0.5 rounded-md bg-emerald-400/20 text-emerald-300 font-mono-tech text-[10px] font-bold uppercase mb-2">
+                  {activeTabData?.badge}
+                </span>
+                <h3 className="text-base sm:text-lg font-extrabold text-white mb-1.5 font-sans">
+                  {activeTabData?.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-white/80 leading-relaxed font-medium">
+                  {activeTabData?.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="pt-3.5"
+          {/* ── CTA Row ── */}
+          <motion.div 
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10"
+          >
+            <button
+              onClick={onOpenTriage}
+              className="h-13 px-7 rounded-2xl bg-white text-[#0A1C17] font-black text-sm uppercase tracking-wider shadow-lg hover:bg-[#D2A13E] hover:text-white hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-3 group"
             >
-              <span className="inline-block px-2.5 py-0.5 rounded-md bg-emerald-400/20 text-emerald-300 font-mono-tech text-[10px] font-bold uppercase mb-2">
-                {activeTabData?.badge}
-              </span>
-              <h3 className="text-base sm:text-lg font-extrabold text-white mb-1.5 font-sans">
-                {activeTabData?.title}
-              </h3>
-              <p className="text-xs sm:text-sm text-white/75 leading-relaxed font-medium">
-                {activeTabData?.description}
-              </p>
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+              <HeartPulse className="w-5 h-5 text-[#C2593B] group-hover:text-white group-hover:scale-110 transition-all shrink-0" />
+              <span>Book Home Assessment</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0" />
+            </button>
 
-        {/* ── CTA Row ── */}
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-12"
-        >
-          <button
-            onClick={onOpenTriage}
-            className="h-13 px-7 rounded-2xl bg-white text-[#0A1C17] font-black text-sm uppercase tracking-wider shadow-lg hover:bg-[#D2A13E] hover:text-white hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center justify-center gap-3 group"
+            <button
+              onClick={() => scrollToSection('#symptom-map')}
+              className="h-13 px-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all cursor-pointer flex items-center justify-center gap-2"
+            >
+              <Activity className="w-4 h-4 text-emerald-300" />
+              <span>Explore Pain Map</span>
+            </button>
+          </motion.div>
+
+          {/* ── Compact Credential Strip ── */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-wrap items-center gap-4 text-xs text-white/75 font-mono-tech font-bold"
           >
-            <HeartPulse className="w-5 h-5 text-[#C2593B] group-hover:text-white group-hover:scale-110 transition-all shrink-0" />
-            <span>Book Home Assessment</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform shrink-0" />
-          </button>
-
-          <button
-            onClick={() => scrollToSection('#symptom-map')}
-            className="h-13 px-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm hover:bg-white/20 transition-all cursor-pointer flex items-center justify-center gap-2"
-          >
-            <Activity className="w-4 h-4 text-emerald-300" />
-            <span>Explore Pain Map</span>
-          </button>
-        </motion.div>
-
-        {/* ── Compact Credential Strip ── */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="flex flex-wrap items-center gap-4 text-xs text-white/70 font-mono-tech font-bold"
-        >
-          <span className="flex items-center gap-1.5">
-            <Award className="w-4 h-4 text-[#D2A13E]" />
-            DPT Accredited
-          </span>
-          <span className="w-px h-4 bg-white/20 hidden sm:block" />
-          <span className="flex items-center gap-1.5">
-            <Navigation className="w-3.5 h-3.5 text-emerald-400" />
-            Bommasandra Home Visits
-          </span>
-          <span className="w-px h-4 bg-white/20 hidden sm:block" />
-          <span className="flex items-center gap-1">
-            {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
-            <span className="ml-1">4.9/5</span>
-          </span>
-        </motion.div>
+            <span className="flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-[#D2A13E]" />
+              DPT Accredited
+            </span>
+            <span className="w-px h-4 bg-white/20 hidden sm:block" />
+            <span className="flex items-center gap-1.5">
+              <Navigation className="w-3.5 h-3.5 text-emerald-400" />
+              Bommasandra Home Visits
+            </span>
+            <span className="w-px h-4 bg-white/20 hidden sm:block" />
+            <span className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
+              <span className="ml-1">4.9/5</span>
+            </span>
+          </motion.div>
+        </div>
 
       </div>
 
