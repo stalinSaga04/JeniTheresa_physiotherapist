@@ -7,6 +7,17 @@ import { useScrollReveal } from '../hooks/useScrollAnimations';
 const SymptomMap = ({ onSelectSymptomForTriage }) => {
   const [selectedArea, setSelectedArea] = useState(SYMPTOM_AREAS[0]);
   const scrollRef = useScrollReveal();
+  const detailCardRef = React.useRef(null);
+
+  const handleZoneSelect = (area) => {
+    setSelectedArea(area);
+    // Smoothly guide user viewport directly to the newly loaded clinical diagnostics below, solving silent state updates on mobile viewports!
+    if (detailCardRef.current) {
+      setTimeout(() => {
+        detailCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    }
+  };
 
   const handleWhatsAppConsult = (areaName) => {
     const text = `👋 *Hi Dr. Jeni Theresa Rehab Desk,* \n\nI experienced symptoms related to *${areaName}*. I would like to check available timings and fee details for a dedicated Home Visit in ${CLINIC_INFO.city} / Online Video Rehab.\n\nPlease let me know your consultation schedule!`;
@@ -41,14 +52,14 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
         </div>
 
         {/* TOP INTERACTIVE TAB CARDS (Cohesive, high-contrast, tactile theme) */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3.5 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3.5 mb-10">
           {SYMPTOM_AREAS.map((area, idx) => {
             const active = selectedArea.id === area.id;
             return (
               <button
                 key={area.id}
-                onClick={() => setSelectedArea(area)}
-                className={`p-4 sm:p-5 rounded-2xl text-left transition-all duration-300 flex flex-col justify-between border-2 cursor-pointer relative overflow-hidden ${
+                onClick={() => handleZoneSelect(area)}
+                className={`p-4 sm:p-5 rounded-2xl text-left transition-all duration-300 flex flex-col justify-between border-2 cursor-pointer relative overflow-hidden group ${
                   active 
                     ? 'bg-[#0A1C17] text-white border-emerald-500 shadow-[0_12px_35px_rgba(10,28,23,0.25)] -translate-y-1.5' 
                     : 'bg-white text-[#0A1C17]/85 border-[#0A1C17]/10 hover:border-[#0A1C17]/30 hover:shadow-md hover:-translate-y-0.5'
@@ -56,7 +67,7 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
               >
                 <div className="flex items-center justify-between mb-3">
                   <span className={`text-[10px] font-mono-tech font-bold px-2 py-0.5 rounded uppercase tracking-wider ${
-                    active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-[#0A1C17]/5 text-[#0A1C17]/70'
+                    active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-[#0A1C17]/5 text-[#0A1C17]/70 group-hover:bg-[#0A1C17]/10'
                   }`}>
                     Zone 0{idx + 1}
                   </span>
@@ -70,10 +81,18 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
                     {area.tagline.split('&')[0]}
                   </span>
                 </div>
+                {active && (
+                  <div className="mt-2.5 pt-2 border-t border-white/10 text-[10px] font-mono-tech text-[#D2A13E] font-bold flex items-center gap-1 animate-pulse">
+                    <span>✨ Active diagnosis below</span>
+                  </div>
+                )}
               </button>
             );
           })}
         </div>
+
+        {/* Scroll Target Anchor with gentle top spacing offset for comfortable mobile viewing */}
+        <div ref={detailCardRef} className="-mt-6 pt-6" />
 
         {/* DYNAMIC TWO-COLUMN DIAGNOSTIC SHOWCASE CARD */}
         <div className="bg-white border-2 border-[#0A1C17]/10 rounded-3xl p-6 sm:p-9 md:p-12 shadow-[0_20px_65px_rgba(10,28,23,0.08)] relative">
