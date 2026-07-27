@@ -45,21 +45,19 @@ const Hero = ({ onOpenTriage }) => {
   return (
     <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
       
-      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px+ & Desktop Site mode!): Unified Studio Canvas with Seamless Faded Boundary ── */}
+      {/* ── DESKTOP WIDE VIEW ONLY: 100% Crystal Clear Facial Portrait (ZERO Overlays Touching Face!) ── */}
       <div className="absolute inset-0 z-0 bg-[#0A1C17] hidden md:block overflow-hidden">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[center_top] translate-x-[18%] md:translate-x-[22%] lg:translate-x-[26%] xl:translate-x-[28%] scale-[1.12] transform-gpu transition-transform duration-700"
+          className="w-full h-full object-cover object-[center_top] translate-x-[15%] md:translate-x-[20%] lg:translate-x-[24%] xl:translate-x-[26%] scale-[1.1] transform-gpu transition-transform duration-700"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Deep Solid Left Canvas: 100% opaque green behind all typography & cards (0% to 55%), then an ultra-smooth studio fade to her cheek */}
-        <div className="absolute inset-y-0 left-0 w-[85%] bg-gradient-to-r from-[#0A1C17] from-[55%] via-[#0A1C17]/85 via-[75%] to-transparent pointer-events-none" />
-        {/* Secondary Feathering Layer: Completely flattens any brightness transition lines or border contrast halos! */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1C17] from-[45%] via-[#0A1C17]/50 via-[65%] to-transparent pointer-events-none" />
-        {/* Cinematic top & bottom shading for seamless integration with header navigation and video vault below */}
-        <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-[#0A1C17] from-[30%] via-[#0A1C17]/75 to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#0A1C17] from-[25%] via-[#0A1C17]/70 to-transparent pointer-events-none" />
+        {/* Strictly confined left canvas gradient: Covers ONLY the typography zone (0% to 48%), leaving the doctor's entire face 100% bright, vibrant, and unaltered! */}
+        <div className="absolute inset-y-0 left-0 w-[54%] sm:w-[50%] lg:w-[48%] bg-gradient-to-r from-[#0A1C17] from-[68%] via-[#0A1C17]/85 via-[88%] to-transparent pointer-events-none" />
+        {/* Clean top navigation & bottom video vault transitions */}
+        <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Main Content Overlay: Centered directly in the Middle-Left (Left Mid) as requested! ── */}
