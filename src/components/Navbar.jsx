@@ -26,11 +26,11 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
   }, [isOpen]);
 
   const navItems = [
-    { label: 'Clinical Specialties', href: '#specialties' },
-    { label: 'What To Expect', href: '#clinical-transparency' },
-    { label: 'Interactive Pain Map', href: '#symptom-map' },
-    { label: 'Treatment Science', href: '#modalities' },
-    { label: 'Patient Outcomes', href: '#case-vault' },
+    { label: 'Specialties', href: '#specialties' },
+    { label: 'Consultation', href: '#clinical-transparency' },
+    { label: 'Pain Map', href: '#symptom-map' },
+    { label: 'Science', href: '#modalities' },
+    { label: 'Outcomes', href: '#case-vault' },
   ];
 
   // Mobile bottom tab items (compact, icon-driven)
@@ -91,7 +91,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
           </a>
 
           {/* Desktop Navigation Pills (Visible on md 768px+ and in Mobile Desktop Site mode!) */}
-          <nav className={`hidden md:flex items-center gap-1 p-1 lg:p-1.5 rounded-2xl backdrop-blur-sm border ${
+          <nav className={`hidden md:flex items-center gap-0.5 p-1 lg:p-1.5 rounded-2xl backdrop-blur-sm border ${
             scrolled 
               ? 'bg-[#0A1C17]/5 border-[#0A1C17]/10' 
               : 'bg-white/10 border-white/15'
@@ -100,7 +100,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl text-[11px] lg:text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer font-sans whitespace-nowrap ${
+                className={`px-2 py-1.5 lg:px-3.5 lg:py-2 rounded-xl text-[11px] lg:text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer font-sans whitespace-nowrap ${
                   scrolled 
                     ? 'text-[#0A1C17]/80 hover:text-[#0A1C17] hover:bg-white hover:shadow-sm' 
                     : 'text-white/80 hover:text-white hover:bg-white/15'
@@ -112,11 +112,11 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
           </nav>
 
           {/* Action Buttons */}
-          <div className="flex items-center gap-1.5 sm:gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-2.5">
             {/* PMS Admin (Desktop - always visible) */}
             <button
               onClick={onOpenAdmin}
-              className={`hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+              className={`hidden sm:flex items-center gap-1 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer border shrink-0 ${
                 scrolled 
                   ? 'bg-white border-[#0A1C17]/10 text-[#0A1C17]/70 hover:text-[#0A1C17] hover:border-[#0A1C17]/30' 
                   : 'bg-white/10 border-white/15 text-white/80 hover:bg-white/20 hover:text-white backdrop-blur-md'
@@ -129,10 +129,11 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
             {/* Book Appointment */}
             <button
               onClick={onOpenTriage}
-              className="px-3 sm:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 group shrink-0"
+              className="px-3 sm:px-4 lg:px-5 py-2 sm:py-2 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 group shrink-0 whitespace-nowrap"
             >
-              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
-              <span className="hidden sm:inline">Book Appointment</span>
+              <Calendar className="w-3.5 h-3.5 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
+              <span className="hidden lg:inline">Book Assessment</span>
+              <span className="hidden sm:inline lg:hidden">Book Appt</span>
               <span className="sm:hidden text-[11px]">Book</span>
             </button>
           </div>

@@ -45,24 +45,24 @@ const Hero = ({ onOpenTriage }) => {
   return (
     <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
       
-      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px for Tablet & Mobile Desktop Mode!): Shifted right so text NEVER covers her eyes or face ── */}
-      <div className="absolute top-0 right-0 bottom-0 z-0 bg-[#0A1C17] hidden md:block w-[75%] lg:w-[68%] xl:w-[58%] ml-auto overflow-hidden">
+      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px+ & Desktop Site mode!): Unified Full-Screen Canvas with Organic Gradient ── */}
+      <div className="absolute inset-0 z-0 bg-[#0A1C17] hidden md:block overflow-hidden">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[center_top] translate-x-12 sm:translate-x-16 lg:translate-x-20 xl:translate-x-28 scale-[1.07] transform-gpu"
+          className="w-full h-full object-cover object-[72%_top] lg:object-[78%_top] xl:object-[82%_top] scale-[1.02] transform-gpu"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Soft left gradient feathering so the portrait blends seamlessly into the left dark green background without overlapping text! */}
-        <div className="absolute inset-y-0 left-0 w-[55%] lg:w-[62%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/92 to-transparent pointer-events-none" />
-        {/* Soft top gradient to ensure navbar elements remain easily readable */}
-        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/70 to-transparent pointer-events-none" />
+        {/* Organic, ultra-smooth gradient so text reads perfectly on left WITHOUT feeling like two disconnected split-screen boxes! */}
+        <div className="absolute inset-y-0 left-0 w-[62%] sm:w-[58%] lg:w-[54%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/90 to-transparent pointer-events-none" />
+        {/* Soft top gradient to ensure navbar links sit over a clean background */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/70 to-transparent pointer-events-none" />
         {/* Soft bottom gradient to transition cleanly into the Video Vault */}
         <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/50 to-transparent pointer-events-none" />
       </div>
 
-      {/* ── Main Content Overlay (Responsive Mobile Split & Desktop Left Column) ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-24 pb-20 md:pt-36 md:pb-24 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
+      {/* ── Main Content Overlay: Centered directly in the Middle-Left (Left Mid) as requested! ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-28 pb-16 md:pt-36 md:pb-20 flex flex-col justify-center my-auto min-h-[100svh] md:min-h-[92vh]">
         
         {/* ── MOBILE ONLY (Hidden on md and Desktop Mode): Prominent, Unobscured Doctor Portrait Card at Top of Screen ── */}
         <motion.div
