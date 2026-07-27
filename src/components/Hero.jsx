@@ -43,26 +43,57 @@ const Hero = ({ onOpenTriage }) => {
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] overflow-hidden">
+    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
       
-      {/* ── Full-Bleed Background Doctor Portrait (Right-Aligned & Crystal Clear on Right) ── */}
-      <div className="absolute inset-0 z-0 bg-[#0A1C17]">
+      {/* ── DESKTOP WIDE VIEW ONLY: Full-Bleed Background Doctor Portrait (Hidden on Small Screens) ── */}
+      <div className="absolute inset-0 z-0 bg-[#0A1C17] hidden lg:block">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[80%_top] md:object-[85%_top] lg:object-[right_top]"
+          className="w-full h-full object-cover object-[right_top]"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Clean gradient overlay: Dark ONLY behind text on the left, leaving Dr. Jeni's photo completely clear and bright on the right! */}
-        <div className="absolute inset-y-0 left-0 w-full md:w-[78%] lg:w-[60%] bg-gradient-to-r from-[#0A1C17]/95 via-[#0A1C17]/85 to-transparent pointer-events-none" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent lg:hidden pointer-events-none" />
+        {/* Clean gradient overlay ONLY on desktop left half where text sits, leaving the doctor portrait 100% bright and unshadowed on right! */}
+        <div className="absolute inset-y-0 left-0 w-[58%] bg-gradient-to-r from-[#0A1C17]/98 via-[#0A1C17]/85 to-transparent pointer-events-none" />
       </div>
 
-      {/* ── Main Content Overlay (Strictly Left-Aligned so photo on right is unobscured) ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-32 pb-24 md:pt-40 md:pb-20 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
+      {/* ── Main Content Overlay (Responsive Mobile Split & Desktop Left Column) ── */}
+      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-24 pb-20 md:pt-36 md:pb-24 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
         
-        {/* Left Content Wrapper */}
-        <div className="w-full max-w-2xl lg:max-w-2xl">
+        {/* ── MOBILE ONLY: Prominent, Unobscured Doctor Portrait Card at Top of Screen ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md mx-auto mb-8 lg:hidden rounded-3xl overflow-hidden relative border-2 border-emerald-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-[#0E2822] mt-2"
+        >
+          <div className="relative h-[370px] sm:h-[450px] w-full bg-[#0A1C17]">
+            <img
+              src="/images/dr-jeni-portrait.png"
+              alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
+              className="w-full h-full object-cover object-[center_15%]"
+              onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
+            />
+            {/* Soft bottom clinical nameplate, leaving Dr. Jeni's face 100% brightly illuminated and completely unobstructed! */}
+            <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/95 to-transparent pt-16 flex flex-col justify-end">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[10px] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 w-fit">
+                  Verified DPT Specialist
+                </span>
+              </div>
+              <p className="text-white font-black text-xl sm:text-2xl font-sans leading-tight">
+                Dr. Jeni Theresa, <span className="text-[#D2A13E]">DPT</span>
+              </p>
+              <p className="text-xs sm:text-sm text-white/80 font-medium mt-0.5 font-sans">
+                Senior Bedside & Orthopedic Physiotherapist
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Left Content Wrapper for Headline & Action Controls */}
+        <div className="w-full max-w-2xl">
           {/* Live Status Pill */}
           <motion.div 
             initial={{ opacity: 0, y: 12 }}
