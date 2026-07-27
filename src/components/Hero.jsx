@@ -43,18 +43,64 @@ const Hero = ({ onOpenTriage }) => {
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
+    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden flex flex-col justify-center">
       
-      {/* Subtle background ambient studio atmosphere & warm radial glow */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D2A13E]/10 rounded-full blur-[130px] pointer-events-none" />
+      {/* Subtle ambient studio lighting on left side */}
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none z-10" />
 
-      {/* ── Main Responsive Studio Grid Architecture (No Unnatural Zooming, No Vertical Gradient Split Lines!) ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-28 pb-16 md:pt-36 md:pb-24 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center min-h-[100svh] md:min-h-[90vh]">
+      {/* ── DESKTOP & WIDSCREEN PANORAMIC PORTRAIT BACKDROP (No boxed frame! Starts precisely where the left text ends!) ── */}
+      <div className="absolute top-0 right-0 bottom-0 w-[58%] sm:w-[54%] md:w-[52%] lg:w-[50%] z-0 hidden md:block overflow-hidden bg-[#0A1C17]">
+        <img
+          src="/images/dr-jeni-portrait.png"
+          alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
+          className="w-full h-full object-cover object-[center_top] scale-[1.02] transform-gpu transition-transform duration-700"
+          onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
+        />
+        {/* Organic feathering mask exclusively on the image's left boundary (0% to 32% of image width) so it merges invisibly into the left dark emerald canvas! */}
+        <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-[#0A1C17] from-[5%] via-[#0A1C17]/85 via-[55%] to-transparent pointer-events-none" />
+        {/* Seamless top and bottom transitions */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+      </div>
+
+      {/* ── Main Content Container (Left 50% Typography + Mobile Top Portrait) ── */}
+      <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10 pt-28 pb-16 md:pt-36 md:pb-24 my-auto">
         
-        {/* ── LEFT COLUMN (7 Cols): Typography, Badges, Tab Cards, & CTAs ── */}
-        <div className="md:col-span-7 lg:col-span-7 w-full max-w-2xl mx-auto md:mx-0">
+        {/* ── MOBILE VIEW ONLY (Hidden on Desktop & Laptop screens): Edge-to-Edge Top Organic Showcase ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-md mx-auto mb-8 md:hidden rounded-3xl overflow-hidden relative border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-[#0E2822] mt-2"
+        >
+          <div className="relative h-[370px] sm:h-[450px] w-full bg-[#0A1C17]">
+            <img
+              src="/images/dr-jeni-portrait.png"
+              alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
+              className="w-full h-full object-cover object-[center_12%]"
+              onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
+            />
+            {/* Elegant bottom clinical nameplate inside mobile display */}
+            <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/95 to-transparent pt-16 flex flex-col justify-end">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[10px] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 w-fit">
+                  Verified DPT Specialist
+                </span>
+              </div>
+              <p className="text-white font-black text-xl sm:text-2xl font-sans leading-tight">
+                Dr. Jeni Theresa, <span className="text-[#D2A13E]">DPT</span>
+              </p>
+              <p className="text-xs sm:text-sm text-white/80 font-medium mt-0.5 font-sans">
+                Senior Bedside & Orthopedic Physiotherapist
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── LEFT COLUMN TYPOGRAPHY (Strictly Confined to Left 50% Width!) ── */}
+        <div className="w-full max-w-2xl mx-auto md:mx-0">
           
           {/* Live Status Pill */}
           <motion.div 
@@ -185,45 +231,6 @@ const Hero = ({ onOpenTriage }) => {
             </span>
           </motion.div>
         </div>
-
-        {/* ── RIGHT COLUMN (5 Cols): Dedicated Architectural Clinical Portrait Showcase ── */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="md:col-span-5 lg:col-span-5 w-full max-w-md md:max-w-none mx-auto relative flex items-center justify-center my-4 md:my-0"
-        >
-          {/* Soft aesthetic background aura */}
-          <div className="absolute -inset-1.5 bg-gradient-to-tr from-emerald-500/30 via-[#D2A13E]/30 to-[#C2593B]/25 rounded-[2.5rem] blur-2xl opacity-80" />
-          
-          {/* Main Proportional Studio Frame */}
-          <div className="relative w-full rounded-[2.2rem] overflow-hidden border-2 border-white/20 bg-[#0E2822] shadow-[0_25px_80px_rgba(0,0,0,0.65)] transform-gpu hover:shadow-[0_30px_100px_rgba(0,0,0,0.8)] transition-all duration-500 group">
-            <div className="relative h-[390px] sm:h-[460px] md:h-[540px] lg:h-[600px] w-full bg-[#0A1C17] overflow-hidden">
-              <img
-                src="/images/dr-jeni-portrait.png"
-                alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
-                className="w-full h-full object-cover object-[center_12%] sm:object-[center_10%] transform-gpu group-hover:scale-[1.02] transition-transform duration-700"
-                onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
-              />
-              
-              {/* Elegant bottom clinical nameplate inside the frame — leaving her entire face brightly lit and free of gradient shadows! */}
-              <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/95 via-[80%] to-transparent pt-20 flex flex-col justify-end border-t border-white/5">
-                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-                  <span className="text-[10px] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-emerald-500/25 text-emerald-300 border border-emerald-500/40 shadow-sm">
-                    Verified DPT Specialist
-                  </span>
-                </div>
-                <p className="text-white font-black text-xl sm:text-2xl font-sans leading-tight">
-                  Dr. Jeni Theresa, <span className="text-[#D2A13E]">DPT</span>
-                </p>
-                <p className="text-xs sm:text-sm text-white/80 font-medium mt-0.5 font-sans">
-                  Senior Bedside & Orthopedic Physiotherapist
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
 
       </div>
 
