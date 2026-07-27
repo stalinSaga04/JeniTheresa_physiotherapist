@@ -131,29 +131,29 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
           </div>
         )}
 
-        {/* Scrollable Internal Form Body with safe bottom padding for smartphone navigation bars! */}
-        <div className="p-4 sm:p-6 sm:px-8 overflow-y-auto overscroll-contain flex-1 space-y-5 pb-20 sm:pb-8">
+        {/* ZERO SCROLLING Internal Form Body: Everything fits strictly inside without any scroll bars! */}
+        <div className="p-4 sm:p-6 sm:px-7 overflow-hidden flex-1 flex flex-col justify-between">
           
           {/* SUCCESS VIEW AFTER COMPLETION */}
           {isSubmitted ? (
-            <div className="text-center py-6 space-y-6">
-              <div className="w-16 h-16 bg-[#25D366] text-[#0A1C17] rounded-full flex items-center justify-center mx-auto shadow-xl animate-bounce">
-                <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
+            <div className="text-center py-2 space-y-4 my-auto overflow-hidden">
+              <div className="w-14 h-14 bg-[#25D366] text-[#0A1C17] rounded-full flex items-center justify-center mx-auto shadow-xl animate-bounce">
+                <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
               </div>
 
               <div>
-                <h4 className="text-2xl sm:text-3xl font-serif-clinical font-black text-[#0A1C17]">
+                <h4 className="text-xl sm:text-2xl font-serif-clinical font-black text-[#0A1C17]">
                   Consultation Details Ready!
                 </h4>
-                <p className="text-sm text-[#0A1C17]/80 font-normal mt-2 max-w-md mx-auto">
+                <p className="text-xs sm:text-sm text-[#0A1C17]/80 font-normal mt-1 max-w-md mx-auto">
                   We have launched WhatsApp with your personalized recovery profile to connect directly with Dr. Jeni Theresa.
                 </p>
               </div>
 
               {/* Formatted preview box */}
-              <div className="bg-white border border-[#0A1C17]/15 rounded-2xl p-5 text-left font-sans text-xs sm:text-sm space-y-2 shadow-inner text-[#0A1C17]">
-                <div className="text-[#C2593B] font-bold uppercase pb-2 border-b border-[#0A1C17]/10 flex items-center gap-1.5 font-mono-tech">
-                  <Sparkles className="w-4 h-4 text-[#D2A13E]" />
+              <div className="bg-white border border-[#0A1C17]/15 rounded-2xl p-4 text-left font-sans text-xs sm:text-sm space-y-1.5 shadow-inner text-[#0A1C17]">
+                <div className="text-[#C2593B] font-bold uppercase pb-1.5 border-b border-[#0A1C17]/10 flex items-center gap-1.5 font-mono-tech">
+                  <Sparkles className="w-3.5 h-3.5 text-[#D2A13E]" />
                   <span>Your Booking Summary</span>
                 </div>
                 <div><strong>Patient Name:</strong> {patientName || 'Confidential Patient'}</div>
@@ -163,249 +163,251 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                 <div><strong>Appointment Mode:</strong> {preferredModality}</div>
               </div>
 
-              <div className="flex flex-col gap-3 pt-3">
+              <div className="flex flex-col gap-2 pt-2">
                 <button
                   onClick={openWhatsApp}
-                  className="w-full py-4 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-sm tracking-wide shadow-xl hover:shadow-2xl flex items-center justify-center gap-2.5 transition-all cursor-pointer"
+                  className="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-xs sm:text-sm tracking-wide shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transition-all cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 fill-current" />
+                  <MessageCircle className="w-4 h-4 fill-current" />
                   <span>📲 Reopen WhatsApp Chat with Dr. Jeni</span>
                 </button>
                 
                 <a
                   href={`tel:${CLINIC_INFO.phone}`}
-                  className="w-full py-3.5 rounded-xl bg-white border border-[#0A1C17]/20 hover:bg-[#0A1C17]/5 text-[#0A1C17] font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-all"
+                  className="w-full py-2.5 rounded-xl bg-white border border-[#0A1C17]/20 hover:bg-[#0A1C17]/5 text-[#0A1C17] font-bold text-[11px] uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <PhoneCall className="w-4 h-4 text-[#C2593B]" />
+                  <PhoneCall className="w-3.5 h-3.5 text-[#C2593B]" />
                   <span>Or Call Clinic Direct: {CLINIC_INFO.phone}</span>
                 </a>
               </div>
 
               <button
                 onClick={() => { setIsSubmitted(false); setStep(1); }}
-                className="text-xs font-mono-tech text-[#0A1C17]/60 hover:text-[#0A1C17] uppercase underline font-semibold mt-2 cursor-pointer inline-block"
+                className="text-[11px] font-mono-tech text-[#0A1C17]/60 hover:text-[#0A1C17] uppercase underline font-semibold mt-1 cursor-pointer inline-block"
               >
                 Reset Triage Wizard
               </button>
             </div>
           ) : (
-            /* WIZARD STEPS FORM */
-            <form onSubmit={handleSubmit}>
+            /* WIZARD STEPS FORM (ZERO SCROLL FIT!) */
+            <form onSubmit={handleSubmit} className="flex flex-col flex-1 justify-between overflow-hidden">
               
-              {/* STEP 1: TARGET SYMPTOM AREA */}
-              {step === 1 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-lg font-serif-clinical font-bold text-[#0A1C17] mb-1">
-                      1. Select Your Primary Symptom or Injury Focus
-                    </label>
-                    <p className="text-xs font-mono-tech text-[#0A1C17]/70 font-semibold">
-                      This allows Dr. Jeni to prepare appropriate biomechanical assessment templates.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {symptomOptions.map((item, idx) => (
-                      <button
-                        type="button"
-                        key={idx}
-                        onClick={() => setSymptomArea(item)}
-                        className={`p-4 rounded-2xl text-left text-sm font-semibold transition-all cursor-pointer border-2 flex items-center justify-between ${
-                          symptomArea === item
-                            ? 'bg-[#0A1C17] text-[#FAF8F5] border-[#0A1C17] shadow-md'
-                            : 'bg-white text-[#0A1C17] border-[#0A1C17]/15 hover:border-[#0A1C17]/40'
-                        }`}
-                      >
-                        <span className="leading-snug">{item}</span>
-                        {symptomArea === item && <CheckCircle2 className="w-4 h-4 text-[#C2593B] shrink-0 ml-2" />}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 2: TIMELINE & PAIN SCALE */}
-              {step === 2 && (
-                <div className="space-y-7">
-                  <div>
-                    <label className="block text-lg font-serif-clinical font-bold text-[#0A1C17] mb-2">
-                      2. Symptom Chronology & Severity
-                    </label>
-                    <p className="text-xs sm:text-sm text-[#0A1C17]/80 font-normal">
-                      How long has this functional limitation been persisting?
-                    </p>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
-                      {["Acute (< 2 weeks)", "Sub-acute (2–12 wks)", "Chronic (> 3 months)"].map((opt, idx) => (
-                        <button
-                          type="button"
-                          key={idx}
-                          onClick={() => setDuration(opt)}
-                          className={`py-3 px-4 rounded-xl text-xs font-mono-tech font-bold transition-all cursor-pointer border ${
-                            duration === opt
-                              ? 'bg-[#C2593B] text-white border-[#C2593B] shadow-md'
-                              : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:border-[#0A1C17]'
-                          }`}
-                        >
-                          {opt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4 border-t border-[#0A1C17]/10">
-                    <div className="flex justify-between text-sm font-semibold mb-2">
-                      <span className="text-[#0A1C17]">Current Functional Impairment / Pain Scale</span>
-                      <span className="font-mono-tech font-bold text-[#C2593B] text-base">{painLevel} / 10</span>
-                    </div>
-                    <input
-                      type="range"
-                      min="1"
-                      max="10"
-                      step="1"
-                      value={painLevel}
-                      onChange={(e) => setPainLevel(Number(e.target.value))}
-                      className="w-full h-2.5 bg-[#0A1C17]/15 rounded-lg appearance-none cursor-pointer accent-[#C2593B]"
-                    />
-                    <div className="flex justify-between text-[11px] font-mono-tech text-[#0A1C17]/60 mt-1 font-bold">
-                      <span>1 (Minor ache)</span>
-                      <span>5 (Limits activity)</span>
-                      <span>10 (Severe inability)</span>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 3: DIAGNOSIS IMAGING & MODALITY PREFERENCE */}
-              {step === 3 && (
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-base sm:text-lg font-serif-clinical font-bold text-[#0A1C17] mb-2">
-                      3. Diagnostic Imaging Status
-                    </label>
-                    <div className="space-y-2">
-                      {[
-                        "No MRI or X-Ray taken yet (Need evaluation)",
-                        "MRI / X-Ray completed (Will bring images/report)",
-                        "Post-surgical protocol (Doctor referral available)"
-                      ].map((img, idx) => (
-                        <button
-                          type="button"
-                          key={idx}
-                          onClick={() => setImagingStatus(img)}
-                          className={`w-full p-3.5 rounded-xl text-left text-xs sm:text-sm font-semibold transition-all cursor-pointer border ${
-                            imagingStatus === img
-                              ? 'bg-[#0A1C17] text-white border-[#0A1C17] shadow-md'
-                              : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:bg-[#0A1C17]/5'
-                          }`}
-                        >
-                          {img}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-base sm:text-lg font-serif-clinical font-bold text-[#0A1C17] mb-2">
-                      Preferred Appointment Format
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {[
-                        "Dedicated Home Visit Therapy (Bengaluru & Bommasandra - Recommended)",
-                        "High-Def Online Video Tele-Rehab (All India)"
-                      ].map((fmt, idx) => (
-                        <button
-                          type="button"
-                          key={idx}
-                          onClick={() => setPreferredModality(fmt)}
-                          className={`p-4 rounded-2xl text-xs font-mono-tech font-bold text-left transition-all cursor-pointer border-2 ${
-                            preferredModality === fmt
-                              ? 'bg-[#C2593B] text-white border-[#C2593B] shadow-md'
-                              : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:border-[#0A1C17]'
-                          }`}
-                        >
-                          {fmt}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* STEP 4: PATIENT IDENTIFICATION & FINAL NOTES */}
-              {step === 4 && (
-                <div className="space-y-5">
-                  <div>
-                    <label className="block text-lg font-serif-clinical font-bold text-[#0A1C17] mb-1">
-                      4. Patient Details & Additional Clinical Notes
-                    </label>
-                    <p className="text-xs font-mono-tech text-[#0A1C17]/70 font-semibold">
-                      Your details remain strictly confidential under Indian Medical Ethics & Doctor-Patient clinical privacy standards.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-4 my-auto">
+                {/* STEP 1: TARGET SYMPTOM AREA */}
+                {step === 1 && (
+                  <div className="space-y-3 sm:space-y-4">
                     <div>
-                      <label className="block text-xs font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
-                        Your Full Name
+                      <label className="block text-base sm:text-lg font-serif-clinical font-bold text-[#0A1C17]">
+                        1. Select Your Primary Symptom or Injury Focus
                       </label>
-                      <input
-                        type="text"
-                        placeholder="e.g., Karthik Narayanan"
-                        value={patientName}
-                        onChange={(e) => setPatientName(e.target.value)}
-                        className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
-                        Phone Number / WhatsApp
-                      </label>
-                      <input
-                        type="tel"
-                        placeholder="e.g., +91 98840 12345 (WhatsApp preferred)"
-                        value={patientPhone}
-                        onChange={(e) => setPatientPhone(e.target.value)}
-                        className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
-                      Brief Description of Sport, Daily Demand or Symptoms (Optional)
-                    </label>
-                    <textarea
-                      rows="3"
-                      placeholder="e.g., Severe lower back ache during 2-wheeler auto commute, or neck stiffness after long IT desk shifts..."
-                      value={notes}
-                      onChange={(e) => setNotes(e.target.value)}
-                      className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors resize-none font-medium"
-                    ></textarea>
-                  </div>
-
-                  {/* Transparent Fee & Appointment Clarity Assurance */}
-                  <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 shadow-sm">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
-                    <div>
-                      <h5 className="text-xs font-mono-tech font-bold uppercase text-emerald-950 tracking-wide">100% Ethical Medical Fee Guarantee & Private Triage</h5>
-                      <p className="text-xs text-[#0A1C17]/85 leading-relaxed font-sans mt-0.5 font-normal">
-                        No online prepayment required to request a triage assessment. Your consultation format (Dedicated Home Visit in Bangalore / Online Video Tele-Rehab), doctor slot timing, and all-inclusive professional consultation fee will be explicitly verified via Dr. Jeni's encrypted private booking desk on WhatsApp prior to your session.
+                      <p className="text-[11px] sm:text-xs font-mono-tech text-[#0A1C17]/70 font-semibold mt-0.5">
+                        This allows Dr. Jeni to prepare appropriate biomechanical assessment templates.
                       </p>
                     </div>
-                  </div>
-                </div>
-              )}
 
-              {/* NAVIGATION CONTROLS */}
-              <div className="mt-8 pt-6 border-t border-[#0A1C17]/15 flex items-center justify-between">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                      {symptomOptions.map((item, idx) => (
+                        <button
+                          type="button"
+                          key={idx}
+                          onClick={() => setSymptomArea(item)}
+                          className={`p-2.5 sm:p-3 rounded-xl text-left text-xs sm:text-[13px] font-semibold transition-all cursor-pointer border-2 flex items-center justify-between ${
+                            symptomArea === item
+                              ? 'bg-[#0A1C17] text-[#FAF8F5] border-[#0A1C17] shadow-md'
+                              : 'bg-white text-[#0A1C17] border-[#0A1C17]/15 hover:border-[#0A1C17]/40'
+                          }`}
+                        >
+                          <span className="leading-tight">{item}</span>
+                          {symptomArea === item && <CheckCircle2 className="w-4 h-4 text-[#C2593B] shrink-0 ml-1.5" />}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 2: TIMELINE & PAIN SCALE */}
+                {step === 2 && (
+                  <div className="space-y-5">
+                    <div>
+                      <label className="block text-base sm:text-lg font-serif-clinical font-bold text-[#0A1C17] mb-1">
+                        2. Symptom Chronology & Severity
+                      </label>
+                      <p className="text-xs text-[#0A1C17]/80 font-normal">
+                        How long has this functional limitation been persisting?
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-2.5">
+                        {["Acute (< 2 weeks)", "Sub-acute (2–12 wks)", "Chronic (> 3 months)"].map((opt, idx) => (
+                          <button
+                            type="button"
+                            key={idx}
+                            onClick={() => setDuration(opt)}
+                            className={`py-2.5 px-3 rounded-xl text-xs font-mono-tech font-bold transition-all cursor-pointer border ${
+                              duration === opt
+                                ? 'bg-[#C2593B] text-white border-[#C2593B] shadow-md'
+                                : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:border-[#0A1C17]'
+                            }`}
+                          >
+                            {opt}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-[#0A1C17]/10">
+                      <div className="flex justify-between text-xs sm:text-sm font-semibold mb-1.5">
+                        <span className="text-[#0A1C17]">Current Functional Impairment / Pain Scale</span>
+                        <span className="font-mono-tech font-bold text-[#C2593B] text-sm sm:text-base">{painLevel} / 10</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="1"
+                        max="10"
+                        step="1"
+                        value={painLevel}
+                        onChange={(e) => setPainLevel(Number(e.target.value))}
+                        className="w-full h-2 bg-[#0A1C17]/15 rounded-lg appearance-none cursor-pointer accent-[#C2593B]"
+                      />
+                      <div className="flex justify-between text-[10px] font-mono-tech text-[#0A1C17]/60 mt-1 font-bold">
+                        <span>1 (Minor ache)</span>
+                        <span>5 (Limits activity)</span>
+                        <span>10 (Severe inability)</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 3: DIAGNOSIS IMAGING & MODALITY PREFERENCE */}
+                {step === 3 && (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm sm:text-base font-serif-clinical font-bold text-[#0A1C17] mb-1.5">
+                        3. Diagnostic Imaging Status
+                      </label>
+                      <div className="space-y-1.5">
+                        {[
+                          "No MRI or X-Ray taken yet (Need evaluation)",
+                          "MRI / X-Ray completed (Will bring images/report)",
+                          "Post-surgical protocol (Doctor referral available)"
+                        ].map((img, idx) => (
+                          <button
+                            type="button"
+                            key={idx}
+                            onClick={() => setImagingStatus(img)}
+                            className={`w-full p-2.5 rounded-xl text-left text-xs sm:text-[13px] font-semibold transition-all cursor-pointer border ${
+                              imagingStatus === img
+                                ? 'bg-[#0A1C17] text-white border-[#0A1C17] shadow-md'
+                                : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:bg-[#0A1C17]/5'
+                            }`}
+                          >
+                            {img}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm sm:text-base font-serif-clinical font-bold text-[#0A1C17] mb-1.5">
+                        Preferred Appointment Format
+                      </label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                        {[
+                          "Dedicated Home Visit Therapy (Bengaluru & Bommasandra)",
+                          "High-Def Online Video Tele-Rehab (All India)"
+                        ].map((fmt, idx) => (
+                          <button
+                            type="button"
+                            key={idx}
+                            onClick={() => setPreferredModality(fmt)}
+                            className={`p-3 rounded-xl text-xs font-mono-tech font-bold text-left transition-all cursor-pointer border-2 ${
+                              preferredModality === fmt
+                                ? 'bg-[#C2593B] text-white border-[#C2593B] shadow-md'
+                                : 'bg-white text-[#0A1C17] border-[#0A1C17]/20 hover:border-[#0A1C17]'
+                            }`}
+                          >
+                            {fmt}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* STEP 4: PATIENT IDENTIFICATION & FINAL NOTES */}
+                {step === 4 && (
+                  <div className="space-y-3 sm:space-y-3.5">
+                    <div>
+                      <label className="block text-base sm:text-lg font-serif-clinical font-bold text-[#0A1C17] mb-0.5">
+                        4. Patient Details & Clinical Notes
+                      </label>
+                      <p className="text-[11px] font-mono-tech text-[#0A1C17]/70 font-semibold">
+                        Strictly confidential under Medical Ethics standards.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <div>
+                        <label className="block text-[11px] font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
+                          Your Full Name
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g., Karthik Narayanan"
+                          value={patientName}
+                          onChange={(e) => setPatientName(e.target.value)}
+                          className="w-full p-2.5 sm:p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-xs sm:text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[11px] font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
+                          Phone Number / WhatsApp
+                        </label>
+                        <input
+                          type="tel"
+                          placeholder="e.g., +91 98840 12345"
+                          value={patientPhone}
+                          onChange={(e) => setPatientPhone(e.target.value)}
+                          className="w-full p-2.5 sm:p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-xs sm:text-sm focus:outline-none focus:border-[#C2593B] transition-colors font-semibold"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-mono-tech font-bold uppercase text-[#0A1C17] mb-1">
+                        Brief Description of Symptoms (Optional)
+                      </label>
+                      <textarea
+                        rows="2"
+                        placeholder="e.g., Severe lower back ache during commute, or neck stiffness..."
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
+                        className="w-full p-2.5 sm:p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-xs sm:text-sm focus:outline-none focus:border-[#C2593B] transition-colors resize-none font-medium"
+                      ></textarea>
+                    </div>
+
+                    {/* Transparent Fee Assurance */}
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-2.5 shadow-sm">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                      <div>
+                        <h5 className="text-[11px] font-mono-tech font-bold uppercase text-emerald-950 tracking-wide">100% Ethical Medical Fee Guarantee & Private Triage</h5>
+                        <p className="text-[11px] text-[#0A1C17]/85 leading-tight font-sans mt-0.5 font-normal">
+                          No online prepayment required. Your consultation format, doctor timing, and professional fee will be verified via WhatsApp prior to your session.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* NAVIGATION CONTROLS (Permanently anchored without any scrolling!) */}
+              <div className="mt-3 pt-3 sm:mt-4 sm:pt-4 border-t border-[#0A1C17]/15 flex items-center justify-between flex-shrink-0 z-20 bg-[#FAF8F5]">
                 {step > 1 ? (
                   <button
                     type="button"
                     onClick={handlePrev}
-                    className="px-6 py-3 rounded-xl bg-white text-[#0A1C17] border border-[#0A1C17]/20 hover:bg-[#0A1C17]/5 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2"
+                    className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-white text-[#0A1C17] border border-[#0A1C17]/20 hover:bg-[#0A1C17]/5 font-bold text-xs uppercase tracking-wider transition-all cursor-pointer flex items-center gap-2"
                   >
-                    <ArrowLeft className="w-4 h-4" />
+                    <ArrowLeft className="w-3.5 h-3.5" />
                     <span>Previous</span>
                   </button>
                 ) : (
@@ -416,17 +418,17 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                   <button
                     type="button"
                     onClick={handleNext}
-                    className="px-8 py-3.5 rounded-xl bg-[#0A1C17] hover:bg-[#C2593B] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer flex items-center gap-2"
+                    className="px-7 sm:px-8 py-2.5 sm:py-3 rounded-xl bg-[#0A1C17] hover:bg-[#C2593B] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer flex items-center gap-2"
                   >
                     <span>Next Phase</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 ) : (
                   <button
                     type="submit"
-                    className="px-9 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center gap-2.5"
+                    className="px-6 sm:px-8 py-3 rounded-xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-black text-xs sm:text-sm uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all cursor-pointer flex items-center gap-2"
                   >
-                    <MessageCircle className="w-5 h-5 fill-current" />
+                    <MessageCircle className="w-4 h-4 fill-current" />
                     <span>📲 Confirm & Book on WhatsApp</span>
                   </button>
                 )}

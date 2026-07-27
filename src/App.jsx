@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import SymptomMap from './components/SymptomMap';
@@ -19,6 +19,14 @@ function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [triageInitialSymptom, setTriageInitialSymptom] = useState("Cervical Spine & Neck Tension");
+
+  // Enforce manual scroll restoration so every page refresh opens cleanly at the absolute top of the Hero section!
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleOpenTriageWithSymptom = (symptomName) => {
     if (symptomName) {
