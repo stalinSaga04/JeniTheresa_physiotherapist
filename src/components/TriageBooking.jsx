@@ -10,7 +10,7 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
   const [duration, setDuration] = useState("Chronic (Over 3 months)");
   const [painLevel, setPainLevel] = useState(6);
   const [imagingStatus, setImagingStatus] = useState("No MRI or X-Ray taken yet");
-  const [preferredModality, setPreferredModality] = useState("In-Person Clinic Assessment (Recommended)");
+  const [preferredModality, setPreferredModality] = useState("Dedicated Home Visit Therapy (Bengaluru & Bommasandra - Recommended)");
   const [patientName, setPatientName] = useState("");
   const [patientPhone, setPatientPhone] = useState("");
   const [notes, setNotes] = useState("");
@@ -298,8 +298,8 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {[
-                        "In-Person Clinic Assessment (Recommended)",
-                        "Virtual Tele-Rehab Triage (Video Call)"
+                        "Dedicated Home Visit Therapy (Bengaluru & Bommasandra - Recommended)",
+                        "High-Def Online Video Tele-Rehab (All India)"
                       ].map((fmt, idx) => (
                         <button
                           type="button"
@@ -375,9 +375,9 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                   <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 shadow-sm">
                     <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
                     <div>
-                      <h5 className="text-xs font-mono-tech font-bold uppercase text-emerald-950 tracking-wide">100% Ethical Medical Fee Guarantee</h5>
+                      <h5 className="text-xs font-mono-tech font-bold uppercase text-emerald-950 tracking-wide">100% Ethical Medical Fee Guarantee & Private Triage</h5>
                       <p className="text-xs text-[#0A1C17]/85 leading-relaxed font-sans mt-0.5 font-normal">
-                        No online prepayment required to request a triage assessment. Your consultation format (In-Clinic at Anna Nagar / Online Tele-Rehab), doctor slot timing, and all-inclusive professional consultation fee will be explicitly verified directly with Dr. Jeni's clinical desk on WhatsApp prior to your session.
+                        No online prepayment required to request a triage assessment. Your consultation format (Dedicated Home Visit in Bangalore / Online Video Tele-Rehab), doctor slot timing, and all-inclusive professional consultation fee will be explicitly verified via Dr. Jeni's encrypted private booking desk on WhatsApp prior to your session.
                       </p>
                     </div>
                   </div>

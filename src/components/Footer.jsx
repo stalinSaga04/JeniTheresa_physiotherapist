@@ -2,7 +2,7 @@ import React from 'react';
 import { Activity, MapPin, Phone, Mail, ShieldAlert, ArrowUp } from 'lucide-react';
 import { CREDENTIALS, CLINIC_INFO } from '../data/clinicalData';
 
-const Footer = ({ onOpenTriage }) => {
+const Footer = ({ onOpenTriage, onOpenAdmin }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -57,6 +57,7 @@ const Footer = ({ onOpenTriage }) => {
               Clinical Portal
             </span>
             <ul className="space-y-3 font-semibold text-sm text-[#FAF8F5]/80">
+              <li><button onClick={onOpenAdmin} className="hover:text-white transition-colors cursor-pointer text-left">Practice Management Suite</button></li>
               <li><a href="#symptom-map" className="hover:text-white transition-colors">Symptom Diagnostic Map</a></li>
               <li><a href="#timeline" className="hover:text-white transition-colors">Honest Recovery Timeline</a></li>
               <li><a href="#ergo-lab" className="hover:text-white transition-colors">Ergonomic Strain Calculator</a></li>
@@ -83,7 +84,7 @@ const Footer = ({ onOpenTriage }) => {
           {/* Column 5: Location & Timing */}
           <div className="space-y-4">
             <span className="text-xs font-mono-tech uppercase font-bold text-[#D2A13E] tracking-wider block mb-1">
-              Clinic Contact & Triage
+              Home Visit & Tele-Rehab Triage
             </span>
             <div className="space-y-2.5 text-xs text-[#FAF8F5]/85">
               <div className="flex items-start gap-2.5">
@@ -92,7 +93,7 @@ const Footer = ({ onOpenTriage }) => {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C2593B] shrink-0" />
-                <span className="font-mono-tech font-bold">{CLINIC_INFO.phone} (Direct WhatsApp Triage)</span>
+                <span className="font-mono-tech font-bold text-emerald-300">{CLINIC_INFO.phoneDisplay || "🔐 Private & Secure Medical Triage Line"}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C2593B] shrink-0" />

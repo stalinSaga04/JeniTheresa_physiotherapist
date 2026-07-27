@@ -1,211 +1,215 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SYMPTOM_AREAS } from '../data/clinicalData';
-import { AlertTriangle, CheckCircle2, XCircle, Activity, ChevronRight, HelpCircle, Sparkles, ArrowUpRight } from 'lucide-react';
-import SpineIllustration from './SpineIllustration';
+import { SYMPTOM_AREAS, CLINIC_INFO } from '../data/clinicalData';
+import { Activity, CheckCircle2, AlertTriangle, ShieldCheck, ArrowRight, Clock, Sparkles, Flame, HelpCircle } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollAnimations';
 
 const SymptomMap = ({ onSelectSymptomForTriage }) => {
   const [selectedArea, setSelectedArea] = useState(SYMPTOM_AREAS[0]);
   const scrollRef = useScrollReveal();
 
-  // Anatomical hotspots mapping for interactive schematic illustration
-  const hotspots = [
-    { id: 'cervical', name: 'Cervical Neck', y: '16%', x: '50%', label: 'Cervical Spine' },
-    { id: 'rotator', name: 'Shoulder Capsule', y: '28%', x: '66%', label: 'Rotator Cuff' },
-    { id: 'lumbar', name: 'Lumbar Spine & Core', y: '46%', x: '50%', label: 'Lumbar & Core' },
-    { id: 'patellar', name: 'Patellar Knee', y: '71%', x: '60%', label: 'Patellofemoral' },
-    { id: 'achilles', name: 'Achilles & Plantar', y: '91%', x: '62%', label: 'Achilles & Ankle' },
-  ];
+  const handleWhatsAppConsult = (areaName) => {
+    const text = `👋 *Hi Dr. Jeni Theresa Rehab Desk,* \n\nI experienced symptoms related to *${areaName}*. I would like to check available timings and fee details for a dedicated Home Visit in ${CLINIC_INFO.city} / Online Video Rehab.\n\nPlease let me know your consultation schedule!`;
+    const encoded = encodeURIComponent(text);
+    window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
+  };
 
   return (
-    <section ref={scrollRef} id="symptom-map" className="py-24 md:py-32 bg-[#163029] text-[#FAF8F5] relative overflow-hidden">
-      {/* Background radial atmosphere */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[#0A1C17] blur-[140px] opacity-70 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[#C2593B]/10 blur-[120px] pointer-events-none" />
+    <section ref={scrollRef} id="symptom-map" className="py-24 md:py-32 bg-[#0A1C17] text-[#FAF8F5] relative overflow-hidden">
+      
+      {/* Dynamic ambient atmosphere glows */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[450px] bg-[#C2593B]/10 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
         
-        {/* Editorial Section Header */}
-        <div className="max-w-3xl mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-xs font-mono-tech tracking-widest uppercase mb-4 text-emerald-300 font-semibold border border-white/15">
-            <Activity className="w-3.5 h-3.5" />
-            <span>Interactive Biomechanical Diagnostic Engine</span>
+        {/* Section Heading & SEO Intro */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-mono-tech uppercase font-bold tracking-wider mb-4 shadow-sm">
+            <Sparkles className="w-3.5 h-3.5 text-[#D2A13E]" />
+            <span>Interactive Biomechanical Diagnostic Vault</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-clinical font-bold tracking-tight mb-5 leading-tight text-white">
-            Where Is Your Body Signifying <br />
-            <span className="italic font-editorial font-normal text-[#C2593B]">Mechanical Compensation?</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-clinical font-black tracking-tight text-white mb-4 leading-tight">
+            Where Is Your Body Signaling <br className="hidden sm:inline" />
+            <span className="italic font-editorial font-normal text-[#D2A13E]">Mechanical Friction & Pain?</span>
           </h2>
-          <p className="text-base md:text-lg text-[#FAF8F5]/80 font-normal leading-relaxed">
-            Select an anatomical friction zone below. Explore the genuine orthopedic catalysts behind recurring soreness, why temporary treatments fail, and how Dr. Jeni Theresa engineers long-term tissue load resilience.
+          <p className="text-sm sm:text-base text-[#FAF8F5]/80 max-w-2xl mx-auto font-normal leading-relaxed">
+            Select an orthopedic problem below to see the anatomical science behind your pain, why surface pain balms fail, and Dr. Jeni's dedicated home rehab solution.
           </p>
         </div>
 
-        {/* Diagnostic Layout: Interactive Map vs Clinical Analysis Vault */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          
-          {/* Left / Center Column: Anatomy Schematic & Selector Buttons */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
-            
-            {/* Schematic Anatomical Hotspot Selector */}
-            <div className="relative bg-[#0A1C17] border border-white/15 rounded-3xl p-6 h-[480px] flex items-center justify-center overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-clinical-grid opacity-20 pointer-events-none" />
-              
-              {/* ANIMATED SVG SKELETON — Reacts to selected zone */}
-              <div className="relative w-full h-full p-4 z-10">
-                <SpineIllustration activeZone={selectedArea.id} className="drop-shadow-lg" />
-              </div>
-
-              {/* Hotspot overlay buttons on top of spine */}
-              {hotspots.map((spot) => {
-                const isSelected = selectedArea.id === spot.id;
-                return (
-                  <button
-                    key={spot.id}
-                    onClick={() => {
-                      const target = SYMPTOM_AREAS.find(s => s.id === spot.id);
-                      if (target) setSelectedArea(target);
-                    }}
-                    style={{ top: spot.y, left: spot.x }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 group flex items-center gap-2 transition-all cursor-pointer z-20 ${
-                      isSelected ? 'scale-110 z-30' : 'hover:scale-105 opacity-85 hover:opacity-100'
-                    }`}
-                  >
-                    <span className={`px-3 py-1.5 rounded-xl font-mono-tech text-xs font-bold whitespace-nowrap shadow-md border transition-all ${
-                      isSelected ? 'bg-[#C2593B] text-white border-white/30 shadow-[0_0_20px_rgba(194,89,59,0.4)]' : 'bg-[#0A1C17]/90 text-[#FAF8F5] border-white/20 group-hover:border-white/50'
-                    }`}>
-                      {spot.label}
-                    </span>
-                  </button>
-                );
-              })}
-
-              <div className="absolute bottom-4 left-4 text-[11px] font-mono-tech text-white/50 bg-black/40 px-3 py-1 rounded-full backdrop-blur-xs">
-                👆 TAP HOTSPOTS TO EXAMINE
-              </div>
-            </div>
-
-            {/* Quick List Selector (Mobile friendly fallback) */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-              {SYMPTOM_AREAS.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => setSelectedArea(item)}
-                  className={`p-3 rounded-2xl font-mono-tech text-xs font-bold transition-all text-left flex items-center justify-between cursor-pointer border ${
-                    selectedArea.id === item.id 
-                      ? 'bg-[#C2593B] text-white border-white/30 shadow-md' 
-                      : 'bg-[#0A1C17]/60 text-[#FAF8F5]/80 border-white/10 hover:bg-[#0A1C17] hover:text-white'
-                  }`}
-                >
-                  <span className="truncate">{item.name.split(' ')[0]}</span>
-                  <ChevronRight className={`w-3.5 h-3.5 ${selectedArea.id === item.id ? 'text-white' : 'text-[#C2593B]'}`} />
-                </button>
-              ))}
-            </div>
-
-          </div>
-
-          {/* Right Column: Dynamic Deep-Dive Clinical Analysis Panel */}
-          <div className="lg:col-span-7">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedArea.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4 }}
-                className="bg-[#0A1C17] border border-white/15 rounded-3xl p-6 md:p-9 shadow-2xl relative"
+        {/* TOP INTERACTIVE TAB CARDS (Replaced clunky side navigation with clean, readable selection tiles) */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-10">
+          {SYMPTOM_AREAS.map((area, idx) => {
+            const active = selectedArea.id === area.id;
+            return (
+              <button
+                key={area.id}
+                onClick={() => setSelectedArea(area)}
+                className={`p-4 rounded-2xl text-left transition-all duration-250 flex flex-col justify-between border-2 cursor-pointer relative overflow-hidden group ${
+                  active 
+                    ? 'bg-[#163029] text-white border-[#D2A13E] shadow-[0_8px_30px_rgba(210,161,62,0.25)] -translate-y-1' 
+                    : 'bg-white/[0.04] text-[#FAF8F5]/80 border-white/10 hover:border-white/30 hover:bg-white/[0.07]'
+                }`}
               >
-                {/* Top header & urgency level */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-6 border-b border-white/10 mb-6">
-                  <div>
-                    <span className="text-xs font-mono-tech uppercase text-[#C2593B] font-bold tracking-wider">
-                      Target Area #0{SYMPTOM_AREAS.findIndex(i => i.id === selectedArea.id) + 1}
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-serif-clinical font-black text-white mt-1">
-                      {selectedArea.name}
-                    </h3>
-                    <p className="text-xs font-mono-tech text-emerald-300 mt-1">
-                      {selectedArea.tagline}
-                    </p>
-                  </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`text-[10px] font-mono-tech font-black px-2 py-0.5 rounded uppercase ${
+                    active ? 'bg-[#D2A13E] text-[#0A1C17]' : 'bg-white/10 text-white/70'
+                  }`}>
+                    Zone 0{idx + 1}
+                  </span>
+                  {active && <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm" />}
+                </div>
+                <div>
+                  <h3 className="text-sm md:text-base font-serif-clinical font-bold leading-tight group-hover:text-white transition-colors">
+                    {area.name.split('&')[0]}
+                  </h3>
+                  <span className="text-[11px] font-mono-tech text-emerald-300/85 font-medium line-clamp-1 mt-1">
+                    {area.tagline.split('&')[0]}
+                  </span>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* DYNAMIC TWO-COLUMN DIAGNOSTIC SHOWCASE */}
+        <div className="bg-[#163029]/90 border-2 border-white/15 rounded-3xl p-6 sm:p-9 md:p-11 shadow-[0_20px_60px_rgba(0,0,0,0.45)] relative backdrop-blur-md">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedArea.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-11 items-start"
+            >
+              
+              {/* Left Column: Scientific Biomedical Artwork & Fast Estimate */}
+              <div className="lg:col-span-5 flex flex-col gap-4">
+                <div className="relative h-[340px] sm:h-[420px] rounded-3xl overflow-hidden border-2 border-white/15 shadow-2xl bg-[#0A1C17]">
+                  <img 
+                    src={selectedArea.image || "/images/biomech_spine.png"} 
+                    alt={selectedArea.name}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17] via-transparent to-black/30 pointer-events-none" />
                   
-                  <div className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/10 text-[11px] font-mono-tech text-white/90 font-semibold self-start sm:self-center shrink-0 flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#D2A13E]" />
-                    <span>{selectedArea.sessionEstimate}</span>
+                  {/* Floating diagnostic overlay pill */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                    <span className="px-3 py-1.5 rounded-xl bg-black/60 backdrop-blur-md text-emerald-300 font-mono-tech font-bold text-xs border border-emerald-500/30 shadow">
+                      🔬 Anatomical Focus: {selectedArea.name}
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-[#0A1C17]/85 backdrop-blur-md border border-white/15 text-xs text-[#FAF8F5] space-y-1">
+                    <div className="flex items-center justify-between text-[#D2A13E] font-mono-tech font-bold uppercase text-[11px]">
+                      <span>Recommended Treatment Horizon:</span>
+                      <span>🏠 Bedside Home Care</span>
+                    </div>
+                    <p className="font-serif font-bold text-sm text-white">
+                      {selectedArea.sessionEstimate}
+                    </p>
                   </div>
                 </div>
 
-                {/* Symptom profile */}
-                <div className="mb-6">
-                  <p className="text-sm md:text-base text-[#FAF8F5]/90 font-normal leading-relaxed bg-white/5 p-4 rounded-2xl border border-white/10 italic font-serif">
+                {/* Direct Urgency advice card */}
+                <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-400/30 flex items-start gap-3 text-xs">
+                  <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="text-amber-200 font-serif-clinical text-sm block">Clinical Guidance & Precaution:</strong>
+                    <span className="text-white/85 leading-snug">{selectedArea.urgencyLevel}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Clean, Highly Readable Card Matrix (Zero Newspaper Wall!) */}
+              <div className="lg:col-span-7 space-y-6">
+                
+                {/* Header Profile */}
+                <div className="pb-5 border-b border-white/15">
+                  <span className="text-xs font-mono-tech uppercase font-bold text-[#D2A13E] tracking-wider block mb-1">
+                    Complete Clinical Profile • South Bengaluru
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif-clinical font-black text-white tracking-tight">
+                    {selectedArea.name}
+                  </h3>
+                  <p className="text-sm text-white/85 font-normal mt-2 leading-relaxed bg-white/5 p-3.5 rounded-2xl border border-white/10 italic font-serif">
                     "{selectedArea.symptomSummary}"
                   </p>
                 </div>
 
-                {/* Root Biomechanical Catalysts */}
-                <div className="mb-6">
-                  <h4 className="text-xs font-mono-tech uppercase text-[#FAF8F5]/60 font-bold tracking-widest mb-3 flex items-center gap-2">
-                    <Activity className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>True Mechanical Catalysts (Why it occurs)</span>
+                {/* 1. Why You Feel Pain (Plain English Root Causes) */}
+                <div className="space-y-3">
+                  <h4 className="text-xs font-mono-tech uppercase font-bold text-emerald-300 tracking-wider flex items-center gap-2">
+                    <Flame className="w-4 h-4 text-emerald-400" />
+                    <span>1. Why You Are Feeling This Pain (Real Mechanical Causes):</span>
                   </h4>
-                  <div className="space-y-2">
-                    {selectedArea.rootCauses.map((cause, i) => (
-                      <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-2 shrink-0" />
-                        <span className="text-sm font-medium text-white/95 leading-snug">{cause}</span>
+                  <div className="grid grid-cols-1 gap-2.5">
+                    {selectedArea.rootCauses.map((cause, cIdx) => (
+                      <div key={cIdx} className="p-3.5 rounded-2xl bg-black/30 border border-white/10 flex items-center gap-3 text-xs sm:text-sm text-white/95 font-medium">
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                        <span>{cause}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Why Passive Care / Band-Aids Fail */}
-                <div className="mb-8 bg-[#C2593B]/10 border border-[#C2593B]/40 rounded-2xl p-5 relative">
-                  <div className="flex items-center gap-2 text-[#C2593B] font-bold text-xs uppercase tracking-wider font-mono-tech mb-2">
-                    <XCircle className="w-4 h-4 shrink-0" />
-                    <span>The "Band-Aid" Mistake (What Conventional Mills Do)</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-[#FAF8F5]/90 leading-relaxed font-normal">
-                    {selectedArea.commonMistakes}
-                  </p>
+                {/* 2. Why Band-Aid Ointments & Machines Fail */}
+                <div className="p-4.5 rounded-2xl bg-[#C2593B]/15 border border-[#C2593B]/40 text-xs sm:text-sm text-white/95 leading-relaxed">
+                  <strong className="text-[#C2593B] font-mono-tech font-bold uppercase block text-xs mb-1">
+                    ⚠️ Why Heat Pads & Painkiller Balms Don't Cure It:
+                  </strong>
+                  {selectedArea.commonMistakes}
                 </div>
 
-                {/* Dr. Jeni Theresa's Active Protocol */}
-                <div className="mb-8">
-                  <h4 className="text-xs font-mono-tech uppercase text-emerald-400 font-bold tracking-widest mb-3 flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                    <span>Dr. Jeni Theresa's Active Kinetic Solution</span>
+                {/* 3. Dr. Jeni's Bedside Active Healing Solution */}
+                <div className="space-y-3 pt-2">
+                  <h4 className="text-xs font-mono-tech uppercase font-bold text-[#D2A13E] tracking-wider flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#D2A13E]" />
+                    <span>2. Dr. Jeni Theresa's Active Home Visit Healing Protocol:</span>
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {selectedArea.jeniTreatment.map((item, index) => (
-                      <div key={index} className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-white/95 font-medium leading-relaxed flex flex-col justify-between">
+                    {selectedArea.jeniTreatment.map((item, idx) => (
+                      <div key={idx} className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-xs text-white/95 font-medium leading-relaxed flex flex-col justify-between shadow-sm">
                         <span>{item}</span>
-                        <span className="mt-2 text-[10px] font-mono-tech text-emerald-400 uppercase font-bold">Phase 0{index + 1} Step</span>
+                        <span className="mt-2.5 text-[10px] font-mono-tech font-bold text-emerald-400 uppercase tracking-wider block">
+                          Phase 0{idx + 1} • Bedside Rehab
+                        </span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Urgency warning & action button */}
-                <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex items-center gap-2 text-xs text-amber-300/90 font-mono-tech">
-                    <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
-                    <span><strong>Clinical Guidance:</strong> {selectedArea.urgencyLevel}</span>
+                {/* Action Controls */}
+                <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="text-xs font-mono-tech text-white/80">
+                    <span>💡 <strong>Transparent Fee Guidance:</strong> Initial Home Assessment ₹850</span>
+                    <span className="block text-emerald-400 text-[11px]">No Bangalore clinic travel required • Bedside recovery</span>
                   </div>
-                  
-                  <button
-                    onClick={() => onSelectSymptomForTriage(selectedArea.name)}
-                    className="px-6 py-3 rounded-xl bg-[#C2593B] hover:bg-[#A84528] text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer shrink-0 flex items-center justify-center gap-2 group"
-                  >
-                    <span>Book Triage For This Area</span>
-                    <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </button>
+
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => handleWhatsAppConsult(selectedArea.name)}
+                      className="flex-1 sm:flex-initial px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-extrabold text-xs uppercase tracking-wider shadow-[0_8px_25px_rgba(37,211,102,0.3)] hover:shadow-[0_12px_30px_rgba(37,211,102,0.45)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <span>Check Timings & Fees</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+
+                    <button
+                      onClick={() => onOpenTriage && onOpenTriage()}
+                      className="px-5 py-3.5 rounded-2xl bg-[#D2A13E] hover:bg-[#B8892D] text-[#0A1C17] font-bold text-xs uppercase tracking-wider transition-all cursor-pointer hidden md:inline-flex"
+                    >
+                      Triage Form &rarr;
+                    </button>
+                  </div>
                 </div>
 
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </div>
 
+            </motion.div>
+          </AnimatePresence>
         </div>
 
       </div>
@@ -214,3 +218,4 @@ const SymptomMap = ({ onSelectSymptomForTriage }) => {
 };
 
 export default SymptomMap;
+

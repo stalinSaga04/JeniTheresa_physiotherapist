@@ -68,7 +68,7 @@ const Hero = ({ onOpenTriage }) => {
           </span>
           <span className="text-xs md:text-sm font-semibold tracking-wider uppercase text-[#0A1C17] flex items-center gap-2">
             <MapPin className="w-3.5 h-3.5 text-[#C2593B]" />
-            Accepting Patients • {CLINIC_INFO.city}, {CLINIC_INFO.state}
+            Home Visits & Tele-Rehab • Bommasandra, Bengaluru
           </span>
         </motion.div>
 
@@ -119,7 +119,7 @@ const Hero = ({ onOpenTriage }) => {
               transition={{ duration: 0.7, delay: 0.7 }}
               className="text-base sm:text-lg md:text-xl text-[#0A1C17]/85 font-normal leading-relaxed max-w-2xl mb-10 font-sans"
             >
-              Led by <strong className="text-[#0A1C17] font-bold">Dr. Jeni Theresa, PT, DPT</strong> in <strong>Anna Nagar, {CLINIC_INFO.city}</strong>, our practice provides advanced personalized physiotherapy. Whether treating joint pain, neurological conditions, or post-surgical recovery, we focus on 100% one-on-one doctor care without reliance on temporary painkillers or passive machines.
+              Led by <strong className="text-[#0A1C17] font-bold">Dr. Jeni Theresa, PT, DPT</strong> across <strong>Bommasandra, Electronic City & Bengaluru</strong>, our specialized practice brings clinical-grade physical therapy directly to the comfort and privacy of your home or bedside, alongside high-definition video tele-rehab across India. Why suffer through exhausting Bangalore traffic when in acute pain? We deliver 100% one-on-one doctor care in your living room without temporary pain pills or crowded machine mills.
             </motion.p>
 
             {/* Call To Actions with magnetic hover */}
@@ -142,7 +142,7 @@ const Hero = ({ onOpenTriage }) => {
                 onClick={onOpenTriage}
                 className="magnetic-btn h-14 px-7 rounded-2xl bg-[#0A1C17]/5 border border-[#0A1C17]/20 text-[#0A1C17] font-bold text-sm hover:bg-[#0A1C17] hover:text-[#FAF8F5] hover:-translate-y-0.5 transition-all cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Book Doctor Consultation</span>
+                <span>Book Home Visit or Tele-Rehab</span>
               </button>
             </motion.div>
 
@@ -155,15 +155,15 @@ const Hero = ({ onOpenTriage }) => {
             >
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>100% Doctor-to-Patient Hands-on Time</span>
+                <span>100% Dedicated Home Visit Doctor Time</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Board Certified Specialist</span>
+                <span>Zero Bangalore Traffic Stress</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
-                <span>Zero Passive Machine Mill Protocols</span>
+                <span>Encrypted & Private Triage Desk</span>
               </div>
             </motion.div>
 
@@ -246,7 +246,7 @@ const Hero = ({ onOpenTriage }) => {
                     </div>
 
                     <p className="text-xs text-white/85 line-clamp-2 italic mb-4 font-serif leading-relaxed">
-                      "Dedicated one-on-one sports and orthopedic rehabilitation without relying on pain pills or temporary machine mills."
+                      "Dedicated in-home orthopedic and stroke bedside recovery across Bengaluru without relying on pain pills or general machine mills."
                     </p>
 
                     {/* Action trigger button */}

@@ -30,7 +30,7 @@ const ErgoCalculator = ({ onOpenTriage }) => {
   const riskData = tip;
 
   const handleShareScore = () => {
-    const text = `📊 *My Ergonomic Risk Index:* ${score}% (${riskData.status})\n\nHi Dr. Jeni Theresa, I tested my postural index on your clinical engine (${deskHours} hrs daily desk sitting, pain level ${painLevel}/10). I would love to check consultation times in ${CLINIC_INFO.city} to discuss structural correction.`;
+    const text = `📊 *My Ergonomic Risk Index:* ${score}% (${riskData.status})\n\nHi Dr. Jeni Theresa, I tested my postural index on your clinical engine (${deskHours} hrs daily desk sitting, pain level ${painLevel}/10). I would love to check available Home Visit / Online Video Tele-Rehab consultation times across ${CLINIC_INFO.city} to discuss structural correction.`;
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Calendar, Activity, ChevronRight, Sparkles } from 'lucide-react';
 
-const Navbar = ({ onOpenTriage }) => {
+const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -79,8 +79,16 @@ const Navbar = ({ onOpenTriage }) => {
             ))}
           </nav>
 
-          {/* ONLY Book Button in header as requested — visible on all devices, no WhatsApp/call link */}
+          {/* Action Desk: Book Button & Discreet Admin Suite Trigger */}
           <div className="flex items-center gap-2.5 sm:gap-3">
+            <button
+              onClick={onOpenAdmin}
+              className="px-3.5 py-2 rounded-xl bg-emerald-950 text-emerald-300 hover:bg-emerald-900 font-mono-tech font-bold text-[11px] tracking-wider uppercase border border-emerald-500/30 transition-all cursor-pointer hidden md:flex items-center gap-1.5 shadow-xs"
+              title="Open Dr. Jeni Theresa's Clinical CRM & Practice Management System"
+            >
+              <span>⚙️ Practice Console (PMS)</span>
+            </button>
+
             <button
               onClick={onOpenTriage}
               className="px-4.5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] font-bold text-xs tracking-wider uppercase shadow-md sm:shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-2 group shrink-0"
@@ -138,6 +146,14 @@ const Navbar = ({ onOpenTriage }) => {
                     <ChevronRight className="w-4 h-4 text-[#D2A13E]" />
                   </button>
                 ))}
+
+                <button
+                  onClick={() => { setIsOpen(false); onOpenAdmin(); }}
+                  className="w-full py-3 px-4 rounded-xl bg-[#163029] text-emerald-300 border border-emerald-500/30 font-mono-tech text-xs font-bold flex items-center justify-between transition-colors cursor-pointer"
+                >
+                  <span>⚙️ Launch Practice Admin Console (PMS)</span>
+                  <span className="bg-[#D2A13E] text-[#0A1C17] px-2 py-0.5 rounded text-[10px] uppercase font-black">Admin</span>
+                </button>
 
                 <div className="h-[1px] bg-white/10 my-3" />
 

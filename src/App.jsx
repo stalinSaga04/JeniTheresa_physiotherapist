@@ -11,9 +11,11 @@ import TriageBooking from './components/TriageBooking';
 import ClinicalTransparency from './components/ClinicalTransparency';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Specialties from './components/Specialties';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [triageInitialSymptom, setTriageInitialSymptom] = useState("Cervical Spine & Neck Tension");
 
   const handleOpenTriageWithSymptom = (symptomName) => {
@@ -26,8 +28,11 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF8F5] text-[#0A1C17] font-['Plus_Jakarta_Sans',sans-serif]">
       
-      {/* Editorial Clinical Navbar */}
-      <Navbar onOpenTriage={() => setIsTriageOpen(true)} />
+      {/* Editorial Clinical Navbar with Practice PMS Trigger */}
+      <Navbar 
+        onOpenTriage={() => setIsTriageOpen(true)} 
+        onOpenAdmin={() => setIsAdminOpen(true)}
+      />
 
       {/* Hero Showcase & Credential Highlights */}
       <main className="flex-1">
@@ -56,16 +61,25 @@ function App() {
       </main>
 
       {/* Professional Practice Footer & Disclaimer */}
-      <Footer onOpenTriage={() => setIsTriageOpen(true)} />
+      <Footer 
+        onOpenTriage={() => setIsTriageOpen(true)}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+      />
 
-      {/* New Idea 4: Master 4-Step Clinical Triage & Direct WhatsApp Concierge Modal */}
+      {/* Master 4-Step Clinical Triage & Direct WhatsApp Concierge Modal */}
       <TriageBooking
         isOpen={isTriageOpen}
         onClose={() => setIsTriageOpen(false)}
         initialSymptom={triageInitialSymptom}
       />
       
-      {/* New Idea 5: Persistent Floating WhatsApp Triage Widget */}
+      {/* Practice Management System (PMS) Admin Console Modal */}
+      <AdminDashboard
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
+      />
+
+      {/* Persistent Floating WhatsApp Triage Widget */}
       <FloatingWhatsApp onOpenTriage={() => setIsTriageOpen(true)} />
       
     </div>
@@ -73,3 +87,4 @@ function App() {
 }
 
 export default App;
+

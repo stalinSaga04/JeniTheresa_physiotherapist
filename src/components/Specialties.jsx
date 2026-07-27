@@ -15,6 +15,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Orthopaedic Rehabilitation",
       subtitle: "Restoring Joint Mechanics & Structural Freedom",
       icon: Bone,
+      image: "/images/biomech_spine.png",
       color: "from-emerald-500/20 to-emerald-900/40",
       border: "border-emerald-500/30 text-emerald-400",
       badgeBg: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
@@ -33,6 +34,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Neurological Rehabilitation",
       subtitle: "Neuroplasticity & Motor Control Recovery",
       icon: Brain,
+      image: "/images/neuro_stroke.png",
       color: "from-teal-500/20 to-teal-900/40",
       border: "border-teal-500/30 text-teal-400",
       badgeBg: "bg-teal-500/10 text-teal-300 border-teal-500/20",
@@ -49,6 +51,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Post-Surgical Rehabilitation",
       subtitle: "Accelerated Pre- & Post-Operative Tissue Recovery",
       icon: Activity,
+      image: "/images/post_surgical.png",
       color: "from-amber-500/20 to-amber-900/40",
       border: "border-amber-500/30 text-amber-400",
       badgeBg: "bg-amber-500/10 text-amber-300 border-amber-500/20",
@@ -65,6 +68,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Pediatric Physiotherapy",
       subtitle: "Gentle, Developmental & Nurturing Child Therapies",
       icon: Baby,
+      image: "/images/pediatric_rehab.png",
       color: "from-[#C2593B]/20 to-[#A84528]/40",
       border: "border-[#C2593B]/40 text-[#C2593B]",
       badgeBg: "bg-[#C2593B]/15 text-[#C2593B] border-[#C2593B]/30",
@@ -79,7 +83,7 @@ const Specialties = ({ onOpenTriage }) => {
   ];
 
   const handleWhatsAppSpecialty = (specialtyTitle, prompt) => {
-    const text = `${prompt}an assessment at your ${CLINIC_INFO.city} practice.\n\nCould you let us know your upcoming evaluation timings?`;
+    const text = `${prompt}a dedicated Home Visit assessment across ${CLINIC_INFO.city} / Online Video Tele-Rehab.\n\nCould you confirm your available doctor evaluation timings and procedure?`;
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
@@ -129,8 +133,8 @@ const Specialties = ({ onOpenTriage }) => {
               <h4 className="font-serif-clinical font-bold text-sm text-white leading-tight">
                 Dr. Jeni Theresa, DPT
               </h4>
-              <span className="text-xs font-mono-tech text-white/70">
-                Anna Nagar • {CLINIC_INFO.city}
+              <span className="text-xs font-mono-tech text-white/80">
+                Bommasandra • {CLINIC_INFO.city} (Home Visits)
               </span>
             </div>
           </div>
@@ -154,7 +158,7 @@ const Specialties = ({ onOpenTriage }) => {
 
                 <div>
                   {/* Title Bar */}
-                  <div className="flex items-start justify-between gap-4 mb-6 relative z-10">
+                  <div className="flex items-start justify-between gap-4 mb-5 relative z-10">
                     <div>
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-tech font-bold uppercase border mb-3 ${spec.badgeBg}`}>
                         <span>Pillar 0{idx + 1}</span>
@@ -168,6 +172,19 @@ const Specialties = ({ onOpenTriage }) => {
                     </div>
                     <div className={`p-4 rounded-2xl bg-[#0A1C17] border shadow-inner shrink-0 ${spec.border} group-hover:scale-110 transition-transform`}>
                       <IconComponent className="w-7 h-7 stroke-[2.2]" />
+                    </div>
+                  </div>
+
+                  {/* Scientific Biomedical Visualization Banner */}
+                  <div className="relative h-48 sm:h-56 rounded-2xl overflow-hidden mb-6 border border-white/15 bg-[#0A1C17] shadow-inner">
+                    <img
+                      src={spec.image}
+                      alt={spec.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#163029] via-transparent to-transparent opacity-90 pointer-events-none" />
+                    <div className="absolute bottom-3 left-3 text-[11px] font-mono-tech text-emerald-300 bg-black/60 px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10">
+                      🔬 Evidence-Based Kinetic Protocol
                     </div>
                   </div>
 

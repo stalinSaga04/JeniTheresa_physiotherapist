@@ -25,7 +25,7 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
     const topicText = selectedTopic ? `📍 *Primary Concern:* ${selectedTopic}\n` : '';
     const noteText = patientNote ? `📝 *Note:* "${patientNote}"\n` : '';
     
-    const text = `👋 *Hello Dr. Jeni Theresa Clinic,* \n\nI would like to inquire about orthopedic & sports physiotherapy consultation in ${CLINIC_INFO.city}.\n\n${topicText}${noteText}\nPlease let me know the upcoming appointment slots & triage procedure. Thank you!`;
+    const text = `👋 *Hello Dr. Jeni Theresa Rehab Desk,* \n\nI would like to schedule an expert Home Visit physiotherapy session in ${CLINIC_INFO.city} / Online Video Tele-Rehab.\n\n${topicText}${noteText}\nPlease let me know available doctor time slots and fee confirmation. Thank you!`;
     
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
@@ -126,9 +126,9 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <div className="flex items-center justify-center gap-1 text-[11px] font-mono-tech text-[#0A1C17]/70 font-medium">
+              <div className="flex items-center justify-center gap-1 text-[11px] font-mono-tech text-[#0A1C17]/80 font-bold">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#C2593B]" />
-                <span>100% Confidential Doctor-Patient Discussion</span>
+                <span>🔐 Private Encrypted Booking Line</span>
               </div>
             </div>
 
@@ -166,7 +166,7 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
           </span>
           <span className="text-[10px] font-mono-tech text-emerald-300 font-semibold leading-tight flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            Live WhatsApp • Chennai
+            Live Triage • Bengaluru & Online
           </span>
         </div>
       </button>

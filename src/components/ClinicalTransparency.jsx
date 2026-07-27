@@ -18,8 +18,8 @@ const ClinicalTransparency = ({ onOpenTriage }) => {
       a: "Zero hidden charges. Unlike automated clinic chains that bill separately for every procedure or machine used, we maintain an all-inclusive medical care ethic. Whatever evidence-based therapy your condition requires during your reserved one-on-one session—whether precision dry needling, joint mobilization, or athletic taping—is included without surprise fees."
     },
     {
-      q: "How do Online Tele-Rehabilitation and In-Clinic appointment fees differ?",
-      a: "Both consultation modes guarantee 100% direct doctor time with Dr. Jeni Theresa. In-Clinic appointments take place at our Anna Nagar, Chennai clinic for direct hands-on manual therapy. Online Tele-Rehabilitation sessions are designed for remote IT professionals across Tamil Nadu and India, focused on ergonomic posture transformation, live movement evaluation, and video-guided physical recovery. Consultation details and transparent slot pricing are confirmed directly via WhatsApp before your visit."
+      q: "How do Home Visit Physiotherapy and Online Tele-Rehabilitation appointments work?",
+      a: "Both consultation modes guarantee 100% direct one-on-one doctor attention with Dr. Jeni Theresa. Our Premium Home Visit service covers Bommasandra, Electronic City, and surrounding Bengaluru corridors, bringing clinical-grade physical assessments and bedside therapy directly to the safety and comfort of your home without traumatic traffic stress. Online Video Tele-Rehabilitation sessions are available across India, focused on ergonomic posture transformation, live movement evaluation, and structured recovery. All timing slots and fee confirmations are securely handled via our encrypted private WhatsApp desk."
     },
     {
       q: "Do I need a hospital referral or surgical prescription to schedule a consultation?",
@@ -284,9 +284,9 @@ const ClinicalTransparency = ({ onOpenTriage }) => {
                   03
                 </div>
                 <h4 className="text-lg font-serif-clinical font-black text-white mb-2">Flexible Consultation Modes</h4>
-                <p className="text-xs font-mono-tech text-emerald-300 font-bold uppercase tracking-wider mb-4">In-Clinic & Video Tele-Rehab</p>
+                <p className="text-xs font-mono-tech text-emerald-300 font-bold uppercase tracking-wider mb-4">Home Visits & Video Tele-Rehab</p>
                 <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-sans font-normal">
-                  Whether you visit our state-of-the-art clinic in Anna Nagar, Chennai or book an online Video Tele-Rehabilitation consultation from home, appointment timings and direct payment instructions (UPI/Cards) are confirmed clearly beforehand.
+                  Whether booking a dedicated Home Visit across Bommasandra & Electronic City, Bengaluru or an Online Video Tele-Rehabilitation session from across India, appointment timings and direct payment instructions (UPI/Cards) are confirmed clearly via our secure WhatsApp triage desk.
                 </p>
               </div>
               <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] font-mono-tech font-bold text-[#D2A13E]">

@@ -1,103 +1,108 @@
 export const SYMPTOM_AREAS = [
   {
-    id: "cervical",
-    name: "Neck Pain & Cervical Stiffness",
-    tagline: "Relief from computer desk posture & neck tightness",
-    symptomSummary: "Stiffness around the neck and upper shoulders, headaches after long working hours, or a tingling sensation extending down your arm. Common among software and office professionals.",
-    rootCauses: [
-      "Leaning forward toward laptop or mobile screens for prolonged periods during desk work",
-      "Overworking shoulder and neck muscles due to unsupported sitting posture",
-      "Stiffness in upper back joints from long drives or two-wheeler commuting"
-    ],
-    commonMistakes: "Relying only on pain balm, painkiller tablets, or heating pads without gently relaxing the stiff muscles and strengthening your posture.",
-    jeniTreatment: [
-      "Hands-on joint therapy to release neck tension and restore smooth movement",
-      "Targeted gentle trigger point release for knotted shoulder muscles",
-      "Simple nerve gliding exercises to relieve arm tingling and numbness",
-      "Customized 5-minute desk exercises to keep your neck strong all day"
-    ],
-    sessionEstimate: "3–5 Sessions for complete comfort and improved mobility",
-    urgencyLevel: "Recommended promptly if you notice any numbness or tingling in your hands."
-  },
-  {
-    id: "rotator",
-    name: "Shoulder Pain & Joint Restriction",
-    tagline: "Treatment for arm lifting pain and shoulder stiffness",
-    symptomSummary: "Pain or discomfort when lifting your arm, stiffness in reaching overhead, or ache when sleeping on your shoulder. Very common in active adults and badminton or sports players.",
-    rootCauses: [
-      "Strained shoulder tendons from excessive overhead reaching, throwing, or heavy lifting",
-      "Tight shoulder joint muscles limiting natural shoulder arm movement",
-      "Poor alignment of the upper shoulder blades during routine daily work"
-    ],
-    commonMistakes: "Stopping all movement completely (which makes muscles weaker and stiffer) or relying solely on injections without restoring natural shoulder mobility.",
-    jeniTreatment: [
-      "Guided gentle shoulder joint mobilization to improve reaching flexibility",
-      "Progressive rubber band and resistance exercises to strengthen shoulder tendons",
-      "Hands-on muscle relaxation for shoulder tightness",
-      "Clear guidance on safe arm lifting techniques for sports and housework"
-    ],
-    sessionEstimate: "4–6 Sessions with simple structured home exercises",
-    urgencyLevel: "Recommended if you have trouble lifting your arm after a slip or fall."
-  },
-  {
     id: "lumbar",
-    name: "Lower Back Pain & Sciatica",
-    tagline: "Effective relief for slip disc ache, hip pain & sciatica",
-    symptomSummary: "A ache in your lower back after sitting for long periods, discomfort when bending forward, or sharp pain shooting down into your thigh and leg (sciatica).",
+    name: "L4/L5 Sciatica & Lower Back Pain",
+    tagline: "Instant relief for slip disc ache, hip strain & sciatica shooting pain",
+    image: "/images/biomech_spine.png",
+    symptomSummary: "A dull, nagging ache in your lower back after sitting for IT work hours, stiffness when bending forward, or sharp pain shooting down into your thigh and foot (sciatica).",
     rootCauses: [
-      "Sitting continuously without back support, which strains lower spinal muscles",
-      "Lifting heavy objects or bending suddenly without bending your knees and hips",
-      "Muscle spasms and tiredness from weakened stomach and back supporting muscles"
+      "Continuous slouched posture in office chairs without proper lumbar lumbar curve support",
+      "Lifting heavy grocery loads or bending suddenly without bending knees and hips",
+      "Spinal muscle fatigue from long two-wheeler auto drives across Bengaluru traffic"
     ],
-    commonMistakes: "Wearing rigid back belts all day or staying in bed for weeks without doing gentle guided back movements and core exercises.",
+    commonMistakes: "Wearing rigid back belts all day or lying in bed for weeks without doing guided decompression movements and core exercises.",
     jeniTreatment: [
-      "Gentle physical therapy adjustments to relieve lower back nerve pressure",
-      "Simple step-by-step stretching to eliminate sciatic leg pain",
-      "Core muscle strengthening to support your lower back during travel and work",
-      "Personalized daily posture guidance for office chairs and car rides"
+      "Hands-on clinical posture adjustment to release L4/L5 pinched spinal nerves",
+      "Gentle nerve-gliding stretches to stop sharp leg sciatic nerve sensations",
+      "Core stabilization training to strengthen lumbar support during commutes",
+      "Personalized posture guidance for IT work chairs and sleeping positions"
     ],
-    sessionEstimate: "4–7 Sessions to restore strong back flexibility",
-    urgencyLevel: "Immediate checkup advised if you experience persistent leg weakness."
+    sessionEstimate: "4–6 Home Sessions for full painless flexibility",
+    urgencyLevel: "Immediate home checkup advised if you feel leg tingling or weakness."
+  },
+  {
+    id: "cervical",
+    name: "Cervical Neck & Shoulder Stiffness",
+    tagline: "Relief from computer desk posture, headaches & text-neck tightness",
+    image: "/images/home_visit_physio.png",
+    symptomSummary: "Tightness around the upper shoulders and neck, throbbing evening headaches after laptop hours, or tingling extending down your arm. Common among tech and office professionals.",
+    rootCauses: [
+      "Leaning forward toward laptop or smartphone screens (forward head posture)",
+      "Overworking neck and upper trap muscles due to unsupportive table heights",
+      "Stiffness in thoracic spine joints from continuous sedentary desk work"
+    ],
+    commonMistakes: "Relying purely on pain balms or heating pads without relaxing knotted neck tendons or correcting spinal alignment.",
+    jeniTreatment: [
+      "Gentle manual cervical mobilization to restore painless side-to-side rotation",
+      "Targeted clinical trigger point release for stiff, knotted shoulder trap muscles",
+      "Simple nerve stretching to relieve arm numbness and heavy arm fatigue",
+      "Custom 5-minute desktop stretch routine to keep neck relaxed during calls"
+    ],
+    sessionEstimate: "3–5 Home Sessions for complete postural freedom",
+    urgencyLevel: "Recommended promptly if arm pain worsens during laptop keyboard work."
   },
   {
     id: "patellar",
-    name: "Knee Pain & Joint Arthritis",
-    tagline: "Comfortable recovery for staircase walking & squatting",
-    symptomSummary: "Discomfort or swelling in your knee when climbing stairs, standing up after sitting for hours, walking long distances, or visiting temples.",
+    name: "Knee Joint Pain & Arthritis Rehab",
+    tagline: "Comfortable mobility for staircase climbing, squatting & walking",
+    image: "/images/knee_joint.png",
+    symptomSummary: "Discomfort, stiffness, or slight swelling in your knee when climbing stairs, standing up after sitting, walking long distances, or kneeling.",
     rootCauses: [
-      "Weaker hip and thigh muscles putting extra pressure directly on the knee joint",
-      "Tight thigh muscles pulling the kneecap slightly off its center walking groove",
-      "Sudden increases in prolonged walking or intense jumping without warm-up"
+      "Weaker hip and thigh muscles transferring excess weight directly onto the knee cartilage",
+      "Tight quadricep tendons pulling the kneecap out of its smooth natural walking groove",
+      "Age-related structural wear worsened by inadequate joint lubrication and inactivity"
     ],
-    commonMistakes: "Fearing that exercise will hurt your bones, or relying solely on ice packs and ointments instead of strengthening your thigh muscles.",
+    commonMistakes: "Fearing that therapeutic movement will hurt your bones, or relying solely on temporary ointments instead of strengthening supporting thigh muscles.",
     jeniTreatment: [
-      "Thigh and hip strengthening exercises to absorb pressure away from your knee",
-      "Guided physical therapy stretching to make walking up and down stairs easy",
-      "Supportive clinical taping to immediately reduce joint discomfort",
-      "Personalized advice on comfortable footwear and walking habits"
+      "Targeted thigh & hip strengthening to absorb physical shock away from the knee",
+      "Clinical joint mobilization to make climbing upstairs and walking effortless",
+      "Supportive clinical taping to immediately reduce walking friction and pressure",
+      "Custom advice on comfortable everyday footwear and joint preservation"
     ],
-    sessionEstimate: "4–6 Sessions to walk and climb stairs with confidence",
-    urgencyLevel: "Moderate — Early physical therapy stops joint stiffness before it grows."
+    sessionEstimate: "4–7 Home Sessions to walk and climb stairs with confidence",
+    urgencyLevel: "Moderate — Early intervention prevents permanent cartilage degradation."
+  },
+  {
+    id: "rotator",
+    name: "Shoulder Rotator Cuff & Arm Strain",
+    tagline: "Treatment for overhead arm lifting pain & frozen shoulder stiffness",
+    image: "/images/post_surgical.png",
+    symptomSummary: "Sharp pinch when reaching overhead, stiffness in lifting your arm to comb hair or reach shelves, or pain when sleeping on your side.",
+    rootCauses: [
+      "Strained shoulder tendons from repetitive overhead arm reaching or sports activities",
+      "Adhesive capsulitis (frozen shoulder) limiting natural fluid rotational movement",
+      "Poor forward rounded shoulder positioning during long reading or phone habits"
+    ],
+    commonMistakes: "Keeping the arm completely immobile in a sling (which freezes the joint faster) instead of gently restoring mobility.",
+    jeniTreatment: [
+      "Guided gentle capsular stretching to regain full overhead reach flexibility",
+      "Progressive elastic resistance exercises to reinforce torn or weak rotator tendons",
+      "Hands-on soft tissue relaxation to alleviate night shoulder soreness",
+      "Safe everyday movement guidance for sports, driving, and housework"
+    ],
+    sessionEstimate: "4–6 Home Sessions with simple guided resistance bands",
+    urgencyLevel: "Recommended if night pain wakes you up when lying on your shoulder."
   },
   {
     id: "achilles",
-    name: "Heel & Foot Pain (Ankle Strain)",
-    tagline: "Relief for morning foot pain and tight calf muscles",
-    symptomSummary: "Sharp stabbing discomfort under your heel on your first steps out of bed in the morning, or ankle ache after walking or running on hard surfaces.",
+    name: "Ankle Strain, Heel & Foot Pain",
+    tagline: "Relief for morning foot stabbing pain & tight calf muscle inflammation",
+    image: "/images/neuro_stroke.png",
+    symptomSummary: "Sharp stabbing discomfort directly under your heel when taking your first morning steps out of bed, or ankle soreness after long walks on hard floors.",
     rootCauses: [
-      "Tight calf muscles pulling on the heel ligament (plantar fascia) overnight",
-      "Walking on hard floors with unsupportive thin slippers or completely barefoot",
-      "Sudden long walking routines without gently stretching your calf and ankle muscles"
+      "Tight calf muscles pulling excessively on the heel fascia tendon during sleep",
+      "Walking on hard tiled home floors with unsupportive thin slippers or barefoot",
+      "Sudden increases in standing hours without calf muscle recovery stretches"
     ],
-    commonMistakes: "Ignoring morning foot pain or only using soft gel cushions without gently stretching and strengthening your calf muscles.",
+    commonMistakes: "Ignoring morning foot pain or relying only on soft foam insoles without loosening tight ankle ligaments.",
     jeniTreatment: [
-      "Hands-on therapy to loosen tight ankle tendons and calf muscles",
-      "Simple step-up strengthening exercises for foot arch support",
-      "Comfortable morning stretch routines to make waking up painless",
-      "Expert guidance on correct daily footwear for comfortable walking"
+      "Hands-on myofascial release to loosen tight calf muscles and ankle ligaments",
+      "Simple step-up foot arch strengthening to balance standing posture",
+      "Comfortable pre-rising morning stretch routines to make waking up painless",
+      "Expert footwear consultation for supportive indoor and outdoor walking"
     ],
-    sessionEstimate: "3–5 Sessions for lasting daily walking comfort",
-    urgencyLevel: "Low to Moderate — Consistent simple stretching brings permanent relief."
+    sessionEstimate: "3–4 Home Sessions for permanent daily walking comfort",
+    urgencyLevel: "Low to Moderate — Consistency with gentle daily stretching heals faster."
   }
 ];
 
@@ -215,98 +220,99 @@ export const MODALITIES = [
 
 export const CASE_STUDIES = [
   {
-    patient: "Karthik R. (36) — IT Software Engineer, Chennai",
+    patient: "Karthik R. (36) — IT Software Lead, Electronic City, Bengaluru",
     injury: "Severe Neck Stiffness & Arm Tingling (12 months persistence)",
     previousFailedTx: "Took regular painkiller tablets and used heating gels, but the burning pain returned whenever he worked on his computer.",
-    jeniIntervention: "Identified poor seating posture putting pressure on neck nerves. Applied gentle hands-on therapy to loosen stiff neck shoulder muscles, followed by practical simple daily ergonomic guidance.",
-    outcome: "Neck pain completely disappeared within 3 weeks. Able to work comfortable full workdays without shoulder ache or headaches.",
+    jeniIntervention: "Performed a specialized home visit assessment in Electronic City, identifying poor home-office desk posture putting pressure on cervical nerves. Applied gentle hands-on therapy followed by practical daily ergonomic guidance.",
+    outcome: "Neck pain completely disappeared within 3 weeks. Able to complete long coding shifts comfortably without shoulder ache or headaches.",
     metric: "100% Pain-Free Working Hours"
   },
   {
-    patient: "Lakshmi M. (62) — Retired School Teacher, Anna Nagar",
+    patient: "Lakshmi M. (62) — Retired School Teacher, Bommasandra, Bengaluru",
     injury: "Chronic Knee Arthritis & Staircase Discomfort",
     previousFailedTx: "Was advised to avoid climbing stairs entirely and wear rigid knee braces, which made her thigh muscles feel much weaker over 6 months.",
-    jeniIntervention: "Removed rigid knee bandages. Started gentle hip and thigh strengthening exercises to take weight off the knee joint along with calming manual therapy.",
-    outcome: "Able to walk to nearby temple and comfortably climb stairs without knee swelling or joint ache.",
+    jeniIntervention: "During in-home consultations in Bommasandra, removed rigid knee bandages and initiated gentle hip and thigh strengthening exercises to take weight off the knee joint along with calming manual therapy.",
+    outcome: "Able to walk around her apartment complex and comfortably climb stairs without knee swelling or joint ache.",
     metric: "Smooth Stair Climbing Returned"
   },
   {
-    patient: "Anand S. (51) — Business Manager, Chennai",
+    patient: "Anand S. (51) — Operations Manager, South Bengaluru / Tele-Rehab",
     injury: "Post-Surgical Lower Back Recovery & Sciatica",
-    previousFailedTx: "Experiencing stiffness and fear of bending forward after prolonged lower back muscle spasm and prolonged rest.",
-    jeniIntervention: "Provided clear, reassuring guidance on safe bending techniques, gentle spinal flexibility stretches, and core stabilization exercises.",
-    outcome: "Resumed traveling and driving comfortable distances without back braces or leg discomfort.",
+    previousFailedTx: "Experiencing stiffness and fear of bending forward after lower back muscle spasm and prolonged rest.",
+    jeniIntervention: "Provided clear, reassuring guidance via hybrid home sessions and video tele-rehab on safe bending techniques, spinal flexibility stretches, and core stabilization.",
+    outcome: "Resumed traveling and driving across Bangalore without back braces or sciatic leg discomfort.",
     metric: "Full Spinal Confidence Rebuilt"
   }
 ];
 
 export const CREDENTIALS = [
-  "Doctor of Physical Therapy (DPT) & Clinical Specialist",
-  "5+ Years Dedicated Experience in Orthopedic, Neuro & Pediatric Rehab",
-  "Certified Specialist in Manual Therapy & Exercise Rehabilitation",
-  "100% One-on-One Personalized Doctor Consultation Guarantee"
+  "Doctor of Physical Therapy (DPT) & Clinical Rehab Specialist",
+  "5+ Years Dedicated Experience in Ortho, Neuro & Pediatric Care",
+  "Specialist in Premium Home Visits & Domiciliary Physiotherapy",
+  "100% One-on-One Doctor Time & High-Def Video Tele-Rehab"
 ];
 
 export const CLINIC_INFO = {
   doctorName: "Dr. Jeni Theresa",
   credentials: "PT, DPT",
-  specialty: "Orthopedics, Neuro Rehab & Pediatric Physiotherapy",
-  phone: "+91 98765 43210",
-  whatsappNumber: "919876543210",
+  specialty: "Orthopedics, Neuro Stroke & Pediatric Rehab",
+  phone: "Direct WhatsApp Booking Desk",
+  phoneDisplay: "🔐 Private & Secure Medical Booking Line",
+  whatsappNumber: "916374522885",
   email: "clinic@drjenitheresa.in",
-  clinicName: "Dr. Jeni Theresa Physiotherapy Clinic & Rehab",
-  address: "Anna Nagar East, Chennai — Tamil Nadu",
-  city: "Chennai",
-  state: "Tamil Nadu",
-  hours: "Mon–Sat 8:00 AM – 7:30 PM IST",
-  teleRehabHours: "Online Consultations Available Daily",
-  googleMapsUrl: "https://maps.google.com/?q=Anna+Nagar+Chennai",
+  clinicName: "Dr. Jeni Theresa — Home Visit Physiotherapy & Online Rehab",
+  address: "Bommasandra, Electronic City & South Bengaluru — Karnataka",
+  city: "Bengaluru (Bangalore)",
+  state: "Karnataka",
+  hours: "Mon–Sat 8:00 AM – 8:00 PM IST (Home Visits & Video Tele-Rehab)",
+  teleRehabHours: "Online Video Consultations Available Daily across India",
+  googleMapsUrl: "https://maps.google.com/?q=Bommasandra+Bengaluru+Karnataka",
   seo: {
-    title: "Dr. Jeni Theresa, PT, DPT — Best Physiotherapist in Chennai | Ortho, Neuro & Pediatric Rehab",
-    description: "Specialised physiotherapy clinic in Chennai, Tamil Nadu. Dr. Jeni Theresa offers expert care in Orthopedic rehabilitation, Neurological stroke care, Post-surgical joint therapy, and Pediatric physiotherapy with 100% one-on-one personalized consultation.",
+    title: "Dr. Jeni Theresa, PT, DPT — Best Home Visit Physiotherapist in Bangalore | Bommasandra & Electronic City",
+    description: "Premium Home Visit Physiotherapy in Bommasandra, Electronic City & Bengaluru, Karnataka. Dr. Jeni Theresa (PT, DPT) specializes in bedside Orthopedic rehab, Neurological stroke care, Post-Surgical recovery, Pediatric physical therapy, and Online Video Tele-Rehab with 100% one-on-one doctor attention.",
     keywords: [
-      "best physiotherapist in Chennai",
-      "physiotherapist in Anna Nagar",
-      "orthopedic physiotherapy Chennai",
-      "stroke neurological rehab Chennai",
-      "post surgery rehabilitation Chennai",
-      "pediatric physiotherapy Tamil Nadu",
-      "knee pain physiotherapy",
-      "back pain doctor Chennai",
-      "sciatica treatment Chennai",
-      "home physiotherapist near me",
-      "physiotherapy clinic Anna Nagar Chennai"
+      "best physiotherapist in Bangalore",
+      "home visit physiotherapist Bommasandra",
+      "home physiotherapy Electronic City Bangalore",
+      "stroke rehabilitation home visit Bangalore",
+      "post surgery rehabilitation home visit Bengaluru",
+      "pediatric physiotherapist near me Bangalore",
+      "knee replacement home exercise therapist Karnataka",
+      "sciatica treatment home clinic Bengaluru",
+      "best home physiotherapist in South Bangalore",
+      "online tele rehabilitation physiotherapist India"
     ],
     ogImage: "/images/dr-jeni-portrait.png",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
-      "name": "Dr. Jeni Theresa — Physiotherapy Clinic & Rehabilitation Studio",
-      "description": "Evidence-based physiotherapy and rehabilitation clinic in Chennai specializing in Orthopedics, Neuro Rehab, Post-Surgical therapy, and Pediatric care.",
+      "name": "Dr. Jeni Theresa — Premium Home Visit Physiotherapy & Online Tele-Rehub",
+      "description": "Evidence-based mobile physiotherapy practice in Bengaluru (Bommasandra) offering bedside orthopedic rehabilitation, stroke care, post-surgical therapy, pediatric care, and online consultations.",
       "url": "https://jeni-theresa-physiotherapist.vercel.app",
-      "telephone": "+91-98765-43210",
+      "telephone": "+91-6374522885",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Anna Nagar East",
-        "addressLocality": "Chennai",
-        "addressRegion": "Tamil Nadu",
-        "postalCode": "600102",
+        "streetAddress": "Bommasandra & Electronic City Corridor",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "postalCode": "560099",
         "addressCountry": "IN"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "13.0827",
-        "longitude": "80.2707"
+        "latitude": "12.8170",
+        "longitude": "77.6833"
       },
-      "openingHours": "Mo-Sa 08:00-19:30",
+      "openingHours": "Mo-Sa 08:00-20:00",
       "priceRange": "₹₹",
       "medicalSpecialty": "Physical Therapy & Rehabilitation",
       "availableService": [
-        { "@type": "MedicalTherapy", "name": "Orthopedic Physiotherapy" },
-        { "@type": "MedicalTherapy", "name": "Neurological Rehabilitation" },
-        { "@type": "MedicalTherapy", "name": "Post-Surgical Joint Rehab" },
+        { "@type": "MedicalTherapy", "name": "Dedicated Home Visit Physiotherapy (Bengaluru)" },
+        { "@type": "MedicalTherapy", "name": "Orthopedic & Sports Injury Rehabilitation" },
+        { "@type": "MedicalTherapy", "name": "Neurological Stroke & Parkinson's Bedside Therapy" },
+        { "@type": "MedicalTherapy", "name": "Post-Surgical Knee & Hip Replacement Care" },
         { "@type": "MedicalTherapy", "name": "Pediatric Physical Therapy" },
-        { "@type": "MedicalTherapy", "name": "Online Tele-Rehabilitation Consultation" }
+        { "@type": "MedicalTherapy", "name": "High-Definition Online Video Tele-Rehabilitation" }
       ]
     }
   }
