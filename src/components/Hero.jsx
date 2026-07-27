@@ -58,18 +58,18 @@ const Hero = ({ onOpenTriage }) => {
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
         
-        {/* ── ORGANIC STUDIO CLOUD DIFFUSION (Removes any rigid straight vertical split line!) ── */}
-        {/* 1. Broad multi-step feathering mask spanning 65% of the portrait width for silky, line-free deceleration */}
-        <div className="absolute inset-y-0 left-0 w-[68%] bg-gradient-to-r from-[#0A1C17] from-0% via-[#0A1C17]/95 via-[20%] via-[#0A1C17]/70 via-[40%] via-[#0A1C17]/35 via-[60%] to-transparent pointer-events-none" />
+        {/* ── ORGANIC STUDIO CLOUD DIFFUSION (Confined strictly to the far-left border so her ENTIRE face remains brightly revealed and completely clear!) ── */}
+        {/* 1. Precise multi-step feathering mask spanning only 27% of width — stopping completely before reaching her hair or facial features! */}
+        <div className="absolute inset-y-0 left-0 w-[27%] bg-gradient-to-r from-[#0A1C17] from-0% via-[#0A1C17]/90 via-[35%] via-[#0A1C17]/50 via-[70%] to-transparent pointer-events-none" />
         
-        {/* 2. Spherical Cloud Vapor 1 (Upper-Mid): Billowing soft circular aura replacing any straight vertical edges */}
-        <div className="absolute top-[10%] -left-[240px] w-[640px] h-[600px] rounded-full bg-[#0A1C17] blur-[140px] opacity-95 pointer-events-none" />
+        {/* 2. Spherical Cloud Vapor 1 (Upper-Mid): Pulled far to the left (-left-[420px]) to cushion only the border seam without shadowing her eyes or cheek */}
+        <div className="absolute top-[12%] -left-[420px] w-[560px] h-[560px] rounded-full bg-[#0A1C17] blur-[125px] opacity-95 pointer-events-none" />
         
-        {/* 3. Spherical Cloud Vapor 2 (Lower Content Anchor): Cushioning the glassmorphism feature cards naturally */}
-        <div className="absolute bottom-[5%] -left-[200px] w-[580px] h-[520px] rounded-full bg-[#0A1C17] blur-[145px] opacity-90 pointer-events-none" />
+        {/* 3. Spherical Cloud Vapor 2 (Lower Content Anchor): Cushioning the glassmorphism feature cards naturally on the left seam */}
+        <div className="absolute bottom-[8%] -left-[400px] w-[540px] h-[500px] rounded-full bg-[#0A1C17] blur-[130px] opacity-90 pointer-events-none" />
 
-        {/* 4. Warm Golden-Emerald Ambient Drift: Blending dark emerald softly into the warm beige indoor studio lights */}
-        <div className="absolute top-[30%] left-[4%] w-[420px] h-[420px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-emerald-950/70 to-[#D2A13E]/15 blur-[135px] opacity-80 pointer-events-none" />
+        {/* 4. Warm Golden-Emerald Ambient Drift: Confined strictly to the left edge to blend dark emerald softly into the background studio lights */}
+        <div className="absolute top-[32%] -left-[250px] w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-emerald-950/60 to-[#D2A13E]/10 blur-[120px] opacity-75 pointer-events-none" />
         
         {/* Seamless top and bottom viewport transitions */}
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
