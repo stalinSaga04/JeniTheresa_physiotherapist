@@ -43,44 +43,40 @@ const Hero = ({ onOpenTriage }) => {
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden flex flex-col justify-center">
+    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-gradient-to-r from-[#07130F] via-[#0E201B] via-[52%] via-[#434A44] via-[70%] to-[#F1EADF] overflow-hidden flex flex-col justify-center">
       
       {/* Subtle ambient studio lighting on left side */}
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none z-10" />
 
-      {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP (Recreated editorial studio lighting structure with left-shifted warm background glow & exact posture presence!) ── */}
-      <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-[#0A1C17]">
+      {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP (Exact Editorial Charcoal-to-Champagne Studio Lighting!) ── */}
+      <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-gradient-to-r from-[#0E201B] via-[#3E4A44] to-[#F7F1E6]">
+        
+        {/* Radiant champagne studio backdrop light illuminating behind Dr. Jeni Theresa's silhouette */}
+        <div className="absolute top-[10%] right-[5%] w-[650px] h-[750px] rounded-full bg-gradient-to-tr from-[#E6DECF]/30 via-[#F9F5EB]/65 to-white/75 blur-[130px] opacity-95 pointer-events-none" />
+
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
-          className="w-full h-full object-cover object-[45%_top] lg:object-[42%_top] scale-[1.03] transform-gpu transition-transform duration-700"
+          className="relative z-10 w-full h-full object-cover object-[45%_top] lg:object-[42%_top] scale-[1.03] transform-gpu transition-transform duration-700"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
         
-        {/* ── ARCHITECTURAL STUDIO BACKDROP LIGHTING ("White background ah left la light ah shift pannu") ── */}
-        {/* Subtle illuminated warm neutral ambient studio glow shifted toward the left mid-screen to reproduce the luminous wall backdrop behind her silhouette */}
-        <div className="absolute top-[20%] left-[8%] w-[480px] h-[580px] rounded-full bg-gradient-to-r from-[#F7F2E8]/20 via-amber-100/15 to-transparent blur-[130px] opacity-85 pointer-events-none" />
+        {/* ── EXACT EDITORIAL STUDIO TRANSITION MASK ("Background for hero section exact ah indha mari apply pannu") ── */}
+        {/* 1. Smooth smoky charcoal-taupe diffusion spreading across the left 38% boundary to reproduce the reference image gradient without sharp lines! */}
+        <div className="absolute z-20 inset-y-0 left-0 w-[38%] bg-gradient-to-r from-[#07130F] from-[5%] via-[#162923]/90 via-[30%] via-[#3E4A44]/75 via-[60%] via-[#8D887C]/35 via-[85%] to-transparent pointer-events-none" />
+        
+        {/* 2. Soft contoured dark emerald atmosphere curves along the far left seam to cushion typography cards naturally */}
+        <div className="absolute z-20 top-[5%] -left-[350px] w-[640px] h-[450px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[105px] opacity-95 pointer-events-none" />
+        <div className="absolute z-20 top-[38%] -left-[300px] w-[580px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[115px] opacity-95 pointer-events-none" />
+        <div className="absolute z-20 bottom-[4%] -left-[320px] w-[600px] h-[400px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[105px] opacity-90 pointer-events-none" />
 
-        {/* ── ERGONOMIC CURVING SHADOW CONTOURS (Gracefully bends along the left text boundary while allowing the bright background wall & Dr. Jeni's face to shine clearly!) ── */}
-        {/* 1. Base contour spine mask spanning only the leftmost 20% boundary so Dr. Jeni's face & ambient background remain brilliantly exposed */}
-        <div className="absolute inset-y-0 left-0 w-[20%] bg-gradient-to-r from-[#0A1C17] from-0% via-[#0A1C17]/95 via-[45%] via-[#0A1C17]/40 via-[75%] to-transparent pointer-events-none" />
-        
-        {/* 2. Upper Curving Arc (Rotate -15deg): Angled elliptical shadow cushioning the main Clinical Therapy Headline and badges */}
-        <div className="absolute top-[5%] -left-[340px] w-[640px] h-[400px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[95px] opacity-95 pointer-events-none" />
-        
-        {/* 3. Middle Bending Contour (Rotate +14deg): Curves inward gracefully around the silhouette of the interactive glassmorphism treatment card */}
-        <div className="absolute top-[38%] -left-[290px] w-[570px] h-[370px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[105px] opacity-95 pointer-events-none" />
-
-        {/* 4. Lower Swelling Arc (Rotate -18deg): Swoops out at the base to cradle the Book Home Assessment buttons and 4.9/5 patient credentials */}
-        <div className="absolute bottom-[4%] -left-[310px] w-[600px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[100px] opacity-90 pointer-events-none" />
-        
-        {/* 5. Subtle Inner Curvature Aura: Deepens the studio atmosphere along the joint curve without darkening her face */}
-        <div className="absolute top-[26%] -left-[220px] w-[350px] h-[460px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-[#0A1C17]/80 to-emerald-800/20 rotate-[10deg] blur-[115px] opacity-80 pointer-events-none" />
+        {/* 3. Delicate warm ambient light drift uniting mid-screen taupe tones with the bright studio background wall */}
+        <div className="absolute z-20 top-[25%] left-[10%] w-[420px] h-[500px] rounded-full bg-gradient-to-r from-transparent via-[#EDE5D8]/20 to-[#F9F5EE]/35 blur-[125px] opacity-85 pointer-events-none" />
         
         {/* Seamless top and bottom viewport transitions */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+        <div className="absolute z-30 top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+        <div className="absolute z-30 bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Main Content Container (Left 50% Typography + Mobile Top Portrait) ── */}
