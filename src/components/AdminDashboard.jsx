@@ -255,31 +255,31 @@ const AdminDashboard = ({ isOpen, onClose }) => {
         className="bg-[#FAF8F5] text-[#0A1C17] w-full max-w-7xl rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.6)] border-2 border-[#0A1C17] overflow-hidden flex flex-col max-h-[95vh]"
       >
         
-        {/* Practice Management Header Banner */}
-        <div className="bg-[#0A1C17] text-[#FAF8F5] p-5 sm:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-white/15 shrink-0 relative overflow-hidden">
+        {/* Practice Management Header Banner (Compact Native Mobile UX) */}
+        <div className="bg-[#0A1C17] text-[#FAF8F5] p-3.5 sm:p-5 sm:px-8 flex flex-wrap items-center justify-between gap-3 border-b border-white/15 shrink-0 relative overflow-hidden">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#C2593B]/15 rounded-full blur-[100px] pointer-events-none" />
           
-          <div className="flex items-center gap-4 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#C2593B] to-[#A84528] text-white flex items-center justify-center font-serif-clinical font-black text-xl shadow-lg shrink-0 border border-white/20">
+          <div className="flex items-center gap-2.5 sm:gap-4 relative z-10 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#C2593B] to-[#A84528] text-white flex items-center justify-center font-serif-clinical font-black text-base sm:text-xl shadow-lg shrink-0 border border-white/20">
               PMS
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-xl sm:text-2xl font-serif-clinical font-black tracking-tight text-white">
-                  Dr. Jeni Theresa — Clinical Practice & CRM Suite
+                <h2 className="text-base sm:text-2xl font-serif-clinical font-black tracking-tight text-white leading-tight truncate">
+                  Dr. Jeni Theresa — <span className="sm:hidden">CRM Suite</span><span className="hidden sm:inline">Clinical Practice & CRM Suite</span>
                 </h2>
-                <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono-tech text-[11px] font-bold border border-emerald-500/30 flex items-center gap-1">
+                <span className="hidden sm:flex px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-mono-tech text-[11px] font-bold border border-emerald-500/30 items-center gap-1">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  Live Practice Console (PMS / EHR)
+                  Live Practice Console
                 </span>
               </div>
-              <p className="text-xs font-mono-tech text-white/75 mt-0.5">
+              <p className="hidden sm:block text-xs font-mono-tech text-white/75 mt-0.5">
                 A-to-Z clinical operations: manage bookings, track upcoming home visits, verify UPI fee collections, and monitor recovery pipelines.
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 relative z-10 self-end sm:self-center">
+          <div className="flex items-center gap-1.5 sm:gap-2 relative z-10 ml-auto">
             <button
               onClick={() => {
                 localStorage.setItem('jeni_practice_crm_v1', JSON.stringify(initialPatients));
@@ -287,7 +287,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                 setNotification('Synced live practice test data.');
                 setTimeout(() => setNotification(''), 3000);
               }}
-              className="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors flex items-center gap-1 text-[11px] font-mono-tech cursor-pointer border border-white/15"
+              className="hidden md:flex px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors items-center gap-1 text-[11px] font-mono-tech cursor-pointer border border-white/15"
               title="Reset test practice data"
             >
               <RefreshCw className="w-3.5 h-3.5" />
@@ -306,7 +306,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
             </button>
             <button 
               onClick={onClose}
-              className="w-9 h-9 rounded-full bg-white/15 hover:bg-red-500/80 text-white flex items-center justify-center transition-all cursor-pointer"
+              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/15 hover:bg-red-500/80 text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
               aria-label="Close Admin Suite"
             >
               <X className="w-4 h-4" />
@@ -321,7 +321,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
               initial={{ height: 0, opacity: 0 }} 
               animate={{ height: 'auto', opacity: 1 }} 
               exit={{ height: 0, opacity: 0 }}
-              className="bg-emerald-600 text-white text-xs font-mono-tech font-bold px-8 py-2 flex items-center justify-between shrink-0"
+              className="bg-emerald-600 text-white text-xs font-mono-tech font-bold px-4 sm:px-8 py-2 flex items-center justify-between shrink-0"
             >
               <span className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-white" />
@@ -332,39 +332,39 @@ const AdminDashboard = ({ isOpen, onClose }) => {
           )}
         </AnimatePresence>
 
-        {/* Quick KPI Practice Stats Bar */}
-        <div className="bg-[#163029] px-6 sm:px-8 py-3.5 grid grid-cols-2 lg:grid-cols-4 gap-4 border-b border-white/10 text-xs text-white shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#D2A13E]/20 text-[#D2A13E] flex items-center justify-center font-bold">
-              <Calendar className="w-5 h-5" />
+        {/* Quick KPI Practice Stats Bar (Compact & Proportionally Engineered for Mobile) */}
+        <div className="bg-[#163029] px-3.5 sm:px-8 py-2 sm:py-3.5 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 border-b border-white/10 text-xs text-white shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 bg-black/20 sm:bg-transparent p-2 sm:p-0 rounded-xl sm:rounded-none border border-white/5 sm:border-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#D2A13E]/20 text-[#D2A13E] flex items-center justify-center font-bold shrink-0">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
-            <div>
-              <span className="text-[10px] font-mono-tech text-white/60 uppercase block">Active Bookings Today</span>
-              <strong className="text-sm font-serif-clinical text-white">{patients.length} Registered Patients</strong>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
-              <MapPin className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono-tech text-white/60 uppercase block">Bengaluru Home Visits</span>
-              <strong className="text-sm font-serif-clinical text-emerald-300">{activeHomeVisitsCount} Scheduled (Bommasandra & South)</strong>
+            <div className="min-w-0">
+              <span className="text-[9px] sm:text-[10px] font-mono-tech text-white/60 uppercase block truncate">Active Bookings</span>
+              <strong className="text-xs sm:text-sm font-serif-clinical text-white block truncate">{patients.length} Registered</strong>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 bg-black/20 sm:bg-transparent p-2 sm:p-0 rounded-xl sm:rounded-none border border-white/5 sm:border-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold shrink-0">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <div className="min-w-0">
+              <span className="text-[9px] sm:text-[10px] font-mono-tech text-white/60 uppercase block truncate">Home Visits</span>
+              <strong className="text-xs sm:text-sm font-serif-clinical text-emerald-300 block truncate">{activeHomeVisitsCount} Scheduled</strong>
+            </div>
+          </div>
+
+          <div className="hidden sm:flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center font-bold">
               <DollarSign className="w-5 h-5" />
             </div>
             <div>
               <span className="text-[10px] font-mono-tech text-white/60 uppercase block">Est. Daily Fee Collection</span>
-              <strong className="text-sm font-mono-tech font-black text-amber-300">{totalFeesToday} (UPI & Packages)</strong>
+              <strong className="text-sm font-mono-tech font-black text-amber-300">{totalFeesToday} (UPI Verified)</strong>
             </div>
           </div>
 
-          <div className="flex items-center justify-end">
+          <div className="hidden lg:flex items-center justify-end">
             <div className="px-3.5 py-1.5 rounded-xl bg-[#C2593B]/25 border border-[#C2593B]/50 text-[#FAF8F5] flex items-center gap-2 font-mono-tech font-bold text-xs">
               <ShieldCheck className="w-4 h-4 text-[#D2A13E]" />
               <span>Personal Number Encrypted</span>
@@ -372,30 +372,31 @@ const AdminDashboard = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Navigation Tabs Bar */}
-        <div className="bg-[#FAF8F5] px-6 sm:px-8 py-3 border-b-2 border-[#0A1C17]/10 flex flex-wrap items-center gap-2 shrink-0 overflow-x-auto text-xs sm:text-sm">
+        {/* Navigation Tabs Bar (Horizontal Scrolling on Mobile for App Feel without Vertical Stacking!) */}
+        <div className="bg-[#FAF8F5] px-3 sm:px-8 py-2 sm:py-3 border-b-2 border-[#0A1C17]/10 flex flex-nowrap sm:flex-wrap items-center gap-2 shrink-0 overflow-x-auto text-xs sm:text-sm">
           {[
-            { id: 'next_client', label: '🚗 Next Patient & Bedside Tracker', icon: Navigation, count: 'NEXT' },
-            { id: 'triage', label: '📋 Triage Call & Inquiries Queue', icon: Users, count: patients.length },
-            { id: 'billing', label: '💰 Fee Collection & Invoicing Desk', icon: CreditCard },
-            { id: 'exercises', label: '🧘 Exercise Prescriptions & EHR', icon: HeartPulse },
-            { id: 'architecture', label: '⚡ Enterprise Architecture & Scaling', icon: Database }
+            { id: 'next_client', label: '🚗 Next Patient', fullLabel: '🚗 Next Patient & Bedside Tracker', icon: Navigation, count: 'NEXT' },
+            { id: 'triage', label: '📋 Triage Queue', fullLabel: '📋 Triage Call & Inquiries Queue', icon: Users, count: patients.length },
+            { id: 'billing', label: '💰 Fee Desk', fullLabel: '💰 Fee Collection & Invoicing Desk', icon: CreditCard },
+            { id: 'exercises', label: '🧘 Rehab EHR', fullLabel: '🧘 Exercise Prescriptions & EHR', icon: HeartPulse },
+            { id: 'architecture', label: '⚡ Scaling Suite', fullLabel: '⚡ Enterprise Architecture & Scaling', icon: Database }
           ].map(tab => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2 rounded-2xl font-mono-tech font-bold transition-all flex items-center gap-2 cursor-pointer border-2 whitespace-nowrap ${
+                className={`px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-2xl font-mono-tech font-bold transition-all flex items-center gap-1.5 sm:gap-2 cursor-pointer border-2 whitespace-nowrap shrink-0 text-xs sm:text-sm ${
                   activeTab === tab.id 
                     ? 'bg-[#0A1C17] text-white border-[#0A1C17] shadow-md' 
                     : 'bg-white text-[#0A1C17]/80 border-[#0A1C17]/15 hover:border-[#0A1C17]/40 hover:bg-black/5'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${activeTab === tab.id ? 'text-[#D2A13E]' : 'text-[#C2593B]'}`} />
-                <span>{tab.label}</span>
+                <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${activeTab === tab.id ? 'text-[#D2A13E]' : 'text-[#C2593B]'}`} />
+                <span className="sm:hidden">{tab.label}</span>
+                <span className="hidden sm:inline">{tab.fullLabel}</span>
                 {tab.count && (
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] uppercase font-black ${
+                  <span className={`px-1.5 sm:px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] uppercase font-black shrink-0 ${
                     activeTab === tab.id ? 'bg-[#D2A13E] text-[#0A1C17]' : 'bg-[#0A1C17]/10 text-[#0A1C17]'
                   }`}>
                     {tab.count}
