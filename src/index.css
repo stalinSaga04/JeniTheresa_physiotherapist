@@ -10,11 +10,16 @@
     --color-sand: #D2A13E;
   }
 
-  body, h1, h2, h3, h4, h5, h6 {
+  body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: var(--color-pine);
     background-color: var(--color-cream);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     letter-spacing: -0.02em;
+    background-color: transparent !important;
   }
 
   .font-serif-clinical {
