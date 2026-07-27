@@ -24,7 +24,7 @@ export const SYMPTOM_AREAS = [
     id: "cervical",
     name: "Cervical Neck & Shoulder Stiffness",
     tagline: "Relief from computer desk posture, headaches & text-neck tightness",
-    image: "/images/home_visit_physio.png",
+    image: "/images/human_brain_spinal.jpeg",
     symptomSummary: "Tightness around the upper shoulders and neck, throbbing evening headaches after laptop hours, or tingling extending down your arm. Common among tech and office professionals.",
     rootCauses: [
       "Leaning forward toward laptop or smartphone screens (forward head posture)",
@@ -45,7 +45,7 @@ export const SYMPTOM_AREAS = [
     id: "patellar",
     name: "Knee Joint Pain & Arthritis Rehab",
     tagline: "Comfortable mobility for staircase climbing, squatting & walking",
-    image: "/images/knee_joint.png",
+    image: "/images/damaged_knee_joint.jpeg",
     symptomSummary: "Discomfort, stiffness, or slight swelling in your knee when climbing stairs, standing up after sitting, walking long distances, or kneeling.",
     rootCauses: [
       "Weaker hip and thigh muscles transferring excess weight directly onto the knee cartilage",
@@ -87,7 +87,7 @@ export const SYMPTOM_AREAS = [
     id: "achilles",
     name: "Ankle Strain, Heel & Foot Pain",
     tagline: "Relief for morning foot stabbing pain & tight calf muscle inflammation",
-    image: "/images/neuro_stroke.png",
+    image: "/images/knee_after_surgery.jpeg",
     symptomSummary: "Sharp stabbing discomfort directly under your heel when taking your first morning steps out of bed, or ankle soreness after long walks on hard floors.",
     rootCauses: [
       "Tight calf muscles pulling excessively on the heel fascia tendon during sleep",

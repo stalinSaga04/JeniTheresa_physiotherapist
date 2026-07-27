@@ -21,6 +21,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Orthopaedic Rehabilitation",
       subtitle: "Restoring Joint Mechanics & Structural Freedom",
       icon: Bone,
+      image: "/images/damaged_knee_joint.jpeg",
       description: "Targeting the biomechanical root cause of spinal disc friction, postural stiffness, and joint wear — not just masking pain with temporary balms or heat pads.",
       conditions: [
         { name: "Low Back Pain & Lumbar Disc", note: "Pelvic tilt, sciatica & sitting stiffness" },
@@ -36,6 +37,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Neurological Rehabilitation",
       subtitle: "Neuroplasticity & Motor Control Recovery",
       icon: Brain,
+      image: "/images/human_brain_spinal.jpeg",
       description: "Specialized neuromuscular training to rewire brain-to-muscle coordination, rebuild balance confidence, and restore independent mobility after neurological events.",
       conditions: [
         { name: "Stroke Rehab (Hemiplegia)", note: "Gait, balance & limb functional restoration" },
@@ -49,6 +51,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Post-Surgical Rehabilitation",
       subtitle: "Pre- & Post-Operative Tissue Recovery",
       icon: Activity,
+      image: "/images/knee_after_surgery.jpeg",
       description: "Surgery repairs structures — but precise rehabilitation rebuilds neuromuscular strength, tendon flexibility, and full functional capacity for complete recovery.",
       conditions: [
         { name: "Total Knee Replacement (TKR)", note: "Range of motion & stiffening prevention" },
@@ -62,6 +65,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Pediatric Physiotherapy",
       subtitle: "Gentle Developmental & Nurturing Therapies",
       icon: Baby,
+      image: "/images/pediatric_rehab.png",
       description: "Compassionate, play-based physical therapy tailored for infants and children to overcome motor milestone delays, build muscle coordination, and nurture independence.",
       conditions: [
         { name: "Developmental Delay", note: "Rolling, sitting, crawling & walking support" },
@@ -143,6 +147,19 @@ const Specialties = ({ onOpenTriage }) => {
                         {spec.subtitle}
                       </p>
                     </div>
+                  </div>
+
+                  {/* ── Clinical Diagnostic Visual ── */}
+                  <div className="relative h-44 sm:h-52 w-full rounded-xl overflow-hidden mb-5 border border-[#0A1C17]/10 bg-[#0A1C17] shadow-sm">
+                    <img
+                      src={spec.image}
+                      alt={spec.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                    <span className="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg text-white font-mono-tech text-[10px] font-bold uppercase tracking-wider backdrop-blur-md bg-black/40 border border-white/20 flex items-center gap-1.5 shadow-sm">
+                      <span>🔬 Clinical Science</span>
+                    </span>
                   </div>
 
                   {/* ── Description ── */}
