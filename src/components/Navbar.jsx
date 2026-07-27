@@ -90,8 +90,8 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
             </div>
           </a>
 
-          {/* Desktop Navigation Pills */}
-          <nav className={`hidden xl:flex items-center gap-1.5 p-1.5 rounded-2xl backdrop-blur-sm border ${
+          {/* Desktop Navigation Pills (Visible on md 768px+ and in Mobile Desktop Site mode!) */}
+          <nav className={`hidden md:flex items-center gap-1 p-1 lg:p-1.5 rounded-2xl backdrop-blur-sm border ${
             scrolled 
               ? 'bg-[#0A1C17]/5 border-[#0A1C17]/10' 
               : 'bg-white/10 border-white/15'
@@ -100,7 +100,7 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               <button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer font-sans ${
+                className={`px-2.5 py-1.5 lg:px-4 lg:py-2 rounded-xl text-[11px] lg:text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer font-sans whitespace-nowrap ${
                   scrolled 
                     ? 'text-[#0A1C17]/80 hover:text-[#0A1C17] hover:bg-white hover:shadow-sm' 
                     : 'text-white/80 hover:text-white hover:bg-white/15'
@@ -134,19 +134,6 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
               <span className="hidden sm:inline">Book Appointment</span>
               <span className="sm:hidden text-[11px]">Book</span>
-            </button>
-
-            {/* Tablet Menu Trigger (hidden on mobile — we use bottom bar) */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle Navigation Menu"
-              className={`hidden md:flex xl:hidden p-2.5 rounded-xl transition-all focus:outline-none cursor-pointer shrink-0 ${
-                scrolled 
-                  ? 'bg-[#0A1C17]/10 text-[#0A1C17] hover:bg-[#0A1C17] hover:text-white' 
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>

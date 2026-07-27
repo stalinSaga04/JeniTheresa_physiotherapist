@@ -45,27 +45,31 @@ const Hero = ({ onOpenTriage }) => {
   return (
     <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
       
-      {/* ── DESKTOP WIDE VIEW ONLY: Full-Bleed Background Doctor Portrait (Hidden on Small Screens) ── */}
-      <div className="absolute inset-0 z-0 bg-[#0A1C17] hidden lg:block">
+      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px for Tablet & Mobile Desktop Mode!): Shifted right so text NEVER covers her eyes or face ── */}
+      <div className="absolute top-0 right-0 bottom-0 z-0 bg-[#0A1C17] hidden md:block w-[75%] lg:w-[68%] xl:w-[58%] ml-auto overflow-hidden">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[right_top]"
+          className="w-full h-full object-cover object-[center_top] translate-x-12 sm:translate-x-16 lg:translate-x-20 xl:translate-x-28 scale-[1.07] transform-gpu"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Clean gradient overlay ONLY on desktop left half where text sits, leaving the doctor portrait 100% bright and unshadowed on right! */}
-        <div className="absolute inset-y-0 left-0 w-[58%] bg-gradient-to-r from-[#0A1C17]/98 via-[#0A1C17]/85 to-transparent pointer-events-none" />
+        {/* Soft left gradient feathering so the portrait blends seamlessly into the left dark green background without overlapping text! */}
+        <div className="absolute inset-y-0 left-0 w-[55%] lg:w-[62%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/92 to-transparent pointer-events-none" />
+        {/* Soft top gradient to ensure navbar elements remain easily readable */}
+        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/70 to-transparent pointer-events-none" />
+        {/* Soft bottom gradient to transition cleanly into the Video Vault */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/50 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Main Content Overlay (Responsive Mobile Split & Desktop Left Column) ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-24 pb-20 md:pt-36 md:pb-24 flex flex-col justify-end min-h-[100svh] md:min-h-[90vh]">
         
-        {/* ── MOBILE ONLY: Prominent, Unobscured Doctor Portrait Card at Top of Screen ── */}
+        {/* ── MOBILE ONLY (Hidden on md and Desktop Mode): Prominent, Unobscured Doctor Portrait Card at Top of Screen ── */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-md mx-auto mb-8 lg:hidden rounded-3xl overflow-hidden relative border-2 border-emerald-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-[#0E2822] mt-2"
+          className="w-full max-w-md mx-auto mb-8 md:hidden rounded-3xl overflow-hidden relative border-2 border-emerald-500/40 shadow-[0_20px_60px_rgba(0,0,0,0.6)] bg-[#0E2822] mt-2"
         >
           <div className="relative h-[370px] sm:h-[450px] w-full bg-[#0A1C17]">
             <img
