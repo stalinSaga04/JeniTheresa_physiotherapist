@@ -45,20 +45,21 @@ const Hero = ({ onOpenTriage }) => {
   return (
     <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-[90vh] bg-[#0A1C17] overflow-hidden">
       
-      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px+ & Desktop Site mode!): Unified Full-Screen Canvas with Organic Gradient ── */}
+      {/* ── DESKTOP WIDE VIEW ONLY (md:block activates at 768px+ & Desktop Site mode!): Unified Studio Canvas with Seamless Faded Boundary ── */}
       <div className="absolute inset-0 z-0 bg-[#0A1C17] hidden md:block overflow-hidden">
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[center_top] translate-x-[22%] md:translate-x-[28%] lg:translate-x-[32%] xl:translate-x-[36%] scale-[1.12] transform-gpu transition-transform duration-700"
+          className="w-full h-full object-cover object-[center_top] translate-x-[18%] md:translate-x-[22%] lg:translate-x-[26%] xl:translate-x-[28%] scale-[1.12] transform-gpu transition-transform duration-700"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
-        {/* Organic, ultra-smooth gradient so text reads perfectly on left WITHOUT feeling like two disconnected split-screen boxes! */}
-        <div className="absolute inset-y-0 left-0 w-[78%] sm:w-[72%] lg:w-[68%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/95 via-[#0A1C17]/80 to-transparent pointer-events-none" />
-        {/* Soft top gradient to ensure navbar links sit over a clean background */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/70 to-transparent pointer-events-none" />
-        {/* Soft bottom gradient to transition cleanly into the Video Vault */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/50 to-transparent pointer-events-none" />
+        {/* Deep Solid Left Canvas: 100% opaque green behind all typography & cards (0% to 55%), then an ultra-smooth studio fade to her cheek */}
+        <div className="absolute inset-y-0 left-0 w-[85%] bg-gradient-to-r from-[#0A1C17] from-[55%] via-[#0A1C17]/85 via-[75%] to-transparent pointer-events-none" />
+        {/* Secondary Feathering Layer: Completely flattens any brightness transition lines or border contrast halos! */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1C17] from-[45%] via-[#0A1C17]/50 via-[65%] to-transparent pointer-events-none" />
+        {/* Cinematic top & bottom shading for seamless integration with header navigation and video vault below */}
+        <div className="absolute top-0 inset-x-0 h-36 bg-gradient-to-b from-[#0A1C17] from-[30%] via-[#0A1C17]/75 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#0A1C17] from-[25%] via-[#0A1C17]/70 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Main Content Overlay: Centered directly in the Middle-Left (Left Mid) as requested! ── */}
