@@ -131,12 +131,12 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
           </div>
         )}
 
-        {/* ZERO SCROLLING Internal Form Body: Everything fits strictly inside without any scroll bars! */}
-        <div className="p-4 sm:p-6 sm:px-7 overflow-hidden flex-1 flex flex-col justify-between">
+        {/* ZERO SCROLLING Internal Form Body with min-h-0 flex containment so footer buttons never get pushed off screen! */}
+        <div className="overflow-hidden flex-1 flex flex-col justify-between min-h-0">
           
           {/* SUCCESS VIEW AFTER COMPLETION */}
           {isSubmitted ? (
-            <div className="text-center py-2 space-y-4 my-auto overflow-hidden">
+            <div className="text-center p-4 sm:p-6 py-4 space-y-4 my-auto overflow-y-auto">
               <div className="w-14 h-14 bg-[#25D366] text-[#0A1C17] rounded-full flex items-center justify-center mx-auto shadow-xl animate-bounce">
                 <CheckCircle2 className="w-8 h-8 stroke-[2.5]" />
               </div>
@@ -189,10 +189,11 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
               </button>
             </div>
           ) : (
-            /* WIZARD STEPS FORM (ZERO SCROLL FIT!) */
-            <form onSubmit={handleSubmit} className="flex flex-col flex-1 justify-between overflow-hidden">
+            /* WIZARD STEPS FORM (min-h-0 prevents navigation controls from disappearing on mobile!) */
+            <form onSubmit={handleSubmit} className="flex flex-col flex-1 justify-between overflow-hidden min-h-0">
               
-              <div className="space-y-4 my-auto">
+              {/* Middle option space: flex-1 and min-h-0 guarantee it sits neatly between top header and bottom Next button! */}
+              <div className="space-y-4 my-auto p-4 sm:p-6 sm:px-7 overflow-y-auto overscroll-contain flex-1 min-h-0">
                 {/* STEP 1: TARGET SYMPTOM AREA */}
                 {step === 1 && (
                   <div className="space-y-3 sm:space-y-4">
@@ -399,8 +400,8 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                 )}
               </div>
 
-              {/* NAVIGATION CONTROLS (Permanently anchored without any scrolling!) */}
-              <div className="mt-3 pt-3 sm:mt-4 sm:pt-4 border-t border-[#0A1C17]/15 flex items-center justify-between flex-shrink-0 z-20 bg-[#FAF8F5]">
+              {/* NAVIGATION CONTROLS (Permanently docked at the bottom of every smartphone screen without ever disappearing!) */}
+              <div className="p-3.5 px-4 sm:px-7 sm:py-4 border-t border-[#0A1C17]/15 flex items-center justify-between flex-shrink-0 z-30 bg-white shadow-[0_-4px_15px_rgba(0,0,0,0.05)]">
                 {step > 1 ? (
                   <button
                     type="button"
