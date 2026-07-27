@@ -33,14 +33,26 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
     { label: 'Outcomes', href: '#case-vault' },
   ];
 
-  // Mobile bottom tab items (compact, icon-driven)
+  // Mobile bottom tab items (compact, icon-driven, 100% patient-centered)
   const bottomTabs = [
     { label: 'Home', icon: Home, href: '#top', action: () => window.scrollTo({ top: 0, behavior: 'smooth' }) },
     { label: 'Specialties', icon: Stethoscope, href: '#specialties' },
     { label: 'Pain Map', icon: MapPin, href: '#symptom-map' },
+    { label: 'Science', icon: Sparkles, href: '#modalities' },
     { label: 'Book', icon: Calendar, href: null, action: () => onOpenTriage() },
-    { label: 'Admin', icon: Settings, href: null, action: () => onOpenAdmin() },
   ];
+
+  // Executive hotkey: Pressing Ctrl+Shift+P or Alt+P automatically triggers the Doctor PMS Console
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey && e.shiftKey && (e.key === 'P' || e.key === 'p')) || (e.altKey && (e.key === 'P' || e.key === 'p'))) {
+        e.preventDefault();
+        onOpenAdmin();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onOpenAdmin]);
 
   const handleNavClick = (href) => {
     setIsOpen(false);
@@ -69,14 +81,17 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
       }`}>
         <div className="max-w-7xl mx-auto px-4 md:px-10 flex items-center justify-between">
           
-          {/* Brand */}
-          <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2 sm:gap-3.5 group cursor-pointer text-[#0A1C17]">
-            <div className={`w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 ${
+          {/* Brand (Double clicking the heartbeat logo opens Doctor PMS console!) */}
+          <div className="flex items-center gap-2 sm:gap-3.5 group text-[#0A1C17]">
+            <div 
+              onDoubleClick={onOpenAdmin}
+              title="Double click to access Clinical Console"
+              className={`w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl flex items-center justify-center shadow-md group-hover:scale-105 transition-all duration-300 cursor-pointer ${
               scrolled ? 'bg-[#0A1C17] text-[#FAF8F5]' : 'bg-white/20 backdrop-blur-md text-white border border-white/20'
             }`}>
               <Activity className="w-4 h-4 sm:w-5 sm:h-5 text-[#D2A13E]" />
             </div>
-            <div className="flex flex-col">
+            <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex flex-col cursor-pointer">
               <span className={`font-extrabold text-sm sm:text-xl md:text-2xl tracking-tight leading-none transition-colors font-sans ${
                 scrolled ? 'text-[#0A1C17]' : 'text-white'
               }`}>
@@ -87,8 +102,8 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
               }`}>
                 Doctor of Physical Therapy, DPT
               </span>
-            </div>
-          </a>
+            </a>
+          </div>
 
           {/* Desktop Navigation Pills (Visible on md 768px+ and in Mobile Desktop Site mode!) */}
           <nav className={`hidden md:flex items-center gap-0.5 p-1 lg:p-1.5 rounded-2xl backdrop-blur-sm border ${
@@ -111,29 +126,15 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
             ))}
           </nav>
 
-          {/* Action Buttons */}
+          {/* Action Button */}
           <div className="flex items-center gap-1.5 sm:gap-2.5">
-            {/* PMS Admin (Desktop - always visible) */}
-            <button
-              onClick={onOpenAdmin}
-              className={`hidden sm:flex items-center gap-1 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold transition-all cursor-pointer border shrink-0 ${
-                scrolled 
-                  ? 'bg-white border-[#0A1C17]/10 text-[#0A1C17]/70 hover:text-[#0A1C17] hover:border-[#0A1C17]/30' 
-                  : 'bg-white/10 border-white/15 text-white/80 hover:bg-white/20 hover:text-white backdrop-blur-md'
-              }`}
-            >
-              <Settings className="w-3.5 h-3.5" />
-              <span className="font-mono-tech uppercase tracking-wider">PMS</span>
-            </button>
-
             {/* Book Appointment */}
             <button
               onClick={onOpenTriage}
-              className="px-3 sm:px-4 lg:px-5 py-2 sm:py-2 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 group shrink-0 whitespace-nowrap"
+              className="px-3.5 sm:px-5 lg:px-6 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white text-[#0A1C17] font-extrabold text-[11px] sm:text-xs tracking-wider uppercase shadow-md hover:bg-[#D2A13E] hover:text-white hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer flex items-center gap-1.5 sm:gap-2 group shrink-0 whitespace-nowrap"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
-              <span className="hidden lg:inline">Book Assessment</span>
-              <span className="hidden sm:inline lg:hidden">Book Appt</span>
+              <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C2593B] group-hover:text-white transition-colors shrink-0" />
+              <span className="hidden sm:inline">Book Assessment</span>
               <span className="sm:hidden text-[11px]">Book</span>
             </button>
           </div>

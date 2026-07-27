@@ -28,16 +28,18 @@
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
 
-  /* Prevent text selection on interactive elements for app feel */
-  button, a, nav, [role="button"] {
-    -webkit-user-select: none;
-    user-select: none;
+  /* Prevent text selection everywhere for true native mobile app UX */
+  *, p, span, h1, h2, h3, h4, h5, h6, button, a, nav, div, [role="button"], img {
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-touch-callout: none !important;
   }
 
-  /* Allow text selection on content paragraphs for accessibility */
-  p, span, h1, h2, h3, h4, h5, h6 {
-    -webkit-user-select: text;
-    user-select: text;
+  /* ONLY allow text selection inside actual form input boxes and textareas! */
+  input, textarea, [contenteditable="true"] {
+    -webkit-user-select: auto !important;
+    user-select: auto !important;
+    -webkit-touch-callout: default !important;
   }
 
   h1, h2, h3, h4, h5, h6 {

@@ -109,9 +109,17 @@ const Footer = ({ onOpenTriage, onOpenAdmin }) => {
 
         </div>
 
-        {/* Bottom Disclaimer */}
+        {/* Bottom Disclaimer & Discrete Executive Practice Portal Link */}
         <div className="pt-10 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono-tech text-[#FAF8F5]/50 gap-4">
-          <p>© {new Date().getFullYear()} Dr. Jeni Theresa, PT, DPT. All clinical rights reserved. Architected with high orthopedic integrity.</p>
+          <div className="flex flex-col gap-2 text-center sm:text-left">
+            <p>© {new Date().getFullYear()} Dr. Jeni Theresa, PT, DPT. All clinical rights reserved. Architected with high orthopedic integrity.</p>
+            <button
+              onClick={onOpenAdmin}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-lg bg-white/5 hover:bg-white/15 text-emerald-300/80 hover:text-emerald-300 transition-all text-[11px] font-mono-tech border border-white/10 hover:border-emerald-500/40 cursor-pointer w-fit mx-auto sm:mx-0 shadow-sm"
+            >
+              <span>🔒 Practice Management Console (Doctor Portal Login)</span>
+            </button>
+          </div>
           <div className="flex items-center gap-1.5 text-amber-300/80">
             <ShieldAlert className="w-3.5 h-3.5" />
             <span>Emergency Note: For severe acute trauma or loss of sensation, visit an ER immediately.</span>

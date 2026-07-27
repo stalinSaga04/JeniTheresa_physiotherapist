@@ -50,11 +50,11 @@ const Hero = ({ onOpenTriage }) => {
         <img
           src="/images/dr-jeni-portrait.png"
           alt="Dr. Jeni Theresa — Clinical Physiotherapist"
-          className="w-full h-full object-cover object-[72%_top] lg:object-[78%_top] xl:object-[82%_top] scale-[1.02] transform-gpu"
+          className="w-full h-full object-cover object-[88%_top] lg:object-[93%_top] xl:object-[98%_top] translate-x-4 sm:translate-x-6 lg:translate-x-10 scale-[1.04] transform-gpu"
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
         {/* Organic, ultra-smooth gradient so text reads perfectly on left WITHOUT feeling like two disconnected split-screen boxes! */}
-        <div className="absolute inset-y-0 left-0 w-[62%] sm:w-[58%] lg:w-[54%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/90 to-transparent pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-[64%] sm:w-[60%] lg:w-[56%] bg-gradient-to-r from-[#0A1C17] via-[#0A1C17]/92 to-transparent pointer-events-none" />
         {/* Soft top gradient to ensure navbar links sit over a clean background */}
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/70 to-transparent pointer-events-none" />
         {/* Soft bottom gradient to transition cleanly into the Video Vault */}
