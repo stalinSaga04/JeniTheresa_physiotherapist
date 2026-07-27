@@ -6,26 +6,28 @@ import { useScrollReveal } from '../hooks/useScrollAnimations';
 
 const Specialties = ({ onOpenTriage }) => {
   const scrollRef = useScrollReveal();
-  const [activeTab, setActiveTab] = useState(0);
+  const [expandedCard, setExpandedCard] = useState(null);
 
-  // Dr. Jeni's exact 4-Pillar clinical specialty structure designed for clear patient understanding
+  const accentMap = {
+    ortho:     { strip: 'bg-emerald-600', icon: 'bg-emerald-50 text-emerald-700', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200', dot: 'bg-emerald-500', hover: 'hover:border-emerald-400', glow: 'group-hover:shadow-emerald-500/10' },
+    neuro:     { strip: 'bg-sky-600',     icon: 'bg-sky-50 text-sky-700',         badge: 'bg-sky-50 text-sky-700 border-sky-200',         dot: 'bg-sky-500',     hover: 'hover:border-sky-400',     glow: 'group-hover:shadow-sky-500/10' },
+    surgical:  { strip: 'bg-amber-500',   icon: 'bg-amber-50 text-amber-700',     badge: 'bg-amber-50 text-amber-700 border-amber-200',   dot: 'bg-amber-500',   hover: 'hover:border-amber-400',   glow: 'group-hover:shadow-amber-500/10' },
+    pediatric: { strip: 'bg-rose-500',    icon: 'bg-rose-50 text-rose-700',       badge: 'bg-rose-50 text-rose-700 border-rose-200',       dot: 'bg-rose-500',    hover: 'hover:border-rose-400',    glow: 'group-hover:shadow-rose-500/10' },
+  };
+
   const specialties = [
     {
       id: "ortho",
       title: "Orthopaedic Rehabilitation",
       subtitle: "Restoring Joint Mechanics & Structural Freedom",
       icon: Bone,
-      image: "/images/biomech_spine.png",
-      color: "from-emerald-500/20 to-emerald-900/40",
-      border: "border-emerald-500/30 text-emerald-400",
-      badgeBg: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20",
-      description: "Whether dealing with spinal disc friction or postural stiffness from intensive work routines, our approach targets the biomechanical root cause rather than relying on temporary pain-relief protocols.",
+      description: "Targeting the biomechanical root cause of spinal disc friction, postural stiffness, and joint wear — not just masking pain with temporary balms or heat pads.",
       conditions: [
-        { name: "Low Back Pain & Lumbar Disc Strain", note: "Targeting pelvic tilt, sciatica & prolonged sitting stiffness" },
-        { name: "Neck Pain & Cervical Tension", note: "Resolving text-neck postural stress & nerve root irritation" },
-        { name: "Knee Pain & Patellofemoral Disorder", note: "Tracking alignment & ligament strain repair" },
-        { name: "Shoulder Pain & Rotator Cuff Impingement", note: "Restoring overhead reach and scapular biomechanics" },
-        { name: "Arthritis & Osteoarthritic Joint Management", note: "Preserving joint lubrication & painless mobility" }
+        { name: "Low Back Pain & Lumbar Disc", note: "Pelvic tilt, sciatica & sitting stiffness" },
+        { name: "Neck Pain & Cervical Tension", note: "Text-neck stress & nerve root irritation" },
+        { name: "Knee Pain & Patellofemoral", note: "Alignment tracking & ligament repair" },
+        { name: "Shoulder & Rotator Cuff", note: "Overhead reach & scapular mechanics" },
+        { name: "Arthritis Management", note: "Joint lubrication & painless mobility" }
       ],
       whatsappPrompt: "Hi Dr. Jeni, I am seeking Orthopaedic Physiotherapy evaluation for "
     },
@@ -34,209 +36,174 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Neurological Rehabilitation",
       subtitle: "Neuroplasticity & Motor Control Recovery",
       icon: Brain,
-      image: "/images/neuro_stroke.png",
-      color: "from-teal-500/20 to-teal-900/40",
-      border: "border-teal-500/30 text-teal-400",
-      badgeBg: "bg-teal-500/10 text-teal-300 border-teal-500/20",
-      description: "Specialized neuromuscular training designed to rewire brain-to-muscle coordination, rebuild balance confidence, and restore independent mobility following neurological events.",
+      description: "Specialized neuromuscular training to rewire brain-to-muscle coordination, rebuild balance confidence, and restore independent mobility after neurological events.",
       conditions: [
-        { name: "Stroke Rehabilitation (Hemiplegia & Paresis)", note: "Progressive gait, balance & limb functional restoration" },
-        { name: "Parkinson's Disease Management", note: "Overcoming freezing episodes, rigidity & posture decline" },
-        { name: "Balance & Gait Training", note: "Preventing falls and re-establishing confident locomotion" }
+        { name: "Stroke Rehab (Hemiplegia)", note: "Gait, balance & limb functional restoration" },
+        { name: "Parkinson's Disease", note: "Freezing episodes, rigidity & posture decline" },
+        { name: "Balance & Gait Training", note: "Fall prevention & confident locomotion" }
       ],
       whatsappPrompt: "Hi Dr. Jeni, I am inquiring about Neurological Rehabilitation & balance training for "
     },
     {
       id: "surgical",
       title: "Post-Surgical Rehabilitation",
-      subtitle: "Accelerated Pre- & Post-Operative Tissue Recovery",
+      subtitle: "Pre- & Post-Operative Tissue Recovery",
       icon: Activity,
-      image: "/images/post_surgical.png",
-      color: "from-amber-500/20 to-amber-900/40",
-      border: "border-amber-500/30 text-amber-400",
-      badgeBg: "bg-amber-500/10 text-amber-300 border-amber-500/20",
-      description: "Surgery successfully repairs anatomical structures, but precise rehabilitation rebuilds neuromuscular strength, tendon flexibility, and full functional capacity.",
+      description: "Surgery repairs structures — but precise rehabilitation rebuilds neuromuscular strength, tendon flexibility, and full functional capacity for complete recovery.",
       conditions: [
-        { name: "Total Knee Replacement (TKR) Rehab", note: "Re-establishing range of motion & preventing stiffening" },
-        { name: "Total Hip Replacement (THR) Rehab", note: "Strengthening stabilizing glutes & restoring normal gait" },
-        { name: "Ligament Repair (ACL / PCL / Meniscus)", note: "Progressive functional tissue loading & sports return" }
+        { name: "Total Knee Replacement (TKR)", note: "Range of motion & stiffening prevention" },
+        { name: "Total Hip Replacement (THR)", note: "Glute strengthening & normal gait" },
+        { name: "ACL / PCL / Meniscus Repair", note: "Progressive tissue loading & sports return" }
       ],
       whatsappPrompt: "Hi Dr. Jeni, I need dedicated Post-Surgical Physiotherapy guidance following "
     },
     {
       id: "pediatric",
       title: "Pediatric Physiotherapy",
-      subtitle: "Gentle, Developmental & Nurturing Child Therapies",
+      subtitle: "Gentle Developmental & Nurturing Therapies",
       icon: Baby,
-      image: "/images/pediatric_rehab.png",
-      color: "from-[#C2593B]/20 to-[#A84528]/40",
-      border: "border-[#C2593B]/40 text-[#C2593B]",
-      badgeBg: "bg-[#C2593B]/15 text-[#C2593B] border-[#C2593B]/30",
-      description: "Compassionate, play-based physical therapy tailored specifically for infants and children to overcome motor milestones delays and build muscle coordination.",
+      description: "Compassionate, play-based physical therapy tailored for infants and children to overcome motor milestone delays, build muscle coordination, and nurture independence.",
       conditions: [
-        { name: "Developmental Conditions & Delay", note: "Supporting independent rolling, sitting, crawling & walking" },
-        { name: "Cerebral Palsy (CP) Rehab", note: "Managing spasticity, improving tone & self-reliance skills" },
-        { name: "Muscular Dystrophy Management", note: "Maintaining muscle function & functional respiratory comfort" }
+        { name: "Developmental Delay", note: "Rolling, sitting, crawling & walking support" },
+        { name: "Cerebral Palsy (CP)", note: "Spasticity management & self-reliance skills" },
+        { name: "Muscular Dystrophy", note: "Muscle function & respiratory comfort" }
       ],
       whatsappPrompt: "Hi Dr. Jeni, I would like to arrange a consultation regarding Pediatric Physiotherapy for "
     }
   ];
 
-  const handleWhatsAppSpecialty = (specialtyTitle, prompt) => {
-    const text = `${prompt}a dedicated Home Visit assessment across ${CLINIC_INFO.city} / Online Video Tele-Rehab.\n\nCould you confirm your available doctor evaluation timings and procedure?`;
+  const handleWhatsAppSpecialty = (prompt) => {
+    const text = `${prompt}a dedicated Home Visit assessment across ${CLINIC_INFO.city} / Online Video Tele-Rehab.\n\nCould you confirm your available evaluation timings and procedure?`;
     const encoded = encodeURIComponent(text);
     window.open(`https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encoded}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section ref={scrollRef} id="specialties" className="py-24 md:py-32 bg-[#0A1C17] text-[#FAF8F5] relative overflow-hidden">
+    <section ref={scrollRef} id="specialties" className="py-24 md:py-32 bg-gradient-to-b from-[#FAF8F5] via-white to-[#FAF8F5] text-[#0A1C17] relative overflow-hidden">
       
-      {/* Subtle organic gradient backgrounds */}
-      <div className="absolute -top-40 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-40 right-1/4 w-96 h-96 bg-[#C2593B]/15 rounded-full blur-[120px] pointer-events-none" />
+      {/* Soft ambient accents */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-500/[0.04] rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
         
-        {/* Header section with Doctor's clinical badge */}
-        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-16 border-b border-white/15 pb-10">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-xs font-mono-tech tracking-widest uppercase mb-4 text-emerald-300 font-bold border border-white/15">
-              <Sparkles className="w-3.5 h-3.5 text-[#D2A13E]" />
-              <span>Comprehensive Clinical Departments</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif-clinical font-black tracking-tight leading-tight text-white">
-              Specialist Rehabilitation <br />
-              <span className="font-editorial italic font-normal text-[#D2A13E]">Tailored to Every Life Stage.</span>
-            </h2>
-            <p className="mt-4 text-base md:text-lg text-[#FAF8F5]/80 max-w-2xl font-normal leading-relaxed">
-              To ensure absolute diagnostic clarity for our patients, Dr. Jeni Theresa structures treatment across four specialized clinical divisions. Each condition is addressed with one-on-one medical expertise.
-            </p>
+        {/* ── Section Header ── */}
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A1C17] text-[#FAF8F5] text-xs font-mono-tech tracking-widest uppercase font-bold mb-5 shadow-sm border border-emerald-500/30">
+            <Sparkles className="w-3.5 h-3.5 text-[#D2A13E]" />
+            <span>4 Clinical Departments</span>
           </div>
-
-          {/* Mini clinical supervisor profile badge */}
-          <div className="flex items-center gap-4 bg-[#163029] p-3.5 pr-6 rounded-2xl border border-white/15 shadow-xl shrink-0">
-            <div className="relative w-14 h-14 rounded-xl overflow-hidden border-2 border-[#D2A13E]/50 shrink-0">
-              <img 
-                src="/images/dr-jeni-clinical.jpg" 
-                alt="Dr. Jeni Theresa Clinical Director" 
-                className="w-full h-full object-cover object-top"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-              <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#0A1C17]" />
-            </div>
-            <div>
-              <span className="text-[10px] font-mono-tech uppercase text-[#D2A13E] font-bold block tracking-wider">
-                Clinical Specialist & Lead
-              </span>
-              <h4 className="font-serif-clinical font-bold text-sm text-white leading-tight">
-                Dr. Jeni Theresa, DPT
-              </h4>
-              <span className="text-xs font-mono-tech text-white/80">
-                Bommasandra • {CLINIC_INFO.city} (Home Visits)
-              </span>
-            </div>
-          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-[1.15] text-[#0A1C17] font-sans mb-4">
+            Specialist Rehabilitation{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C2593B] via-emerald-800 to-[#0A1C17]">
+              Tailored to Every Life Stage.
+            </span>
+          </h2>
+          <p className="text-sm md:text-base text-[#0A1C17]/70 max-w-2xl font-medium leading-relaxed font-sans">
+            Dr. Jeni Theresa structures treatment across four specialized clinical divisions. Every condition receives one-on-one, evidence-based attention — no assembly-line clinics.
+          </p>
         </div>
 
-        {/* Desktop & Mobile Interactive Specialty Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* ── Specialty Cards Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {specialties.map((spec, idx) => {
             const IconComponent = spec.icon;
+            const accent = accentMap[spec.id];
+            const isExpanded = expandedCard === spec.id;
+
             return (
               <motion.div
                 key={spec.id}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative rounded-3xl bg-[#163029]/80 border-2 border-white/10 hover:border-[#D2A13E]/60 p-7 md:p-9 shadow-2xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5"
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.45, delay: idx * 0.08 }}
+                className={`group relative bg-white rounded-2xl border border-[#0A1C17]/8 ${accent.hover} shadow-sm hover:shadow-xl ${accent.glow} transition-all duration-300 overflow-hidden`}
               >
-                {/* Background glow overlay */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${spec.color} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+                {/* Colored accent strip on the left */}
+                <div className={`absolute top-0 left-0 w-1 h-full ${accent.strip} rounded-l-2xl`} />
 
-                <div>
-                  {/* Title Bar */}
-                  <div className="flex items-start justify-between gap-4 mb-5 relative z-10">
-                    <div>
-                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono-tech font-bold uppercase border mb-3 ${spec.badgeBg}`}>
-                        <span>Pillar 0{idx + 1}</span>
-                      </span>
-                      <h3 className="text-2xl md:text-3xl font-serif-clinical font-black text-white group-hover:text-[#D2A13E] transition-colors leading-tight">
+                <div className="pl-6 pr-6 pt-6 pb-5 sm:pl-7 sm:pr-7">
+                  
+                  {/* ── Card Header ── */}
+                  <div className="flex items-start justify-between gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2.5 mb-2.5">
+                        <div className={`w-10 h-10 rounded-xl ${accent.icon} flex items-center justify-center shrink-0`}>
+                          <IconComponent className="w-5 h-5 stroke-[2.2]" />
+                        </div>
+                        <span className={`text-[10px] font-mono-tech font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${accent.badge}`}>
+                          Pillar 0{idx + 1}
+                        </span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-extrabold text-[#0A1C17] leading-tight font-sans">
                         {spec.title}
                       </h3>
-                      <span className="text-xs font-mono-tech text-white/70 block mt-1 font-medium">
+                      <p className="text-[11px] font-mono-tech text-[#0A1C17]/50 font-semibold mt-0.5 uppercase tracking-wide">
                         {spec.subtitle}
-                      </span>
-                    </div>
-                    <div className={`p-4 rounded-2xl bg-[#0A1C17] border shadow-inner shrink-0 ${spec.border} group-hover:scale-110 transition-transform`}>
-                      <IconComponent className="w-7 h-7 stroke-[2.2]" />
+                      </p>
                     </div>
                   </div>
 
-                  {/* Scientific Biomedical Visualization Banner */}
-                  <div className="relative h-48 sm:h-56 rounded-2xl overflow-hidden mb-6 border border-white/15 bg-[#0A1C17] shadow-inner">
-                    <img
-                      src={spec.image}
-                      alt={spec.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#163029] via-transparent to-transparent opacity-90 pointer-events-none" />
-                    <div className="absolute bottom-3 left-3 text-[11px] font-mono-tech text-emerald-300 bg-black/60 px-2.5 py-1 rounded-lg backdrop-blur-md border border-white/10">
-                      🔬 Evidence-Based Kinetic Protocol
-                    </div>
-                  </div>
-
-                  <p className="text-xs md:text-sm text-[#FAF8F5]/80 leading-relaxed mb-7 relative z-10 font-normal">
+                  {/* ── Description ── */}
+                  <p className="text-sm text-[#0A1C17]/75 leading-relaxed font-sans font-medium mb-5">
                     {spec.description}
                   </p>
 
-                  {/* Conditions Breakdown (As instructed by Dr. Jeni: "Idhula ovvoru condition ku under multiple condition irukku") */}
-                  <div className="space-y-3 relative z-10 mb-8">
-                    <span className="text-xs font-mono-tech font-bold uppercase tracking-wider text-[#D2A13E] flex items-center gap-1.5 border-b border-white/10 pb-2">
-                      <Shield className="w-3.5 h-3.5" />
-                      <span>Primary Treated Conditions in this Division:</span>
-                    </span>
-                    
-                    <div className="grid grid-cols-1 gap-2.5">
-                      {spec.conditions.map((cond, cIdx) => (
+                  {/* ── Conditions as compact inline badges ── */}
+                  <div className="mb-5">
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <Shield className="w-3.5 h-3.5 text-[#0A1C17]/40" />
+                      <span className="text-[10px] font-mono-tech font-bold uppercase tracking-wider text-[#0A1C17]/50">
+                        Treated Conditions
+                      </span>
+                    </div>
+                    <div className="space-y-2">
+                      {spec.conditions.slice(0, isExpanded ? spec.conditions.length : 3).map((cond, cIdx) => (
                         <div 
                           key={cIdx} 
-                          className="flex items-start gap-3 p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors"
+                          className="flex items-start gap-2.5 py-2 px-3 rounded-xl bg-[#F7F9F8] border border-[#0A1C17]/5 transition-colors hover:bg-[#EFF3F1]"
                         >
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                          <div className="flex flex-col">
-                            <span className="text-xs md:text-sm font-bold text-white leading-tight">
+                          <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${accent.dot.replace('bg-', 'text-')}`} />
+                          <div className="min-w-0">
+                            <span className="text-[13px] font-bold text-[#0A1C17] leading-tight block">
                               {cond.name}
                             </span>
-                            <span className="text-[11px] font-mono-tech text-white/70 font-normal mt-0.5">
+                            <span className="text-[11px] text-[#0A1C17]/55 font-medium leading-snug block mt-0.5">
                               {cond.note}
                             </span>
                           </div>
                         </div>
                       ))}
                     </div>
+                    {spec.conditions.length > 3 && (
+                      <button
+                        onClick={() => setExpandedCard(isExpanded ? null : spec.id)}
+                        className="mt-2 text-[11px] font-mono-tech font-bold text-[#0A1C17]/50 hover:text-[#0A1C17] uppercase tracking-wider cursor-pointer transition-colors flex items-center gap-1"
+                      >
+                        {isExpanded ? '▲ Show less' : `▼ +${spec.conditions.length - 3} more conditions`}
+                      </button>
+                    )}
                   </div>
-                </div>
 
-                {/* Bottom Action Row */}
-                <div className="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 relative z-10">
-                  <button
-                    onClick={() => handleWhatsAppSpecialty(spec.title, spec.whatsappPrompt)}
-                    className="flex-1 py-3.5 px-5 rounded-xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all cursor-pointer flex items-center justify-center gap-2 group/btn"
-                  >
-                    <MessageCircle className="w-4 h-4 fill-[#0A1C17] text-[#FAF8F5]" />
-                    <span>Inquire via WhatsApp</span>
-                    <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
+                  {/* ── Action Row ── */}
+                  <div className="flex items-center gap-2.5 pt-4 border-t border-[#0A1C17]/8">
+                    <button
+                      onClick={() => handleWhatsAppSpecialty(spec.whatsappPrompt)}
+                      className="flex-1 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#1EBE5A] text-[#0A1C17] font-bold text-xs uppercase tracking-wider shadow-sm hover:shadow-md transition-all cursor-pointer flex items-center justify-center gap-2"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                      <span>Inquire</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
 
-                  <button
-                    onClick={onOpenTriage}
-                    className="px-5 py-3.5 rounded-xl bg-[#0A1C17] hover:bg-white/10 text-white font-mono-tech text-xs font-bold uppercase tracking-wider border border-white/15 transition-colors text-center cursor-pointer"
-                  >
-                    Book Evaluation
-                  </button>
+                    <button
+                      onClick={onOpenTriage}
+                      className="py-3 px-5 rounded-xl bg-[#0A1C17] hover:bg-[#C2593B] text-white font-bold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-sm"
+                    >
+                      Book
+                    </button>
+                  </div>
                 </div>
 
               </motion.div>
@@ -244,10 +211,13 @@ const Specialties = ({ onOpenTriage }) => {
           })}
         </div>
 
-        {/* Footer Note */}
-        <div className="mt-16 pt-8 border-t border-white/15 text-center flex flex-col sm:flex-row items-center justify-between text-xs font-mono-tech text-white/70">
-          <span>*Every treatment protocol begins with a comprehensive functional assessment.</span>
-          <span className="text-emerald-300 font-semibold mt-2 sm:mt-0">⚡ 100% One-on-One Doctor Attention Guaranteed</span>
+        {/* ── Bottom Assurance Strip ── */}
+        <div className="mt-14 py-5 px-6 bg-[#0A1C17] rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono-tech text-white shadow-lg">
+          <span className="text-white/80">* Every protocol begins with a comprehensive functional assessment.</span>
+          <span className="text-emerald-300 font-bold flex items-center gap-1.5">
+            <CheckCircle2 className="w-4 h-4" />
+            100% One-on-One Doctor Attention
+          </span>
         </div>
 
       </div>
