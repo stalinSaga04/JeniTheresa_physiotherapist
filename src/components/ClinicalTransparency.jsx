@@ -1,11 +1,31 @@
 import React, { useState } from 'react';
-import { CheckCircle2, XCircle, ShieldCheck, Clock, Activity, Award, UserCheck, ArrowRight, Zap, Sparkles } from 'lucide-react';
+import { CheckCircle2, XCircle, ShieldCheck, Clock, Activity, Award, UserCheck, ArrowRight, Zap, Sparkles, HelpCircle, ChevronDown, ChevronUp, CreditCard, Shield } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollAnimations';
 import { CLINIC_INFO } from '../data/clinicalData';
 
 const ClinicalTransparency = ({ onOpenTriage }) => {
   const scrollRef = useScrollReveal();
   const [activeStep, setActiveStep] = useState(0);
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const faqs = [
+    {
+      q: "How does Dr. Jeni Theresa structure consultation & rehabilitation fees?",
+      a: "Our fee structure is clear, ethical, and based directly on expert clinical evaluation and session duration—never on confusing equipment add-ons. During your Initial Comprehensive Assessment, Dr. Jeni conducts thorough postural, range-of-motion, and neurological diagnostics to identify your injury's true root cause. Follow-up therapies are offered either per-visit or through structured recovery packages (such as 5-session or 10-session personalized plans) for complex post-surgical, orthopedic, or stroke rehabilitation."
+    },
+    {
+      q: "Are there any hidden charges for dry needling or specialized manual treatments?",
+      a: "Zero hidden charges. Unlike automated clinic chains that bill separately for every procedure or machine used, we maintain an all-inclusive medical care ethic. Whatever evidence-based therapy your condition requires during your reserved one-on-one session—whether precision dry needling, joint mobilization, or athletic taping—is included without surprise fees."
+    },
+    {
+      q: "How do Online Tele-Rehabilitation and In-Clinic appointment fees differ?",
+      a: "Both consultation modes guarantee 100% direct doctor time with Dr. Jeni Theresa. In-Clinic appointments take place at our Anna Nagar, Chennai clinic for direct hands-on manual therapy. Online Tele-Rehabilitation sessions are designed for remote IT professionals across Tamil Nadu and India, focused on ergonomic posture transformation, live movement evaluation, and video-guided physical recovery. Consultation details and transparent slot pricing are confirmed directly via WhatsApp before your visit."
+    },
+    {
+      q: "Do I need a hospital referral or surgical prescription to schedule a consultation?",
+      a: "No prior prescription is required for an orthopedic or neurological physiotherapy diagnosis with Dr. Jeni Theresa (PT, DPT). If you possess recent MRIs, X-rays, or post-surgical discharge reports, you can easily attach or forward them via our direct WhatsApp consultation line."
+    }
+  ];
 
   const roadmapSteps = [
     {
@@ -205,6 +225,117 @@ const ClinicalTransparency = ({ onOpenTriage }) => {
               <span>Book Your Assessment</span>
               <ArrowRight className="w-4 h-4" />
             </button>
+          </div>
+        </div>
+
+        {/* NEW: Ethical Medical Fee Structure & Consultation Principles */}
+        <div className="mt-20 pt-16 border-t border-[#0A1C17]/15">
+          <div className="max-w-3xl mb-12">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#D2A13E]/15 text-[#9A7326] font-mono-tech text-xs font-bold mb-4 border border-[#D2A13E]/30">
+              <CreditCard className="w-3.5 h-3.5 text-[#C2593B]" />
+              <span>Ethical Clinical Billing Policy</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif-clinical font-black tracking-tight text-[#0A1C17] mb-3">
+              How Are Clinical Consultation Fees Structured?
+            </h3>
+            <p className="text-sm sm:text-base text-[#0A1C17]/80 leading-relaxed font-sans font-normal">
+              We believe financial clarity is just as critical as medical diagnosis. Here is how Dr. Jeni Theresa ensures transparent, ethical professional healthcare without surprise costs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <div className="p-7 rounded-3xl bg-white border border-[#0A1C17]/15 shadow-md hover:shadow-xl transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-2xl bg-[#0A1C17] text-[#FAF8F5] flex items-center justify-center font-bold mb-5 shadow-sm">
+                  01
+                </div>
+                <h4 className="text-lg font-serif-clinical font-black text-[#0A1C17] mb-2">Initial Comprehensive Diagnostic Eval</h4>
+                <p className="text-xs font-mono-tech text-[#C2593B] font-bold uppercase tracking-wider mb-4">45 Mins • 100% Doctor Time</p>
+                <p className="text-xs sm:text-sm text-[#0A1C17]/80 leading-relaxed font-sans font-normal">
+                  An intensive deep-dive orthopedic, neurological, or pediatric clinical evaluation. Dr. Jeni performs precise physical tests to identify nerve compression and muscle imbalances before initiating immediate pain-relief therapy.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#0A1C17]/10 flex items-center gap-2 text-[11px] font-mono-tech font-bold text-emerald-700">
+                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                <span>Transparent estimate given on WhatsApp</span>
+              </div>
+            </div>
+
+            <div className="p-7 rounded-3xl bg-white border border-[#0A1C17]/15 shadow-md hover:shadow-xl transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-2xl bg-[#C2593B] text-white flex items-center justify-center font-bold mb-5 shadow-sm">
+                  02
+                </div>
+                <h4 className="text-lg font-serif-clinical font-black text-[#0A1C17] mb-2">All-Inclusive Follow-Up Care</h4>
+                <p className="text-xs font-mono-tech text-emerald-700 font-bold uppercase tracking-wider mb-4">Zero Extra Modality Upsells</p>
+                <p className="text-xs sm:text-sm text-[#0A1C17]/80 leading-relaxed font-sans font-normal">
+                  Unlike commercial clinic chains that charge extra fees for each needle or equipment used, follow-up rehab sessions cover whatever intervention your recovery requires—including precision dry needling and manual joint mobilization—at one steady fee.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-[#0A1C17]/10 flex items-center gap-2 text-[11px] font-mono-tech font-bold text-[#0A1C17]/75">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <span>Individual & structured packages available</span>
+              </div>
+            </div>
+
+            <div className="p-7 rounded-3xl bg-[#163029] text-white border border-[#0A1C17] shadow-xl hover:shadow-2xl transition-shadow flex flex-col justify-between">
+              <div>
+                <div className="w-10 h-10 rounded-2xl bg-[#D2A13E] text-[#0A1C17] flex items-center justify-center font-bold mb-5 shadow-sm">
+                  03
+                </div>
+                <h4 className="text-lg font-serif-clinical font-black text-white mb-2">Flexible Consultation Modes</h4>
+                <p className="text-xs font-mono-tech text-emerald-300 font-bold uppercase tracking-wider mb-4">In-Clinic & Video Tele-Rehab</p>
+                <p className="text-xs sm:text-sm text-white/85 leading-relaxed font-sans font-normal">
+                  Whether you visit our state-of-the-art clinic in Anna Nagar, Chennai or book an online Video Tele-Rehabilitation consultation from home, appointment timings and direct payment instructions (UPI/Cards) are confirmed clearly beforehand.
+                </p>
+              </div>
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2 text-[11px] font-mono-tech font-bold text-[#D2A13E]">
+                <Sparkles className="w-4 h-4 text-[#D2A13E]" />
+                <span>100% Guaranteed 1-on-1 Doctor Time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* NEW: Interactive SEO FAQ Accordion */}
+        <div className="pt-10 border-t border-[#0A1C17]/15">
+          <div className="max-w-3xl mb-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0A1C17]/5 text-[#0A1C17] font-mono-tech text-xs font-bold mb-3 border border-[#0A1C17]/10">
+              <HelpCircle className="w-3.5 h-3.5 text-[#C2593B]" />
+              <span>Frequently Asked Questions</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif-clinical font-black text-[#0A1C17]">
+              Everything You Need To Know Before Choosing Dr. Jeni Theresa.
+            </h3>
+          </div>
+
+          <div className="space-y-4 max-w-4xl">
+            {faqs.map((faq, i) => {
+              const isOpen = openFaq === i;
+              return (
+                <div 
+                  key={i} 
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isOpen ? 'bg-white border-[#0A1C17] shadow-xl' : 'bg-white/60 border-[#0A1C17]/15 hover:bg-white/90'
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : i)}
+                    className="w-full text-left p-5 md:p-6 font-serif-clinical font-bold text-base md:text-lg text-[#0A1C17] flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
+                  >
+                    <span>{faq.q}</span>
+                    <span className={`p-2 rounded-full transition-transform duration-300 shrink-0 ${isOpen ? 'bg-[#0A1C17] text-white rotate-180' : 'bg-[#0A1C17]/5 text-[#0A1C17]'}`}>
+                      <ChevronDown className="w-4 h-4" />
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <div className="px-5 md:px-6 pb-6 pt-1 text-xs md:text-sm text-[#0A1C17]/85 font-sans leading-relaxed border-t border-[#0A1C17]/10">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 

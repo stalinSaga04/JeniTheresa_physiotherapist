@@ -7,6 +7,18 @@ import { useScrollReveal, useCountUp } from '../hooks/useScrollAnimations';
 
 const Hero = ({ onOpenTriage }) => {
   const scrollRef = useScrollReveal();
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, scale: 1 });
+
+  const handleMouseMove = (e) => {
+    const box = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - box.left - box.width / 2;
+    const y = e.clientY - box.top - box.height / 2;
+    setTilt({ rotateX: -y / 16, rotateY: x / 16, scale: 1.02 });
+  };
+
+  const handleMouseLeave = () => {
+    setTilt({ rotateX: 0, rotateY: 0, scale: 1 });
+  };
 
   const scrollToSection = (id) => {
     const el = document.querySelector(id);
@@ -157,92 +169,98 @@ const Hero = ({ onOpenTriage }) => {
 
           </div>
 
-          {/* Right Column: 3D Doctor Card with kinetic portrait photo and animated SVG Spine behind */}
+          {/* Right Column: 360° 3D Interactive Bio-Kinetic Holo-Sphere (No conventional square frame!) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92, rotateY: -8 }}
+            initial={{ opacity: 0, scale: 0.9, rotateY: -12 }}
             animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-            transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 relative perspective-container"
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 relative perspective-1000 my-auto"
           >
-            {/* Floating animated spine SVG behind card */}
-            <div className="absolute -inset-8 md:-inset-12 opacity-35 pointer-events-none z-0">
-              <SpineIllustration activeZone="lumbar" />
-            </div>
+            {/* 360° Ethereal Kinetic Glowing Atmosphere & Rotating Orbital Rings */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] bg-gradient-to-tr from-[#0A1C17]/40 via-[#C2593B]/25 to-[#D2A13E]/30 rounded-full blur-[80px] -z-10 animate-pulse" />
             
-            {/* Geometric offset shadow (3D depth illusion) */}
-            <div className="absolute inset-0 bg-[#0A1C17] rounded-3xl translate-x-3.5 translate-y-3.5 opacity-90 shadow-xl z-10" />
-            
-            <div className="card-3d-tilt relative bg-[#FAF8F5] border-2 border-[#0A1C17] rounded-3xl p-5 md:p-7 overflow-hidden shadow-2xl flex flex-col justify-between z-20">
-              
-              {/* Kinetic Motion Portrait Showcase */}
-              <div className="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden mb-6 bg-[#163029] border border-[#0A1C17]/20 group shadow-inner">
-                {/* Doctor Portrait Image with smooth motion hover scale */}
-                <motion.img
-                  src="/images/dr-jeni-portrait.png"
-                  alt="Dr. Jeni Theresa, DPT — Clinical Director & Specialist Physiotherapist"
-                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  onError={(e) => {
-                    e.target.src = '/images/dr-jeni-clinical.jpg';
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17]/80 via-transparent to-black/20 pointer-events-none" />
+            {/* Outer Animated 360 Kinetic Orbital Ring */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] rounded-full border-2 border-dashed border-[#C2593B]/30 animate-[spin_25s_linear_infinite] pointer-events-none -z-10" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-full border border-dotted border-[#D2A13E]/40 animate-[spin_35s_linear_infinite_reverse] pointer-events-none -z-10" />
 
-                {/* Floating Top-Right Experience Badge */}
-                <div className="absolute top-3 right-3 px-3.5 py-1.5 rounded-full bg-[#FAF8F5]/95 backdrop-blur-md text-[#0A1C17] font-mono-tech text-xs font-bold shadow-lg border border-[#0A1C17]/10 flex items-center gap-1.5">
-                  <Award className="w-3.5 h-3.5 text-[#C2593B]" />
-                  <span>5+ Years Clinical Exp.</span>
-                </div>
+            {/* Interactive 3D Kinetic Tilt Container */}
+            <motion.div
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              animate={{
+                rotateX: tilt.rotateX,
+                rotateY: tilt.rotateY,
+                scale: tilt.scale
+              }}
+              transition={{ type: "spring", damping: 20, stiffness: 250 }}
+              className="relative cursor-pointer z-20 mx-auto max-w-[420px]"
+            >
+              {/* Frameless Floating Portrait Capsule (Futuristic Curved Silhouette) */}
+              <div className="relative rounded-[48px] overflow-hidden p-1.5 bg-gradient-to-b from-[#FAF8F5] via-[#D2A13E]/40 to-[#0A1C17] shadow-[0_25px_70px_rgba(10,28,23,0.35)] transition-shadow duration-500 hover:shadow-[0_30px_90px_rgba(194,89,59,0.35)]">
+                
+                <div className="relative rounded-[42px] overflow-hidden bg-[#163029]">
+                  {/* Doctor Portrait Image with glowing ambient lighting */}
+                  <img
+                    src="/images/dr-jeni-portrait.png"
+                    alt="Dr. Jeni Theresa, DPT — 360 3D Clinical Showcase"
+                    className="w-full h-[350px] sm:h-[410px] object-cover object-top transition-transform duration-700 hover:scale-105"
+                    onError={(e) => {
+                      e.target.src = '/images/dr-jeni-clinical.jpg';
+                    }}
+                  />
+                  
+                  {/* Holo-gradient overlay & energetic lighting */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/20 to-transparent opacity-90 pointer-events-none" />
 
-                {/* Floating Bottom Live Indicator */}
-                <div className="absolute bottom-3 left-3 right-3 px-3.5 py-2 rounded-xl bg-[#0A1C17]/90 backdrop-blur-md border border-white/15 text-white flex items-center justify-between text-xs font-mono-tech shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <span className="relative flex h-2.5 w-2.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                  {/* Top Floating Telemetry Badges (In 3D depth) */}
+                  <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                    <span className="px-3.5 py-1.5 rounded-full bg-[#0A1C17]/90 text-white border border-white/20 text-[11px] font-mono-tech uppercase font-bold tracking-wider backdrop-blur-md flex items-center gap-1.5 shadow-lg">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>360° Clinical Profile</span>
                     </span>
-                    <span className="text-emerald-300 font-bold truncate">Live Clinic & Online Tele-Rehab Open</span>
+
+                    <span className="px-3.5 py-1.5 rounded-full bg-[#FAF8F5]/95 text-[#0A1C17] font-mono-tech text-[11px] font-bold shadow-lg border border-[#0A1C17]/10 flex items-center gap-1.5 backdrop-blur-md">
+                      <Award className="w-3.5 h-3.5 text-[#C2593B]" />
+                      <span>5+ Years Exp.</span>
+                    </span>
                   </div>
-                  <span className="text-[11px] text-white/80 font-semibold shrink-0">Anna Nagar, Chennai</span>
-                </div>
-              </div>
 
-              {/* Doctor Header & Review Rating */}
-              <div className="flex items-center justify-between gap-4 border-b border-[#0A1C17]/15 pb-4 mb-5">
-                <div>
-                  <h3 className="text-2xl font-serif-clinical font-black text-[#0A1C17]">Dr. Jeni Theresa</h3>
-                  <p className="text-xs font-mono-tech text-[#0A1C17]/75 font-bold">Doctor of Physical Therapy, DPT • Founder</p>
-                </div>
+                  {/* Doctor Profile Dock Inside the Capsule Bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/95 to-transparent text-white">
+                    <div className="flex items-center justify-between gap-3 mb-2">
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-serif-clinical font-black tracking-tight text-white flex items-center gap-2">
+                          <span>Dr. Jeni Theresa</span>
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+                        </h3>
+                        <p className="text-xs font-mono-tech text-[#D2A13E] font-bold">Doctor of Physical Therapy (DPT) • Founder</p>
+                      </div>
 
-                {/* Google Review Stars Hint */}
-                <div className="flex flex-col items-end shrink-0 px-3 py-1.5 rounded-xl bg-[#D2A13E]/15 border border-[#D2A13E]/40 text-xs font-mono-tech text-[#0A1C17] font-bold">
-                  <div className="flex gap-0.5 mb-0.5">
-                    {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
+                      {/* Review Badge */}
+                      <div className="flex flex-col items-end shrink-0 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/15 text-xs font-mono-tech font-bold">
+                        <div className="flex gap-0.5 mb-0.5">
+                          {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-[#D2A13E] text-[#D2A13E]" />)}
+                        </div>
+                        <span className="text-[#FAF8F5]/90 text-[11px]">4.9 / 5.0 Star Rating</span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-white/85 line-clamp-2 italic mb-4 font-serif leading-relaxed">
+                      "Dedicated one-on-one sports and orthopedic rehabilitation without relying on pain pills or temporary machine mills."
+                    </p>
+
+                    {/* Action trigger button */}
+                    <button
+                      onClick={() => scrollToSection('#specialties')}
+                      className="w-full py-3 bg-[#C2593B] hover:bg-[#D2A13E] hover:text-[#0A1C17] text-white rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 group"
+                    >
+                      <span>Explore Our 4 Rehab Divisions</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
                   </div>
-                  <span>4.9 / 5.0 Rating</span>
                 </div>
               </div>
-
-              {/* Core Diagnostic Philosophy Quote */}
-              <div className="bg-[#163029] text-[#FAF8F5] p-5 rounded-2xl mb-5 shadow-md relative overflow-hidden">
-                <div className="absolute -right-3 -bottom-3 text-[#C2593B]/15 select-none pointer-events-none font-serif text-6xl leading-none">"</div>
-                <p className="font-serif italic text-xs md:text-sm leading-relaxed text-[#FAF8F5]/95 relative z-10 font-normal">
-                  "Our goal is never simply to silence your pain temporarily with pills or generic exercises. We carefully diagnose the underlying physical movement fault and work with you one-on-one to restore complete functional freedom and lasting strength."
-                </p>
-                <p className="text-[10px] font-mono-tech text-[#D2A13E] mt-3 uppercase tracking-widest font-bold">
-                  — Dr. Jeni Theresa's Care Philosophy
-                </p>
-              </div>
-
-              {/* Action Trigger to Specialties Outline */}
-              <button
-                onClick={() => scrollToSection('#specialties')}
-                className="w-full py-3.5 bg-[#0A1C17] hover:bg-[#C2593B] text-[#FAF8F5] rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-colors cursor-pointer flex items-center justify-center gap-2 group"
-              >
-                <span>Explore 4 Specialist Rehab Divisions</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-            </div>
+            </motion.div>
           </motion.div>
 
         </div>

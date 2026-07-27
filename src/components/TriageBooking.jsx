@@ -370,6 +370,17 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
                       className="w-full p-3 rounded-xl bg-white border border-[#0A1C17]/20 text-sm focus:outline-none focus:border-[#C2593B] transition-colors resize-none font-medium"
                     ></textarea>
                   </div>
+
+                  {/* Transparent Fee & Appointment Clarity Assurance */}
+                  <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-start gap-3 shadow-sm">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="text-xs font-mono-tech font-bold uppercase text-emerald-950 tracking-wide">100% Ethical Medical Fee Guarantee</h5>
+                      <p className="text-xs text-[#0A1C17]/85 leading-relaxed font-sans mt-0.5 font-normal">
+                        No online prepayment required to request a triage assessment. Your consultation format (In-Clinic at Anna Nagar / Online Tele-Rehab), doctor slot timing, and all-inclusive professional consultation fee will be explicitly verified directly with Dr. Jeni's clinical desk on WhatsApp prior to your session.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               )}
 
