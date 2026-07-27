@@ -43,48 +43,52 @@ const Hero = ({ onOpenTriage }) => {
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
-    <section ref={scrollRef} className="relative min-h-[100svh] bg-[#07130F] overflow-hidden flex flex-col justify-center">
+    /* Anti-Leakage Height Containment: md:max-h-[900px] ensures zooming out never causes vertical stretching or empty green voids! */
+    <section ref={scrollRef} className="relative min-h-[100svh] md:min-h-0 md:h-[90svh] md:max-h-[900px] lg:max-h-[920px] bg-[#07130F] overflow-hidden flex flex-col justify-center">
       
       {/* Subtle ambient studio lighting on left side */}
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none z-10" />
 
-      {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP (Restored exact Image 1 pristine studio atmosphere without any smudges on her neck or hair!) ── */}
-      <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-[#07130F]">
+      {/* Master Anti-Leakage Canvas: Keeps text and studio portrait anchored together at all zoom levels! */}
+      <div className="max-w-[1550px] w-full mx-auto relative flex-1 flex flex-col justify-center md:h-full">
         
-        {/* Radiant champagne studio backdrop light illuminating behind Dr. Jeni Theresa's silhouette */}
-        <div className="absolute top-[10%] right-[5%] w-[650px] h-[750px] rounded-full bg-gradient-to-tr from-[#E6DECF]/35 via-[#F9F5EB]/65 to-white/75 blur-[130px] opacity-95 pointer-events-none" />
+        {/* ── DESKTOP & WIDESCREEN PANORAMIC PORTRAIT BACKDROP (Restored exact Image 1 pristine studio atmosphere without any smudges on her neck or hair!) ── */}
+        <div className="absolute top-0 right-0 bottom-0 w-[60%] sm:w-[58%] md:w-[56%] lg:w-[55%] z-0 hidden md:block overflow-hidden bg-[#07130F]">
+          
+          {/* Radiant champagne studio backdrop light illuminating behind Dr. Jeni Theresa's silhouette */}
+          <div className="absolute top-[10%] right-[5%] w-[650px] h-[750px] rounded-full bg-gradient-to-tr from-[#E6DECF]/35 via-[#F9F5EB]/65 to-white/75 blur-[130px] opacity-95 pointer-events-none" />
 
-        <img
-          src="/images/dr-jeni-portrait.png"
-          alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
-          className="w-full h-full object-cover object-[45%_top] lg:object-[42%_top] scale-[1.03] transform-gpu transition-transform duration-700"
-          onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
-        />
-        
-        {/* ── EXACT IMAGE 1 CLEAN CURVING CONTOURS (No straight vertical lines & ZERO dark smudges over her face or neck!) ── */}
-        {/* 1. Base contour spine mask spanning only the leftmost 25% boundary so Dr. Jeni's face & ambient background remain brilliantly exposed */}
-        <div className="absolute inset-y-0 left-0 w-[26%] bg-gradient-to-r from-[#07130F] from-0% via-[#0A1C17]/95 via-[45%] via-[#0A1C17]/40 via-[75%] to-transparent pointer-events-none" />
-        
-        {/* 2. Upper Curving Arc (Rotate -15deg): Angled elliptical shadow cushioning the main Clinical Therapy Headline and badges */}
-        <div className="absolute top-[5%] -left-[340px] w-[640px] h-[400px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[95px] opacity-95 pointer-events-none" />
-        
-        {/* 3. Middle Bending Contour (Rotate +14deg): Curves inward gracefully around the silhouette of the interactive glassmorphism treatment card */}
-        <div className="absolute top-[38%] -left-[290px] w-[570px] h-[370px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[105px] opacity-95 pointer-events-none" />
+          <img
+            src="/images/dr-jeni-portrait.png"
+            alt="Dr. Jeni Theresa — Doctor of Physical Therapy"
+            className="w-full h-full object-cover object-[45%_top] lg:object-[42%_top] scale-[1.03] transform-gpu transition-transform duration-700"
+            onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
+          />
+          
+          {/* ── EXACT IMAGE 1 CLEAN CURVING CONTOURS (No straight vertical lines & ZERO dark smudges over her face or neck!) ── */}
+          {/* 1. Base contour spine mask spanning only the leftmost 25% boundary so Dr. Jeni's face & ambient background remain brilliantly exposed */}
+          <div className="absolute inset-y-0 left-0 w-[26%] bg-gradient-to-r from-[#07130F] from-0% via-[#0A1C17]/95 via-[45%] via-[#0A1C17]/40 via-[75%] to-transparent pointer-events-none" />
+          
+          {/* 2. Upper Curving Arc (Rotate -15deg): Angled elliptical shadow cushioning the main Clinical Therapy Headline and badges */}
+          <div className="absolute top-[5%] -left-[340px] w-[640px] h-[400px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[95px] opacity-95 pointer-events-none" />
+          
+          {/* 3. Middle Bending Contour (Rotate +14deg): Curves inward gracefully around the silhouette of the interactive glassmorphism treatment card */}
+          <div className="absolute top-[38%] -left-[290px] w-[570px] h-[370px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[105px] opacity-95 pointer-events-none" />
 
-        {/* 4. Lower Swelling Arc (Rotate -18deg): Swoops out at the base to cradle the Book Home Assessment buttons and 4.9/5 patient credentials */}
-        <div className="absolute bottom-[4%] -left-[310px] w-[600px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[100px] opacity-90 pointer-events-none" />
-        
-        {/* 5. Subtle Inner Curvature Aura: Deepens the studio atmosphere along the joint curve without darkening her face */}
-        <div className="absolute top-[26%] -left-[220px] w-[350px] h-[460px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-[#0A1C17]/80 to-emerald-800/20 rotate-[10deg] blur-[115px] opacity-80 pointer-events-none" />
-        
-        {/* Seamless top and bottom viewport transitions */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
-      </div>
+          {/* 4. Lower Swelling Arc (Rotate -18deg): Swoops out at the base to cradle the Book Home Assessment buttons and 4.9/5 patient credentials */}
+          <div className="absolute bottom-[4%] -left-[310px] w-[600px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[100px] opacity-90 pointer-events-none" />
+          
+          {/* 5. Subtle Inner Curvature Aura: Deepens the studio atmosphere along the joint curve without darkening her face */}
+          <div className="absolute top-[26%] -left-[220px] w-[350px] h-[460px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-[#0A1C17]/80 to-emerald-800/20 rotate-[10deg] blur-[115px] opacity-80 pointer-events-none" />
+          
+          {/* Seamless top and bottom viewport transitions */}
+          <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
+        </div>
 
-      {/* ── Main Content Container (Generous pt-40 spacing beneath floating Navbar to eliminate Image 2 collision!) ── */}
-      <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10 pt-32 pb-16 md:pt-40 md:pb-24 my-auto">
+        {/* ── Main Content Container (Generous pt-40 spacing beneath floating Navbar to eliminate Image 2 collision!) ── */}
+        <div className="relative z-10 max-w-7xl w-full mx-auto px-5 md:px-10 pt-32 pb-16 md:pt-40 md:pb-24 my-auto">
         
         {/* ── MOBILE VIEW ONLY (Hidden on Desktop & Laptop screens): Edge-to-Edge Top Organic Showcase ── */}
         <motion.div
@@ -283,6 +287,8 @@ const Hero = ({ onOpenTriage }) => {
         </div>
       </div>
 
+      {/* End Master Anti-Leakage Canvas */}
+      </div>
     </section>
   );
 };
