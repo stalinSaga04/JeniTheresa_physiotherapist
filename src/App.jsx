@@ -13,6 +13,7 @@ import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Specialties from './components/Specialties';
 import AdminDashboard from './components/AdminDashboard';
 import VideoShowcase from './components/VideoShowcase';
+import FAQ from './components/FAQ';
 
 function App() {
   const [isTriageOpen, setIsTriageOpen] = useState(false);
@@ -62,6 +63,9 @@ function App() {
         
         {/* Real Quantitative Outcome Case Vault */}
         <CaseVault onOpenTriage={() => setIsTriageOpen(true)} />
+
+        {/* Ethical Medical Fee Structure & Clinical FAQ (Standard UX End of Page Flow) */}
+        <FAQ onOpenTriage={() => setIsTriageOpen(true)} />
       </main>
 
       {/* Professional Practice Footer & Disclaimer */}
