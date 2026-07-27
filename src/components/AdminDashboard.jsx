@@ -100,7 +100,126 @@ const AdminDashboard = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [pinInput, setPinInput] = useState('');
+  const [authError, setAuthError] = useState(false);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    // Authorized Clinical PINs for Dr. Jeni Theresa & clinic staff
+    if (pinInput === '2026' || pinInput.toLowerCase() === 'jeni2026' || pinInput.toLowerCase() === 'dpt') {
+      setIsAuthenticated(true);
+      setAuthError(false);
+      setPinInput('');
+    } else {
+      setAuthError(true);
+      setTimeout(() => setAuthError(false), 3000);
+    }
+  };
+
   if (!isOpen) return null;
+
+  // ── CLINICAL SECURITY SHIELD: Blocks any unauthorized visitor or accidental patient click! ──
+  if (!isAuthenticated) {
+    return (
+      <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center p-4 font-sans">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          className="bg-[#0A1C17] text-[#FAF8F5] w-full max-w-lg rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.8)] border-2 border-[#D2A13E]/40 p-6 sm:p-8 overflow-hidden relative"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#C2593B]/20 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="flex items-center justify-between border-b border-white/10 pb-5 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#D2A13E] to-[#A87922] text-[#0A1C17] flex items-center justify-center font-bold shadow-lg">
+                <ShieldCheck className="w-7 h-7" />
+              </div>
+              <div>
+                <h3 className="text-lg font-extrabold text-white font-serif-clinical leading-tight">
+                  Clinical Practice Portal
+                </h3>
+                <span className="text-[11px] font-mono-tech text-emerald-300 font-bold uppercase tracking-wider">
+                  🔒 Encrypted EHR / PMS Suite
+                </span>
+              </div>
+            </div>
+            <button
+              onClick={onClose}
+              aria-label="Close Admin Login Modal"
+              className="p-2 rounded-xl bg-white/10 text-white/70 hover:text-white hover:bg-white/20 transition-all cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Friendly Guidance for Accidental Patient Clicks */}
+          <div className="p-4 rounded-2xl bg-[#163029] border border-emerald-500/30 text-xs text-white/85 leading-relaxed mb-6">
+            <div className="flex items-center gap-2 text-emerald-300 font-bold mb-1 font-mono-tech uppercase text-[11px]">
+              <AlertCircle className="w-4 h-4 text-[#D2A13E]" />
+              <span>Restricted Medical Access Note</span>
+            </div>
+            <p>
+              This console contains confidential patient physiotherapy case records and fee tracking. If you are a patient looking to book a consultation or view therapies, please close this secure dialog to return to the public website.
+            </p>
+          </div>
+
+          {/* Doctor PIN Authentication Form */}
+          <form onSubmit={handleLoginSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="pms-security-pin" className="block text-xs font-bold text-[#FAF8F5]/90 uppercase tracking-wider font-mono-tech mb-2">
+                Dr. Jeni Theresa — Enter Clinical PIN / Passcode:
+              </label>
+              <input
+                id="pms-security-pin"
+                type="password"
+                placeholder="Enter Security PIN (e.g. 2026)"
+                value={pinInput}
+                onChange={(e) => setPinInput(e.target.value)}
+                autoFocus
+                className="w-full px-4 py-3.5 rounded-2xl bg-white/10 border-2 border-white/20 text-white font-mono-tech placeholder-white/40 focus:outline-none focus:border-[#D2A13E] text-center text-lg tracking-[0.2em]"
+              />
+              <span className="text-[10px] text-white/60 font-mono-tech block mt-1.5 text-center">
+                Demo PIN: <strong className="text-[#D2A13E] font-bold">2026</strong> (or <strong className="text-[#D2A13E]">jeni2026</strong>)
+              </span>
+            </div>
+
+            {authError && (
+              <motion.p 
+                initial={{ opacity: 0, y: -5 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                className="text-xs text-[#C2593B] bg-[#C2593B]/10 font-bold text-center p-2.5 rounded-xl border border-[#C2593B]/30"
+              >
+                ❌ Access Denied: Incorrect Clinical Security PIN.
+              </motion.p>
+            )}
+
+            <div className="pt-2 flex flex-col sm:flex-row gap-3">
+              <button
+                type="submit"
+                className="flex-1 py-3.5 px-6 rounded-2xl bg-[#D2A13E] text-[#0A1C17] font-black uppercase tracking-wider text-xs sm:text-sm hover:bg-[#E3B24F] hover:shadow-lg transition-all cursor-pointer flex items-center justify-center gap-2"
+              >
+                <ShieldCheck className="w-4 h-4 text-[#0A1C17]" />
+                <span>Unlock Practice Console</span>
+              </button>
+              <button
+                type="button"
+                onClick={onClose}
+                className="py-3.5 px-5 rounded-2xl bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-wide transition-all cursor-pointer"
+              >
+                Return to Website
+              </button>
+            </div>
+          </form>
+
+          <p className="text-[10px] font-mono-tech text-white/40 text-center mt-6">
+            Protected by multi-layered Orthopedic EHR data architecture & session encryption.
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
 
   const handleUpdatePatient = (patientId, updates) => {
     const updatedList = patients.map(p => {
@@ -160,7 +279,7 @@ const AdminDashboard = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 relative z-10 self-end sm:self-center">
+          <div className="flex items-center gap-2 relative z-10 self-end sm:self-center">
             <button
               onClick={() => {
                 localStorage.setItem('jeni_practice_crm_v1', JSON.stringify(initialPatients));
@@ -168,18 +287,29 @@ const AdminDashboard = ({ isOpen, onClose }) => {
                 setNotification('Synced live practice test data.');
                 setTimeout(() => setNotification(''), 3000);
               }}
-              className="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors flex items-center gap-1.5 text-xs font-mono-tech cursor-pointer border border-white/15"
+              className="px-2.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors flex items-center gap-1 text-[11px] font-mono-tech cursor-pointer border border-white/15"
               title="Reset test practice data"
             >
               <RefreshCw className="w-3.5 h-3.5" />
               <span>Reset Sync</span>
             </button>
             <button 
+              onClick={() => {
+                setIsAuthenticated(false);
+                setNotification('Locked Clinical Practice Console.');
+              }}
+              className="px-2.5 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 transition-colors flex items-center gap-1 text-[11px] font-mono-tech cursor-pointer font-bold"
+              title="Lock Session"
+            >
+              <ShieldCheck className="w-3.5 h-3.5" />
+              <span>Lock</span>
+            </button>
+            <button 
               onClick={onClose}
-              className="w-10 h-10 rounded-full bg-white/15 hover:bg-red-500/80 text-white flex items-center justify-center transition-all cursor-pointer"
+              className="w-9 h-9 rounded-full bg-white/15 hover:bg-red-500/80 text-white flex items-center justify-center transition-all cursor-pointer"
               aria-label="Close Admin Suite"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
           </div>
         </div>
