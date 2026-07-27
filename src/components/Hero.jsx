@@ -58,18 +58,21 @@ const Hero = ({ onOpenTriage }) => {
           onError={(e) => { e.target.src = '/images/dr-jeni-clinical.jpg'; }}
         />
         
-        {/* ── ORGANIC STUDIO CLOUD DIFFUSION (Confined strictly to the far-left border so her ENTIRE face remains brightly revealed and completely clear!) ── */}
-        {/* 1. Precise multi-step feathering mask spanning only 27% of width — stopping completely before reaching her hair or facial features! */}
-        <div className="absolute inset-y-0 left-0 w-[27%] bg-gradient-to-r from-[#0A1C17] from-0% via-[#0A1C17]/90 via-[35%] via-[#0A1C17]/50 via-[70%] to-transparent pointer-events-none" />
+        {/* ── ERGONOMIC CURVING SHADOW CONTOURS ("Content ku yetha mari shadow valayattum" - Bends smoothly around text cards while leaving Dr. Jeni 100% bright!) ── */}
+        {/* 1. Base contour spine mask spanning only the leftmost 24% boundary so Dr. Jeni Theresa's entire facial presentation remains brilliantly illuminated */}
+        <div className="absolute inset-y-0 left-0 w-[24%] bg-gradient-to-r from-[#0A1C17] from-0% via-[#0A1C17]/90 via-[40%] via-[#0A1C17]/40 via-[70%] to-transparent pointer-events-none" />
         
-        {/* 2. Spherical Cloud Vapor 1 (Upper-Mid): Pulled far to the left (-left-[420px]) to cushion only the border seam without shadowing her eyes or cheek */}
-        <div className="absolute top-[12%] -left-[420px] w-[560px] h-[560px] rounded-full bg-[#0A1C17] blur-[125px] opacity-95 pointer-events-none" />
+        {/* 2. Upper Curving Arc (Rotate -15deg): Angled elliptical shadow that gently arches outward to cushion the main Clinical Therapy Headline and badges */}
+        <div className="absolute top-[6%] -left-[320px] w-[620px] h-[380px] rounded-[50%] bg-[#0A1C17] rotate-[-15deg] blur-[95px] opacity-95 pointer-events-none" />
         
-        {/* 3. Spherical Cloud Vapor 2 (Lower Content Anchor): Cushioning the glassmorphism feature cards naturally on the left seam */}
-        <div className="absolute bottom-[8%] -left-[400px] w-[540px] h-[500px] rounded-full bg-[#0A1C17] blur-[130px] opacity-90 pointer-events-none" />
+        {/* 3. Middle Bending Contour (Rotate +14deg): Curves inward gracefully around the silhouette of the interactive glassmorphism tab briefing card */}
+        <div className="absolute top-[38%] -left-[270px] w-[550px] h-[360px] rounded-[50%] bg-[#0A1C17] rotate-[14deg] blur-[105px] opacity-95 pointer-events-none" />
 
-        {/* 4. Warm Golden-Emerald Ambient Drift: Confined strictly to the left edge to blend dark emerald softly into the background studio lights */}
-        <div className="absolute top-[32%] -left-[250px] w-[380px] h-[380px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-emerald-950/60 to-[#D2A13E]/10 blur-[120px] opacity-75 pointer-events-none" />
+        {/* 4. Lower Swelling Arc (Rotate -18deg): Swoops out at the base to cradle the Book Home Assessment buttons and 4.9/5 patient ratings */}
+        <div className="absolute bottom-[4%] -left-[300px] w-[590px] h-[370px] rounded-[50%] bg-[#0A1C17] rotate-[-18deg] blur-[100px] opacity-90 pointer-events-none" />
+        
+        {/* 5. Subtle Inner Curvature Aura: Deepens the 3D studio sensation along the joint curve without shadowing her cheeks or shoulders */}
+        <div className="absolute top-[26%] -left-[200px] w-[340px] h-[460px] rounded-full bg-gradient-to-tr from-[#0A1C17] via-[#0A1C17]/80 to-emerald-800/20 rotate-[10deg] blur-[115px] opacity-80 pointer-events-none" />
         
         {/* Seamless top and bottom viewport transitions */}
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#0A1C17] via-[#0A1C17]/60 to-transparent pointer-events-none" />
