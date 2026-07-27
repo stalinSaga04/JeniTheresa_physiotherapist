@@ -21,9 +21,13 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
+  // Security sanitization for patient clinical chat inputs
+  const sanitizeNote = (str) => str ? str.toString().trim().replace(/[<>"{}\\]/g, "").slice(0, 250) : '';
+
   const handleSendWhatsApp = () => {
     const topicText = selectedTopic ? `📍 *Primary Concern:* ${selectedTopic}\n` : '';
-    const noteText = patientNote ? `📝 *Note:* "${patientNote}"\n` : '';
+    const safeNote = sanitizeNote(patientNote);
+    const noteText = safeNote ? `📝 *Note:* "${safeNote}"\n` : '';
     
     const text = `👋 *Hello Dr. Jeni Theresa Rehab Desk,* \n\nI would like to schedule an expert Home Visit physiotherapy session in ${CLINIC_INFO.city} / Online Video Tele-Rehab.\n\n${topicText}${noteText}\nPlease let me know available doctor time slots and fee confirmation. Thank you!`;
     
@@ -35,9 +39,9 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
   return (
     <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-end" ref={popoverRef}>
       
-      {/* Interactive Concierge Popover Sheet */}
+      {/* Interactive Concierge Popover Sheet with strict viewport height preservation */}
       {isOpen && (
-        <div className="mb-4 w-[340px] sm:w-[380px] rounded-3xl bg-[#FAF8F5] border-2 border-[#0A1C17] shadow-[0_12px_45px_rgba(10,28,23,0.3)] overflow-hidden animate-in fade-in slide-in-from-bottom-5 duration-300">
+        <div className="mb-4 w-[340px] sm:w-[380px] max-h-[85svh] overflow-y-auto overscroll-contain rounded-3xl bg-[#FAF8F5] border-2 border-[#0A1C17] shadow-[0_12px_45px_rgba(10,28,23,0.3)] animate-in fade-in slide-in-from-bottom-5 duration-300">
           
           {/* Header */}
           <div className="bg-[#0A1C17] text-[#FAF8F5] p-5 relative overflow-hidden">

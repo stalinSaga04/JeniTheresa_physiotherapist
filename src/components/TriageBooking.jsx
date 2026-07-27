@@ -39,24 +39,34 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
     openWhatsApp();
   };
 
+  // Security Sanitization to prevent XSS, malformed URL parameters, or excessive script strings in medical transmission
+  const sanitizeInput = (str, maxLen = 300) => {
+    if (!str) return "";
+    return str.toString().trim().replace(/[<>"{}\\]/g, "").slice(0, maxLen);
+  };
+
   const generateWhatsAppMessage = () => {
+    const safeName = sanitizeInput(patientName, 100) || 'Not specified';
+    const safePhone = sanitizeInput(patientPhone, 50) || 'Direct via WhatsApp';
+    const safeNotes = sanitizeInput(notes, 400) || 'None provided';
+
     const msg = `🏥 *New Consultation Request — Dr. Jeni Theresa, PT, DPT*\n\n` +
-      `👤 *Patient:* ${patientName || 'Not specified'}\n` +
-      `📞 *Phone/Contact:* ${patientPhone || 'Direct via WhatsApp'}\n` +
+      `👤 *Patient:* ${safeName}\n` +
+      `📞 *Phone/Contact:* ${safePhone}\n` +
       `📍 *Condition Focus:* ${symptomArea}\n` +
       `⏱️ *Symptom Duration:* ${duration}\n` +
       `🔥 *Pain & Limitation Scale:* ${painLevel} / 10\n` +
       `🩺 *Imaging Status:* ${imagingStatus}\n` +
       `📅 *Preferred Appointment:* ${preferredModality}\n\n` +
-      `📝 *Additional Notes:* ${notes || 'None provided'}\n\n` +
-      `_Submitted via interactive clinic assessment._`;
+      `📝 *Additional Notes:* ${safeNotes}\n\n` +
+      `_Submitted securely via interactive Dr. Jeni clinical assessment._`;
     
     return encodeURIComponent(msg);
   };
 
   const openWhatsApp = () => {
     const url = `https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${generateWhatsAppMessage()}`;
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const symptomOptions = [
@@ -69,57 +79,60 @@ const TriageBooking = ({ isOpen, onClose, initialSymptom = null }) => {
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
+    /* Bulletproof mobile overlay with overscroll lock and safe area screen margins */
+    <div className="fixed inset-0 z-[100] bg-black/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 sm:py-8 overscroll-contain">
       
-      {/* Modal Box */}
+      {/* Viewport-bounded Modal Container: Prevents header clipping on small smartphones! */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        transition={{ duration: 0.3 }}
-        className="bg-[#FAF8F5] text-[#0A1C17] w-full max-w-2xl rounded-3xl shadow-2xl border-2 border-[#0A1C17] overflow-hidden relative"
+        transition={{ duration: 0.25 }}
+        className="bg-[#FAF8F5] text-[#0A1C17] w-full max-w-2xl max-h-[92svh] sm:max-h-[88svh] rounded-2xl sm:rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.85)] border sm:border-2 border-[#0A1C17] flex flex-col overflow-hidden relative sm:my-auto"
       >
-        {/* Top Clinical Header Bar */}
-        <div className="bg-[#0A1C17] text-[#FAF8F5] p-6 sm:px-8 flex items-center justify-between border-b border-white/15">
+        {/* Top Clinical Header Bar (Pinned & Never Clipped!) */}
+        <div className="bg-[#0A1C17] text-[#FAF8F5] p-4 sm:p-6 sm:px-8 flex-shrink-0 flex items-center justify-between border-b border-white/15 z-20">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#C2593B] text-white flex items-center justify-center font-bold font-mono-tech shadow-md">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#C2593B] text-white flex items-center justify-center font-bold text-xs sm:text-sm font-mono-tech shadow-md">
               DPT
             </div>
             <div>
-              <h3 className="text-xl font-serif-clinical font-bold text-white leading-none">
+              <h3 className="text-base sm:text-xl font-serif-clinical font-bold text-white leading-tight">
                 Clinical Triage & Concierge
               </h3>
-              <p className="text-xs font-mono-tech text-emerald-300 mt-1 uppercase tracking-wider font-semibold">
-                Dr. Jeni Theresa • One-on-One Assessment Setup
+              <p className="text-[10px] sm:text-xs font-mono-tech text-emerald-300 mt-0.5 sm:mt-1 uppercase tracking-wider font-semibold">
+                Dr. Jeni Theresa • Private Assessment Setup
               </p>
             </div>
           </div>
           
           <button
+            type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="w-10 h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all flex items-center justify-center cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all flex items-center justify-center cursor-pointer shrink-0 ml-2"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Progress Tracker (if not yet submitted) */}
+        {/* Step Progress Tracker (Pinned immediately below header!) */}
         {!isSubmitted && (
-          <div className="bg-[#0A1C17]/5 px-6 sm:px-8 py-3.5 border-b border-[#0A1C17]/10 flex items-center justify-between text-xs font-mono-tech font-bold uppercase">
-            <span className="text-[#0A1C17]">Step 0{step} of 04 • {step === 1 ? 'Primary Target' : step === 2 ? 'Symptom Timeline' : step === 3 ? 'Diagnostics & Preferences' : 'Patient Verification'}</span>
-            <div className="flex gap-1.5">
+          <div className="bg-[#0A1C17]/5 px-4 sm:px-8 py-2.5 sm:py-3.5 flex-shrink-0 border-b border-[#0A1C17]/10 flex items-center justify-between text-[11px] sm:text-xs font-mono-tech font-bold uppercase z-20">
+            <span className="text-[#0A1C17] truncate max-w-[200px] sm:max-w-none">Step 0{step} of 04 • {step === 1 ? 'Primary Target' : step === 2 ? 'Symptom Timeline' : step === 3 ? 'Diagnostics' : 'Verification'}</span>
+            <div className="flex gap-1 sm:gap-1.5 shrink-0 ml-2">
               {[1, 2, 3, 4].map((i) => (
                 <span
                   key={i}
-                  className={`w-6 h-1.5 rounded-full transition-all ${i === step ? 'bg-[#C2593B]' : i < step ? 'bg-[#0A1C17]' : 'bg-[#0A1C17]/20'}`}
+                  className={`w-4 sm:w-6 h-1.5 rounded-full transition-all ${i === step ? 'bg-[#C2593B]' : i < step ? 'bg-[#0A1C17]' : 'bg-[#0A1C17]/20'}`}
                 />
               ))}
             </div>
           </div>
         )}
 
-        <div className="p-6 sm:p-8">
+        {/* Scrollable Internal Form Body with safe bottom padding for smartphone navigation bars! */}
+        <div className="p-4 sm:p-6 sm:px-8 overflow-y-auto overscroll-contain flex-1 space-y-5 pb-20 sm:pb-8">
           
           {/* SUCCESS VIEW AFTER COMPLETION */}
           {isSubmitted ? (
