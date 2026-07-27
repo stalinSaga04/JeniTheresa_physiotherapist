@@ -37,7 +37,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Neurological Rehabilitation",
       subtitle: "Neuroplasticity & Motor Control Recovery",
       icon: Brain,
-      image: "/images/human_brain_spinal.jpeg",
+      video: "/videos/neuro_rehab.mp4",
       description: "Specialized neuromuscular training to rewire brain-to-muscle coordination, rebuild balance confidence, and restore independent mobility after neurological events.",
       conditions: [
         { name: "Stroke Rehab (Hemiplegia)", note: "Gait, balance & limb functional restoration" },
@@ -51,7 +51,7 @@ const Specialties = ({ onOpenTriage }) => {
       title: "Post-Surgical Rehabilitation",
       subtitle: "Pre- & Post-Operative Tissue Recovery",
       icon: Activity,
-      image: "/images/knee_after_surgery.jpeg",
+      video: "/videos/post_surgical.mp4",
       description: "Surgery repairs structures — but precise rehabilitation rebuilds neuromuscular strength, tendon flexibility, and full functional capacity for complete recovery.",
       conditions: [
         { name: "Total Knee Replacement (TKR)", note: "Range of motion & stiffening prevention" },

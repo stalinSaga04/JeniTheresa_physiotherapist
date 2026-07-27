@@ -11,22 +11,6 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
       setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
-    
-    // Initialize translation widget inside Navbar once mounted
-    if (window.google && window.google.translate && window.google.translate.TranslateElement) {
-      const el = document.getElementById('google_translate_element');
-      if (el && !el.hasChildNodes()) {
-        try {
-          new window.google.translate.TranslateElement({
-            pageLanguage: 'en',
-            includedLanguages: 'ta,hi,kn,te,ml,bn,mr,gu,pa,ur,en',
-            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-          }, 'google_translate_element');
-        } catch (err) { /* ignore duplicate init */ }
-      }
-    }
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -129,12 +113,6 @@ const Navbar = ({ onOpenTriage, onOpenAdmin }) => {
 
           {/* Action Buttons */}
           <div className="flex items-center gap-1.5 sm:gap-3">
-            {/* Native Top Bar Language Translator (Clean, zero mobile disturbances!) */}
-            <div 
-              id="google_translate_element" 
-              className="px-2 py-1 sm:px-3 sm:py-1.5 rounded-xl bg-[#0A1C17] border border-white/20 shadow-sm text-xs flex items-center shrink-0 min-h-[32px]"
-            />
-
             {/* PMS Admin (Desktop - always visible) */}
             <button
               onClick={onOpenAdmin}

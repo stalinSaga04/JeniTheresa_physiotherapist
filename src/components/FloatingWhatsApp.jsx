@@ -33,7 +33,7 @@ const FloatingWhatsApp = ({ onOpenTriage }) => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end" ref={popoverRef}>
+    <div className="hidden md:flex fixed bottom-6 right-6 z-50 flex-col items-end" ref={popoverRef}>
       
       {/* Interactive Concierge Popover Sheet */}
       {isOpen && (
